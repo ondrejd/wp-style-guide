@@ -132,9 +132,53 @@
 				</tr>
 				<tr>
 					<th>
-						<label for="input-time">Time Elements</label>
+						<label for="input-time">Date Time Elements</label>
 					</th>
 					<td>
+						<p>If you creating date time inputs for form for editing <em>custom-</em>post type you can use <strong>WordPress</strong> function <a href="https://developer.wordpress.org/reference/functions/touch_time/" target="blank"><code>touch_time</code></a> (<strong>Warning:</strong> This function can be used only on <code>post.php</code> or <code>post-new.php</code> pages!):</p>
+						<pre>&lt;?php @touch_time(false, false, false, true);?&gt;</pre>
+						<?php 
+						@touch_time(false, false, false, true);
+						?>
+						<p>This will create output like this:</p>
+						<pre>
+&lt;div class="timestamp-wrap"&gt;
+	&lt;label&gt;
+		&lt;span class="screen-reader-text"&gt;Den&lt;/span&gt;
+		&lt;input name="jj" value="27" size="2" maxlength="2" autocomplete="off" type="text"&gt;
+	&lt;/label&gt;.
+	&lt;label&gt;
+		&lt;span class="screen-reader-text"&gt;Měsíc&lt;/span&gt;
+		&lt;select name="mm"&gt;
+			&lt;option value="01" data-text="Jan"&gt;01 - Jan&lt;/option&gt;
+			&lt;option value="02" data-text="Feb" selected="selected"&gt;02 - Feb&lt;/option&gt;
+			&lt;option value="03" data-text="Mar"&gt;03 - Mar&lt;/option&gt;
+			&lt;option value="04" data-text="Apr"&gt;04 - Apr&lt;/option&gt;
+			&lt;option value="05" data-text="May"&gt;05 - May&lt;/option&gt;
+			&lt;option value="06" data-text="Jun"&gt;06 - Jun&lt;/option&gt;
+			&lt;option value="07" data-text="Jul"&gt;07 - Jul&lt;/option&gt;
+			&lt;option value="08" data-text="Aug"&gt;08 - Aug&lt;/option&gt;
+			&lt;option value="09" data-text="Sep"&gt;09 - Sep&lt;/option&gt;
+			&lt;option value="10" data-text="Oct"&gt;10 - Oct&lt;/option&gt;
+			&lt;option value="11" data-text="Nov"&gt;11 - Nov&lt;/option&gt;
+			&lt;option value="12" data-text="Dec"&gt;12 - Dec&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/label&gt; 
+	&lt;label&gt;
+		&lt;span class="screen-reader-text"&gt;Rok&lt;/span&gt;
+		&lt;input name="aa" value="2016" size="4" maxlength="4" autocomplete="off" type="text"&gt;
+	&lt;/label&gt; @ 
+	&lt;label&gt;
+		&lt;span class="screen-reader-text"&gt;Hodiny&lt;/span&gt;
+		&lt;input name="hh" value="15" size="2" maxlength="2" autocomplete="off" type="text"&gt;
+	&lt;/label&gt;:
+	&lt;label&gt;
+		&lt;span class="screen-reader-text"&gt;Minuty&lt;/span&gt;
+		&lt;input name="mn" value="23" size="2" maxlength="2" autocomplete="off" type="text"&gt;
+	&lt;/label&gt;
+&lt;/div&gt;
+						</pre>
+						<p>Otherwise there are simple date time inputs available:</p>
 						Date: <input name="input-date" type="date" /><br />
 						Month: <input name="input-month" type="month" /> <br />
 						Week: <input name="input-week" type="week" /><br />
