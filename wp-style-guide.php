@@ -118,6 +118,12 @@ class WP_Style_Guide {
 	<?php endforeach; ?>
 	</ul>
 
+	<h3><?php _e( 'Usefull links' ); ?></h3>
+	<ul class="ul-disc">
+		<li><a href="https://developer.wordpress.org/resource/dashicons" target="blank"><?php _e( 'Developer Resources: Dashicons' ); ?></a></li>
+		<li><a href="https://codex.wordpress.org/Database_Description" target="blank"><?php _e( 'WordPress Database Description' ); ?></a></li>
+	</ul>
+
 </div><!-- .wrap -->
 <?php
 	}
