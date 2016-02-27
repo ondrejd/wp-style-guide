@@ -13,9 +13,9 @@
 					</th>
 					<td>
 						<input type="text" name="input-text" placeholder="Text" /><br />
-						<pre>
+						<pre><code class="language-markup">
 &lt;input type="text" name="input-text" placeholder="Text" />
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -28,13 +28,13 @@
 							<option>Option 2</option>
 							<option>Option 3</option>
 						</select>
-						<pre>
+						<pre><code class="language-markup">
 &lt;select name="select">
   &lt;option>Option 1&lt;/option>
   &lt;option>Option 2&lt;/option>
   &lt;option>Option 3&lt;/option>
 &lt;/select>
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -50,7 +50,7 @@
 							<option>Option 5</option>
 							<option>Option 6</option>
 						</select>
-						<pre>
+						<pre><code class="language-markup">
 &lt;select name="multi-select" multiple="multiple">
   &lt;option>Option 1&lt;/option>
   &lt;option>Option 2&lt;/option>
@@ -59,7 +59,7 @@
   &lt;option>Option 5&lt;/option>
   &lt;option>Option 6&lt;/option>
 &lt;/select>
-				</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -71,12 +71,12 @@
 						<input type="radio" name="radio-buttons" value="option-2"/> Option 2 <br />
 						<input type="radio" name="radio-buttons" value="option-3"/> Option 3 <br />
 						<input type="radio" name="radio-buttons" value="option-4"/> Option 4 <br />
-						<pre>
+						<pre><code class="language-markup">
 &lt;input type="radio" name="radio-buttons" value="option-1" /> Option 1
 &lt;input type="radio" name="radio-buttons" value="option-2" /> Option 2
 &lt;input type="radio" name="radio-buttons" value="option-3" /> Option 3
 &lt;input type="radio" name="radio-buttons" value="option-4" /> Option 4
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -85,9 +85,9 @@
 					</th>
 					<td>
 						<input type="checkbox" name="input-checkbox" /> Option 1<br />
-						<pre>
+						<pre><code class="language-markup">
 &lt;input type="checkbox" name="input-checkbox"/> Option 1
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -98,11 +98,11 @@
 						<input type='checkbox' name='checkbox-array[]' value='option-1'> Option 1<br />
 						<input type='checkbox' name='checkbox-array[]' value='option-2'> Option 2<br />
 						<input type='checkbox' name='checkbox-array[]' value='option-3'> Option 3<br />
-						<pre>
+						<pre><code class="language-markup">
 &lt;input type='checkbox' name='checkbox-array[]' value='option-1'> Option 1
 &lt;input type='checkbox' name='checkbox-array[]' value='option-2'> Option 2
 &lt;input type='checkbox' name='checkbox-array[]' value='option-3'> Option 3
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -118,7 +118,7 @@
 							<input type="text" placeholder="Text" /> Text<br />
 							<input type="url" placeholder="URL" /> URL<br />
 						</fieldset>
-						<pre>
+						<pre><code class="language-markup">
 &lt;fieldset>
   &lt;legend>Legend&lt;/legend>
   &lt;input type="email" placeholder="Email" /> Email
@@ -127,7 +127,7 @@
   &lt;input type="text" placeholder="text" /> Text
   &lt;input type="url" placeholder="URL" /> URL
 &lt;/fieldset>
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -136,12 +136,12 @@
 					</th>
 					<td>
 						<p>If you creating date time inputs for form for editing <em>custom-</em>post type you can use <strong>WordPress</strong> function <a href="https://developer.wordpress.org/reference/functions/touch_time/" target="blank"><code>touch_time</code></a> (<strong>Warning:</strong> This function can be used only on <code>post.php</code> or <code>post-new.php</code> pages!):</p>
-						<pre>&lt;?php @touch_time(false, false, false, true);?&gt;</pre>
+						<pre><code class="language-php">&lt;?php @touch_time(false, false, false, true);?&gt;</code></pre>
 						<?php 
 						@touch_time(false, false, false, true);
 						?>
 						<p>This will create output like this:</p>
-						<pre>
+						<pre><code class="language-markup">
 &lt;div class="timestamp-wrap"&gt;
 	&lt;label&gt;
 		&lt;span class="screen-reader-text"&gt;Den&lt;/span&gt;
@@ -177,20 +177,20 @@
 		&lt;input name="mn" value="23" size="2" maxlength="2" autocomplete="off" type="text"&gt;
 	&lt;/label&gt;
 &lt;/div&gt;
-						</pre>
+						</code></pre>
 						<p>Otherwise there are simple date time inputs available:</p>
 						Date: <input name="input-date" type="date" /><br />
 						Month: <input name="input-month" type="month" /> <br />
 						Week: <input name="input-week" type="week" /><br />
 						Time: <input name="input-time" type="time" /><br />
 						Local Date and Time: <input name="input-datetime-local" type="datetime-local" />
-						<pre>
+						<pre><code class="language-markup">
 Date: &lt;input name="input-date" type="date" />
 Month: &lt;input name="input-month" type="month" />
 Week: &lt;input name="input-week" type="week" />
 Time: &lt;input name="input-time" type="time" />
 Local Date and Time: &lt;input name="input-datetime-local" type="datetime-local" />
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -201,11 +201,11 @@ Local Date and Time: &lt;input name="input-datetime-local" type="datetime-local"
 						Number: <input name="input-number" type="number" min="0" max="20" /><br />
 						Range: <input name="input-range" type="range" /><br />
 						Color: <input name="input-color" type="color" /><br />
-						<pre>
+						<pre><code class="language-markup">
 Number: &lt;input name="input-number" type="number" min="0" max="20" />
 Range: &lt;input name="input-range" type="range" />
 Color: &lt;input name="input-color" type="color" />
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 				<tr>
@@ -216,11 +216,11 @@ Color: &lt;input name="input-color" type="color" />
 						<input type="submit" value="Submit Input" class="button" /><br /><br />
 						<input type="button" value="Secondary Button" class="button-secondary" /><br /><br />
 						<input type="button" value="Primary Button" class="button-primary" />
-						<pre>
+						<pre><code class="language-markup">
 &lt;input type="submit" value="Submit Input" class="button" />
 &lt;input type="button" value="Secondary Button" class="button-secondary" />
 &lt;input type="button" value="Primary Button" class="button-primary" />
-						</pre>
+						</code></pre>
 					</td>
 				</tr>
 			</tbody>

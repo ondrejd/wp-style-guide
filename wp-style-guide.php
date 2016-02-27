@@ -74,6 +74,9 @@ class WP_Style_Guide {
 		wp_enqueue_style( 'wp-style-guide', plugins_url( 'css/wp-style-guide.css', __FILE__ ), false );
 		
 		wp_enqueue_style( 'dashicons-guide', plugins_url( 'css/dashicons.css', __FILE__ ), false );
+
+		wp_enqueue_script( 'prism-js', plugins_url( 'js/prism.js', __FILE__ ), false );
+		wp_enqueue_style( 'prism-css', plugins_url( 'css/prism.css', __FILE__ ), false );
 	}
 
 	public function admin_head() {
