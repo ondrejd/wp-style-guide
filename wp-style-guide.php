@@ -29,6 +29,12 @@ class WP_Style_Guide {
 	public function __construct() {
 		// define our screens
 		$this->screens = array(
+			'wp-patterns-wizards' => array(
+				'page_title' => __( 'Wizards' ),
+				'menu_title' => __( 'Wizards' ),
+				'callback' => 'wizards', // note that this has to be a class method
+				'hookname' => null,
+			),
 			'wp-patterns-forms' => array(
 				'page_title' => __( 'Forms' ),
 				'menu_title' => __( 'Forms' ),
@@ -150,9 +156,9 @@ class WP_Style_Guide {
 	public function helper_classes() {
 		include_once( 'pages/helper-classes.php' );
 	}
-	
-	public function dashicons() {
-		include_once( 'pages/dashicons.php' );
+
+	public function wizards() {
+		include_once( 'pages/wizards.php' );
 	}
 }
 
