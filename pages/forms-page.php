@@ -171,7 +171,7 @@ jQuery(document).on('ready', function () {
 });
 &lt;/script&gt;
 						</code></pre>
-						<p class="description" style="text-align: right;"><a href="#wpbody">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-text_input"><td colspan="2"><br></td></tr>
@@ -184,7 +184,7 @@ jQuery(document).on('ready', function () {
 						<pre><code class="language-markup">
 &lt;input type="text" name="input-text" placeholder="Text" />
 						</code></pre>
-						<p class="description" style="text-align: right;"><a href="#wpbody">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-select"><td colspan="2"><br></td></tr>
@@ -205,7 +205,7 @@ jQuery(document).on('ready', function () {
   &lt;option>Option 3&lt;/option>
 &lt;/select>
 						</code></pre>
-						<p class="description" style="text-align: right;"><a href="#wpbody">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-multi_select"><td colspan="2"><br></td></tr>
@@ -232,6 +232,7 @@ jQuery(document).on('ready', function () {
   &lt;option>Option 6&lt;/option>
 &lt;/select>
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-radio_buttons"><td colspan="2"><br></td></tr>
@@ -250,6 +251,7 @@ jQuery(document).on('ready', function () {
 &lt;input type="radio" name="radio-buttons" value="option-3" /> Option 3
 &lt;input type="radio" name="radio-buttons" value="option-4" /> Option 4
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-checkbox"><td colspan="2"><br></td></tr>
@@ -262,6 +264,7 @@ jQuery(document).on('ready', function () {
 						<pre><code class="language-markup">
 &lt;input type="checkbox" name="input-checkbox"/> Option 1
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-checkbox_array"><td colspan="2"><br></td></tr>
@@ -278,6 +281,7 @@ jQuery(document).on('ready', function () {
 &lt;input type='checkbox' name='checkbox-array[]' value='option-2'> Option 2
 &lt;input type='checkbox' name='checkbox-array[]' value='option-3'> Option 3
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-html5"><td colspan="2"><br></td></tr>
@@ -304,6 +308,7 @@ jQuery(document).on('ready', function () {
   &lt;input type="url" placeholder="URL" /> URL
 &lt;/fieldset>
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-datetime"><td colspan="2"><br></td></tr>
@@ -368,6 +373,7 @@ Week: &lt;input id="input-week" name="input-week" type="week" />
 Time: &lt;input id=="input-time" name="input-time" type="time" />
 Local Date and Time: &lt;input name="input-datetime-local" type="datetime-local" />
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-others"><td colspan="2"><br></td></tr>
@@ -384,6 +390,7 @@ Number: &lt;input name="input-number" type="number" min="0" max="20" />
 Range: &lt;input name="input-range" type="range" />
 Color: &lt;input name="input-color" type="color" />
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 				<tr id="tr-buttons"><td colspan="2"><br></td></tr>
@@ -400,6 +407,7 @@ Color: &lt;input name="input-color" type="color" />
 &lt;input type="button" value="Secondary Button" class="button-secondary" />
 &lt;input type="button" value="Primary Button" class="button-primary" />
 						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
 					</td>
 				</tr>
 			</tbody>
