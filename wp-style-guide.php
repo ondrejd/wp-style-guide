@@ -12,6 +12,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 class WP_Style_Guide {
 	/**
+	 * Main slug.
+	 * @var string
+	 */
+	private $slug;
+
+	/**
 	 * Screens added.
 	 * @var array
 	 */
@@ -27,6 +33,8 @@ class WP_Style_Guide {
 	 * Set up hooks.
 	 */
 	public function __construct() {
+		$this->slug = 'wp-patterns';
+
 		// define our screens
 		$this->screens = array(
 			'wp-patterns-wizards' => array(
@@ -100,11 +108,71 @@ class WP_Style_Guide {
 	 * @return void
 	 */
 	public function admin_menu() {
-		$this->hookname = add_menu_page( 'WordPress Admin Pattern Library', 'Pattern Library', 'read', 'wp-patterns', array( $this, 'toc' ) );
+		$this->hookname = add_menu_page( 'WordPress Admin Pattern Library', 'Pattern Library', 'read', $this->slug, array( $this, 'toc' ) );
+		add_action( 'load-' . $this->hookname, array( $this, 'create_help_screen' ) );
 
 		foreach ( $this->screens as $slug => $args ) {
 			$this->screens[$slug]['hookname'] = add_submenu_page( 'wp-patterns', $args['page_title'], $args['menu_title'], 'read', $slug, array( $this, $args['callback'] ) );
+//echo "<p><code>load-{$slug}</code></p>";
+/*load-wp-patterns-wizards
+load-wp-patterns-forms
+load-wp-patterns-jquery-ui
+load-wp-patterns-helper-classes*/
+			add_action( 'load-' . $this->screens[$slug]['hookname'], array( $this, 'create_help_screen' ) );
 		}
+	}
+
+	/**
+	 * Add help.
+	 * @return void
+	 */
+	public function create_help_screen() {
+		$screen = get_current_screen();
+
+		if ($screen->id == $this->hookname) {
+			return;
+		}
+
+		if ($screen->id == $this->screens['wp-patterns-wizards']['hookname']) {
+			$wizard = filter_input(INPUT_GET, 'wizard');
+
+			if ($wizard == 'plugin') {
+				// ...
+			}
+			elseif ($wizard == 'theme') {
+				// ...
+			}
+			else {
+				$screen->add_help_tab( array(
+					'id'      => 'my_help_tab',
+					'title'   => __('Wizards'),
+					'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>' ),
+				));
+				$screen->set_help_sidebar(
+					sprintf(
+						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.' ),
+						'#',
+						'#'
+					)
+				);
+			}
+			
+			/*$screen->add_option(
+				'show_descriptions', 
+				array(
+					'label' => 'Show descriptions', 
+					'default' => 1, 
+					'option' => 'edit_show_descriptions'
+				) 
+			);*/
+//echo '<pre>';
+//var_dump($screen);
+//echo '</pre>';
+		}
+		
+
+		//$screen = WP_Screen::get($this->screens[$plugin_page]['hookname']);
+
 	}
 
 	/**
