@@ -207,8 +207,7 @@
 					</td>
 				</tr>
 				<!-- TODO Screenshots -->
-				<!-- ChangeLog -->
-				<!-- TODO Enter template (with initial version text) -->
+				<!-- Change Log -->
 				<tr>
 					<th scope="row">
 						<label for="plugin-changelog"><?= __( 'Change Log' )?></label>
@@ -216,7 +215,7 @@
 					<td>
 						<fieldset>
 							<p>
-								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?= __( 'Enter change log of your plugin' )?>" cols="72" rows="10"></textarea>
+								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?= __( 'Enter change log of your plugin' )?>" cols="72" rows="10"><?= WP_Style_Guide::get_option('default_changelog_text')?></textarea>
 							</p>
 							<p class="description"><?= __('Change log is a part of <code>readme.txt</code> file.')?></p>
 						</fieldset>
@@ -237,7 +236,6 @@
 					</td>
 				</tr>
 				<!-- Options -->
-				<!-- TODO Check/uncheck these checkboxes by default according to user's preferences -->
 				<tr>
 					<th scope="row">
 						<label for="plugin-has_dependency"><?= __( 'Options' )?></label>
@@ -247,33 +245,39 @@
 							<legend class="screen-reader-text"><?= __( 'Other plugin options' )?></legend>
 							<p>
 								<label for="plugin-include_license_file">
-									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file">
+									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked((bool) WP_Style_Guide::get_option('default_include_license_file'))?>>
 									<span><?= __('Include license in a standalone file')?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_dependency">
-									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency">
+									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked((bool) WP_Style_Guide::get_option('default_has_dependency'))?>>
 									<span><?= __('Plugin has dependency to other plugin(s)')?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_administration">
-									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration">
+									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked((bool) WP_Style_Guide::get_option('default_has_administration'))?>>
 									<span><?= __('Plugin contains administration')?></span>
 								</label>
 							</p>
 							<!-- TODO This checkbox need `plugin-has_administration` checked! -->
 							<p>
 								<label for="plugin-has_options">
-									<input type="checkbox" id="plugin-has_options" name="plugin-has_options">
+									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked((bool) WP_Style_Guide::get_option('default_has_options'))?>>
+									<span><?= __('Plugin has options (will be included new options page into WordPress administration')?></span>
+								</label>
+							</p>
+							<p>
+								<label for="plugin-has_own_dbtables">
+									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked((bool) WP_Style_Guide::get_option('default_has_own_dbtables'))?>>
 									<span><?= __('Plugin has options (will be included new options page into WordPress administration')?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_localization">
-									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization">
-									<span><?= __('Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file')?></span>
+									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked((bool) WP_Style_Guide::get_option('default_has_localization'))?>>
+									<span><?= __('Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file)')?></span>
 								</label>
 							</p>
 						</fieldset>

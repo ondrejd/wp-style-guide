@@ -10,7 +10,13 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+/**
+ * @todo Add options page.
+ */
 class WP_Style_Guide {
+	const PLUGIN_SLUG = 'wp-patterns';
+	const PLUGIN_VERSION = '1.0';
+
 	/**
 	 * Main slug.
 	 * @var string
@@ -30,10 +36,25 @@ class WP_Style_Guide {
 	private $hookname;
 
 	/**
+	* Default options of the plugin.
+	* @var array
+	*/
+	private $default_options = array(
+		// Agreement texts
+		'default_changelog_text' => "= 0.0.1 =\n* initial version\n",
+		'default_include_license_file' => true,
+		'default_has_dependency' => false,
+		'default_has_administration' => true,
+		'default_has_options' => true,
+		'default_has_own_dbtables' => false,
+		'default_has_localization' => true
+	);
+
+	/**
 	 * Set up hooks.
 	 */
 	public function __construct() {
-		$this->slug = 'wp-patterns';
+		$this->slug = self::PLUGIN_SLUG;
 
 		// define our screens
 		$this->screens = array(
@@ -63,9 +84,70 @@ class WP_Style_Guide {
 			),
 		);
 
+		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+	}
+
+	/**
+	 * Initialize plugin.
+	 * @return void
+	 */
+	public function init() {
+		// Ensure that plugin's options are initialized
+		$this->get_options();
+	}
+
+	/**
+	 * Returns plugin's options
+	 * @return array
+	 * @since 0.0.1
+	 * @uses get_option()
+	 * @uses update_option()
+	 */
+	public function get_options() {
+		$options = get_option( self::PLUGIN_SLUG . '-options' );
+		$need_update = false;
+
+		if ( $options === false ) {
+			$need_update = true;
+			$options = array();
+		}
+
+		foreach ( $this->default_options as $key => $value ) {
+			if ( !array_key_exists( $key, $options ) ) {
+				$options[$key] = $value;
+			}
+		}
+
+		if ( !array_key_exists( 'latest_used_version', $options ) ) {
+			$options['latest_used_version'] = self::PLUGIN_VERSION;
+			$need_update = true;
+		}
+
+		if ( $need_update === true ) {
+			update_option( self::PLUGIN_SLUG . '-options', $options );
+		}
+
+		return $options;
+	} // end get_options()
+
+	/**
+	 * Returns value of option with given key.
+	 * @param string $key
+	 * @return mixed Returns empty string if option with given key was not found.
+	 * @static
+	 * @uses get_option()
+	 */
+	public static function get_option($key) {
+		$options = get_option( self::PLUGIN_SLUG . '-options' );
+
+		if ( array_key_exists( $key, $options ) ) {
+			return $options[$key];
+		}
+
+		return '';
 	}
 
 	/**
@@ -106,6 +188,9 @@ class WP_Style_Guide {
 	/**
 	 * Add admin screens
 	 * @return void
+	 * @uses add_action()
+	 * @uses add_menu_page()
+	 * @uses add_submenu_page()
 	 */
 	public function admin_menu() {
 		$this->hookname = add_menu_page( 'WordPress Admin Pattern Library', 'Pattern Library', 'read', $this->slug, array( $this, 'toc' ) );
@@ -113,11 +198,6 @@ class WP_Style_Guide {
 
 		foreach ( $this->screens as $slug => $args ) {
 			$this->screens[$slug]['hookname'] = add_submenu_page( 'wp-patterns', $args['page_title'], $args['menu_title'], 'read', $slug, array( $this, $args['callback'] ) );
-//echo "<p><code>load-{$slug}</code></p>";
-/*load-wp-patterns-wizards
-load-wp-patterns-forms
-load-wp-patterns-jquery-ui
-load-wp-patterns-helper-classes*/
 			add_action( 'load-' . $this->screens[$slug]['hookname'], array( $this, 'create_help_screen' ) );
 		}
 	}
@@ -125,27 +205,29 @@ load-wp-patterns-helper-classes*/
 	/**
 	 * Add help.
 	 * @return void
+	 * @uses get_current_screen()
+	 * @todo Finish this!
 	 */
 	public function create_help_screen() {
 		$screen = get_current_screen();
 
-		if ($screen->id == $this->hookname) {
+		if ( $screen->id == $this->hookname ) {
 			return;
 		}
 
-		if ($screen->id == $this->screens['wp-patterns-wizards']['hookname']) {
-			$wizard = filter_input(INPUT_GET, 'wizard');
+		if ( $screen->id == $this->screens['wp-patterns-wizards']['hookname'] ) {
+			$wizard = filter_input( INPUT_GET, 'wizard' );
 
-			if ($wizard == 'plugin') {
+			if ( $wizard == 'plugin' ) {
 				// ...
 			}
-			elseif ($wizard == 'theme') {
+			elseif ( $wizard == 'theme' ) {
 				// ...
 			}
 			else {
 				$screen->add_help_tab( array(
 					'id'      => 'my_help_tab',
-					'title'   => __('Wizards'),
+					'title'   => __( 'Wizards' ),
 					'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>' ),
 				));
 				$screen->set_help_sidebar(
@@ -160,19 +242,12 @@ load-wp-patterns-helper-classes*/
 			/*$screen->add_option(
 				'show_descriptions', 
 				array(
-					'label' => 'Show descriptions', 
+					'label' => __( 'Show descriptions' ), 
 					'default' => 1, 
 					'option' => 'edit_show_descriptions'
-				) 
+				)
 			);*/
-//echo '<pre>';
-//var_dump($screen);
-//echo '</pre>';
 		}
-		
-
-		//$screen = WP_Screen::get($this->screens[$plugin_page]['hookname']);
-
 	}
 
 	/**
