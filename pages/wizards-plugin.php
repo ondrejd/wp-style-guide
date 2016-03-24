@@ -51,7 +51,7 @@
 								<label for="plugin-description_full"><?= __( 'Full description:' )?></label><br>
 								<textarea name="plugin-description_full" id="plugin-description_full" class="long-text" placeholder="<?= __( 'Enter full description of your plugin' )?>" cols="72" rows="10"></textarea>
 							</p>
-							<p class="description"><?= __('Both descriptions are used in <code>readme.txt</code> file.')?></p>
+							<p class="description"><?= __( 'Both descriptions are used in <code>readme.txt</code> file.' )?></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -105,7 +105,7 @@
 					</th>
 					<td>
 						<fieldset>
-							<p><?= __('Enter author\'s name and valid homepage\'s URL.')?></p>
+							<p><?= __( 'Enter author\'s name and valid homepage\'s URL.' )?></p>
 							<p>
 								<label for="plugin-author" style="width: 130px;"><?= __( 'Author:' )?></label>
 								<input type="text" name="plugin-author" id="plugin-author" class="regular-text" placeholder="<?= __( 'Enter author\'s name' )?>">
@@ -134,13 +134,6 @@
 				</tr>
 				<!-- License -->
 				<!-- TODO Add select with the most used licenses (but keep possibility to enter own custom license)! -->
-				<!--
-				Apache License 2.0, http://www.apache.org/licenses/LICENSE-2.0
-				GPL 2.0, http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
-				GPL 3.0, http://www.gnu.org/licenses/gpl-3.0.txt
-				MPL 2.0, https://www.mozilla.org/MPL/2.0/
-				MIT License, https://opensource.org/licenses/MIT
-				-->
 				<!-- TODO Don't forget `LICENSE` file in generated project files! -->
 				<tr>
 					<th scope="row">
@@ -148,16 +141,51 @@
 					</th>
 					<td>
 						<fieldset>
-							<p><?= __('Enter license\'s name and its valid URL.')?></p>
-							<p>
-								<label for="plugin-license" style="width: 130px;"><?= __( 'License:' )?></label>
-								<input type="text" name="plugin-license" id="plugin-license" class="regular-text" placeholder="<?= __( 'Enter license\'s name' )?>">
-							</p>
-							<p>
-								<label for="plugin-license_uri" style="width: 130px;"><?= __( 'URI:' )?></label>
-								<input type="text" name="plugin-license_uri" id="plugin-license_uri" class="regular-text" placeholder="<?= __( 'Enter URI of license' )?>">
-							</p>
-							<p class="description"><?= __('For example: <code>Mozilla Public License 2.0</code> and <code>https://www.mozilla.org/MPL/2.0/</code>.')?></p>
+							<legend>
+								<span><?= __( 'Either select or enter name of license and its URL. You can also select no license but it is not recommended.' )?></span>
+							</legend>
+							<div>
+								<label title="<?= __( 'Žádná licence' )?>" class="license">
+									<input type="radio" name="plugin-license" value="none" checked="checked">
+									<?= __( 'Žádná licence' )?>
+								</label>
+							</div>
+							<div>
+								<label title="<?= __( 'Vybraný typ:' )?>" class="license">
+								<input type="radio" name="plugin-license" value="license_custom">
+								<?= __( 'Vybraný typ:' )?>
+								<div style="padding-left: 25px;" class="license_custom">
+									<div class="inputs-subarea">
+										<span class="screen-reader-text"><?= __( 'vyberte licenci' )?></span>
+										<label class="screen-reader-text" for="plugin-license_select"><?= __( 'Typy licencí' )?></label>
+										<select name="plugin-license_select" id="plugin-license_select" disabled="disabled">
+											<option value="Apache License 2.0" data-license_url="http://www.apache.org/licenses/LICENSE-2.0"><?= __( 'Apache License 2.0' )?></option>
+											<option value="GPL 2.0" data-license_url="http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"><?= __( 'GPL 2.0' )?></option>
+											<option value="GPL 3.0" data-license_url="http://www.gnu.org/licenses/gpl-3.0.txt"><?= __( 'GPL 3.0' )?></option>
+											<option value="MPL 2.0" data-license_url="https://www.mozilla.org/MPL/2.0/"><?= __( 'MPL 2.0' )?></option>
+											<option value="MIT License" data-license_url="https://opensource.org/licenses/MIT"><?= __( 'MIT License' )?></option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div>
+								<label title="<?= __( 'Vlastní typ:' )?>" class="license">
+								<input type="radio" name="plugin-license" value="license_own">
+								<?= __( 'Vlastní typ:' )?>
+								<div style="padding-left: 25px;" class="license_own">
+									<div class="inputs-subarea">
+										<p>
+											<label for="plugin-license_own_name" style="width: 130px;"><?= __( 'License:' )?></label>
+											<input type="text" name="plugin-license_own_name" id="plugin-license_own_name" class="regular-text" placeholder="<?= __( 'Enter license\'s name' )?>" disabled="disabled">
+										</p>
+										<p>
+											<label for="plugin-license_own_uri" style="width: 130px;"><?= __( 'URI:' )?></label>
+											<input type="text" name="plugin-license_own_uri" id="plugin-licenlicense_own_urise_uri" class="regular-text" placeholder="<?= __( 'Enter URI of license' )?>" disabled="disabled">
+										</p>
+										<p class="description"><?= __( 'For example: <code>Mozilla Public License 2.0</code> and <code>https://www.mozilla.org/MPL/2.0/</code>.' )?></p>
+									</div>
+								</div>
+							</div>
 						</fieldset>
 					</td>
 				</tr>
@@ -176,7 +204,6 @@
 					</td>
 				</tr>
 				<!-- Installation -->
-				<!-- TODO Enter template (which will be updated with plugin's name. -->
 				<tr>
 					<th scope="row">
 						<label for="plugin-installation"><?= __( 'Installation' )?></label>
@@ -185,9 +212,9 @@
 						<fieldset>
 							<p>
 								<label for="plugin-installation"><?= __( 'Installation instructions:' )?></label><br>
-								<textarea name="plugin-installation" id="plugin-installation" class="long-text" placeholder="<?= __( 'Enter plugin installation instructions' )?>" cols="72" rows="10"></textarea>
+								<textarea name="plugin-installation" id="plugin-installation" class="long-text" placeholder="<?= __( 'Enter plugin installation instructions' )?>" cols="72" rows="10"><?= WP_Style_Guide::get_option( 'default_install_text' )?></textarea>
 							</p>
-							<p class="description"><?= __('Installation instructions are part of <code>readme.txt</code> file.')?></p>
+							<p class="description"><?= __( 'Installation instructions are part of <code>readme.txt</code> file.' )?></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -200,9 +227,9 @@
 						<fieldset>
 							<p>
 								<label for="plugin-faq"><?= __( 'Frequently asked questions:' )?></label><br>
-								<textarea name="plugin-faq" id="plugin-faq" class="long-text" placeholder="<?= __( 'Enter frequently asked questions' )?>" cols="72" rows="10"></textarea>
+								<textarea name="plugin-faq" id="plugin-faq" class="long-text" placeholder="<?= __( 'Enter frequently asked questions' )?>" cols="72" rows="10"><?= WP_Style_Guide::get_option( 'default_faq_text' )?></textarea>
 							</p>
-							<p class="description"><?= __('Frequently asked questions are part of <code>readme.txt</code> file.')?></p>
+							<p class="description"><?= __( 'Frequently asked questions are part of <code>readme.txt</code> file.' )?></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -215,9 +242,9 @@
 					<td>
 						<fieldset>
 							<p>
-								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?= __( 'Enter change log of your plugin' )?>" cols="72" rows="10"><?= WP_Style_Guide::get_option('default_changelog_text')?></textarea>
+								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?= __( 'Enter change log of your plugin' )?>" cols="72" rows="10"><?= WP_Style_Guide::get_option( 'default_changelog_text' )?></textarea>
 							</p>
-							<p class="description"><?= __('Change log is a part of <code>readme.txt</code> file.')?></p>
+							<p class="description"><?= __( 'Change log is a part of <code>readme.txt</code> file.' )?></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -231,7 +258,7 @@
 							<p>
 								<textarea name="plugin-upgrade" id="plugin-upgrade" class="long-text" placeholder="<?= __( 'Enter upgrade notice' )?>" cols="72" rows="10"></textarea>
 							</p>
-							<p class="description"><?= __('Upgrade notice is a part of <code>readme.txt</code> file. When starting new plugin this field will be probably empty.')?></p>
+							<p class="description"><?= __( 'Upgrade notice is a part of <code>readme.txt</code> file. When starting new plugin this field will be probably empty.' )?></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -245,39 +272,39 @@
 							<legend class="screen-reader-text"><?= __( 'Other plugin options' )?></legend>
 							<p>
 								<label for="plugin-include_license_file">
-									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked((bool) WP_Style_Guide::get_option('default_include_license_file'))?>>
-									<span><?= __('Include license in a standalone file')?></span>
+									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_include_license_file' ) )?>>
+									<span><?= __( 'Include license in a standalone file' )?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_dependency">
-									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked((bool) WP_Style_Guide::get_option('default_has_dependency'))?>>
-									<span><?= __('Plugin has dependency to other plugin(s)')?></span>
+									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_dependency' ) )?>>
+									<span><?= __( 'Plugin has dependency to other plugin(s)' )?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_administration">
-									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked((bool) WP_Style_Guide::get_option('default_has_administration'))?>>
-									<span><?= __('Plugin contains administration')?></span>
+									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_administration' ) )?>>
+									<span><?= __( 'Plugin contains administration' )?></span>
 								</label>
 							</p>
 							<!-- TODO This checkbox need `plugin-has_administration` checked! -->
 							<p>
 								<label for="plugin-has_options">
-									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked((bool) WP_Style_Guide::get_option('default_has_options'))?>>
-									<span><?= __('Plugin has options (will be included new options page into WordPress administration')?></span>
+									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_options' ) )?>>
+									<span><?= __( 'Plugin has options (will be included new options page into WordPress administration' )?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_own_dbtables">
-									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked((bool) WP_Style_Guide::get_option('default_has_own_dbtables'))?>>
-									<span><?= __('Plugin has options (will be included new options page into WordPress administration')?></span>
+									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_own_dbtables' ) )?>>
+									<span><?= __( 'Plugin has options (will be included new options page into WordPress administration' )?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_localization">
-									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked((bool) WP_Style_Guide::get_option('default_has_localization'))?>>
-									<span><?= __('Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file)')?></span>
+									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_localization' ) )?>>
+									<span><?= __( 'Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file)' )?></span>
 								</label>
 							</p>
 						</fieldset>

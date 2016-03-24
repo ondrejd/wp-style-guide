@@ -15,7 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 class WP_Style_Guide {
 	const PLUGIN_SLUG = 'wp-patterns';
-	const PLUGIN_VERSION = '1.0';
+	const PLUGIN_VERSION = '1.0.1';
 
 	/**
 	 * Main slug.
@@ -40,7 +40,8 @@ class WP_Style_Guide {
 	* @var array
 	*/
 	private $default_options = array(
-		// Agreement texts
+		'default_install_text' => "1. Upload plugin folder to the `/wp-content/plugins/` directory\n2. Activate the plugin through the 'Plugins' menu in WordPress\n",
+		'default_faq_text' => "= Question #1 =\n\nAnswer #1 ...\n",
 		'default_changelog_text' => "= 0.0.1 =\n* initial version\n",
 		'default_include_license_file' => true,
 		'default_has_dependency' => false,
@@ -118,6 +119,7 @@ class WP_Style_Guide {
 		foreach ( $this->default_options as $key => $value ) {
 			if ( !array_key_exists( $key, $options ) ) {
 				$options[$key] = $value;
+				$need_update = true;
 			}
 		}
 
