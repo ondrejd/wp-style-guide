@@ -170,17 +170,17 @@
 							</div>
 							<div>
 								<label title="<?= __( 'Vlastní typ:' )?>" class="license">
-								<input type="radio" name="plugin-license" value="license_own">
-								<?= __( 'Vlastní typ:' )?>
-								<div style="padding-left: 25px;" class="license_own">
+								<input type="radio" name="plugin-license" value="license_other">
+								<?= __( 'Jiný typ:' )?>
+								<div style="padding-left: 25px;" class="license_other">
 									<div class="inputs-subarea">
 										<p>
-											<label for="plugin-license_own_name" style="width: 130px;"><?= __( 'License:' )?></label>
-											<input type="text" name="plugin-license_own_name" id="plugin-license_own_name" class="regular-text" placeholder="<?= __( 'Enter license\'s name' )?>" disabled="disabled">
+											<label for="plugin-license_other_name" style="width: 130px;"><?= __( 'License:' )?></label>
+											<input type="text" name="plugin-license_other_name" id="plugin-license_other_name" class="regular-text" placeholder="<?= __( 'Enter license\'s name' )?>" disabled="disabled">
 										</p>
 										<p>
-											<label for="plugin-license_own_uri" style="width: 130px;"><?= __( 'URI:' )?></label>
-											<input type="text" name="plugin-license_own_uri" id="plugin-licenlicense_own_urise_uri" class="regular-text" placeholder="<?= __( 'Enter URI of license' )?>" disabled="disabled">
+											<label for="plugin-license_other_uri" style="width: 130px;"><?= __( 'URI:' )?></label>
+											<input type="text" name="plugin-license_other_uri" id="plugin-license_other_uri" class="regular-text" placeholder="<?= __( 'Enter URI of license' )?>" disabled="disabled">
 										</p>
 										<p class="description"><?= __( 'For example: <code>Mozilla Public License 2.0</code> and <code>https://www.mozilla.org/MPL/2.0/</code>.' )?></p>
 									</div>
