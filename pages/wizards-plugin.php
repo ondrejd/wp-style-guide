@@ -290,13 +290,13 @@
 							<p>
 								<label for="plugin-has_options">
 									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_options' ) )?>>
-									<span><?= __( 'Plugin has options (will be included new options page into WordPress administration' )?></span>
+									<span><?= __( 'Plugin has options (will be included new options page into WordPress administration)' )?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_own_dbtables">
 									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_own_dbtables' ) )?>>
-									<span><?= __( 'Plugin has options (will be included new options page into WordPress administration' )?></span>
+									<span><?= __( 'Plugin has options (will be included new options page into WordPress administration)' )?></span>
 								</label>
 							</p>
 							<p>
