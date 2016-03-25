@@ -133,8 +133,6 @@
 					</td>
 				</tr>
 				<!-- License -->
-				<!-- TODO Add select with the most used licenses (but keep possibility to enter own custom license)! -->
-				<!-- TODO Don't forget `LICENSE` file in generated project files! -->
 				<tr>
 					<th scope="row">
 						<label for="plugin-author"><?= __( 'License' )?></label>
@@ -152,7 +150,7 @@
 							</div>
 							<div>
 								<label title="<?= __( 'Vybraný typ:' )?>" class="license">
-								<input type="radio" name="plugin-license" value="license_custom">
+								<input type="radio" name="plugin-license" value="custom">
 								<?= __( 'Vybraný typ:' )?>
 								<div style="padding-left: 25px;" class="license_custom">
 									<div class="inputs-subarea">
@@ -170,7 +168,7 @@
 							</div>
 							<div>
 								<label title="<?= __( 'Vlastní typ:' )?>" class="license">
-								<input type="radio" name="plugin-license" value="license_other">
+								<input type="radio" name="plugin-license" value="other">
 								<?= __( 'Jiný typ:' )?>
 								<div style="padding-left: 25px;" class="license_other">
 									<div class="inputs-subarea">
