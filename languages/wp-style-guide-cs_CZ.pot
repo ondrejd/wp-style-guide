@@ -1,0 +1,794 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-style-guide\n"
+"POT-Creation-Date: 2016-03-25 18:53+0100\n"
+"PO-Revision-Date: 2016-03-25 20:19+0100\n"
+"Last-Translator: \n"
+"Language-Team: Ondřej Doněk <ondrejd@gmail.com>\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPathExcluded-0: vendor\n"
+"X-Poedit-SearchPathExcluded-1: test\n"
+"X-Poedit-SearchPathExcluded-2: languages\n"
+"X-Poedit-SearchPathExcluded-3: css\n"
+"X-Poedit-SearchPathExcluded-4: js\n"
+
+#: pages/forms-page.php:5 wp-style-guide.php:86 wp-style-guide.php:87
+msgid "Forms"
+msgstr "Formuláře"
+
+#: pages/forms-page.php:7
+msgid "List of Contents"
+msgstr "Obsah"
+
+#: pages/forms-page.php:9
+msgid "Contents:"
+msgstr "Obsah:"
+
+#: pages/forms-page.php:10 pages/forms-page.php:28
+msgid "Form table"
+msgstr "Tabulkový formulář"
+
+#: pages/forms-page.php:11 pages/forms-page.php:179
+msgid "Text input"
+msgstr "Textový vstup"
+
+#: pages/forms-page.php:12 pages/forms-page.php:192
+msgid "Select element"
+msgstr "Vyběr"
+
+#: pages/forms-page.php:13 pages/forms-page.php:213
+msgid "Multiple Select"
+msgstr "Vícenásobný výběr"
+
+#: pages/forms-page.php:14 pages/forms-page.php:240
+msgid "Radio Buttons"
+msgstr "Radio výběr"
+
+#: pages/forms-page.php:15 pages/forms-page.php:259
+msgid "Checkbox"
+msgstr "Zaškrtávací výběr"
+
+#: pages/forms-page.php:16 pages/forms-page.php:272
+msgid "Checkbox Array"
+msgstr "Vícenásobný zaškrtávací výběr"
+
+#: pages/forms-page.php:17
+msgid "Fieldset and HTML5 Elements"
+msgstr "HTML5 a formulářové pole"
+
+#: pages/forms-page.php:18 pages/forms-page.php:316
+msgid "Date Time Elements"
+msgstr "Datum a čas"
+
+#: pages/forms-page.php:19 pages/forms-page.php:381
+msgid "Other Elements"
+msgstr "Ostatní"
+
+#: pages/forms-page.php:20 pages/forms-page.php:398
+msgid "Buttons"
+msgstr "Tlačítka"
+
+#: pages/forms-page.php:31
+msgid ""
+"Here is minor excerpt with the form table as is used in <b>WordPress</b> "
+"options pages."
+msgstr ""
+"Níže je drobná ukázka z formulářové tabulky obdobné, jako jsou ty použité ve "
+"stránkách nastavení <b>WordPress</b>."
+
+#: pages/forms-page.php:66
+msgid "Custom: "
+msgstr "Vlastní: "
+
+#: pages/forms-page.php:173 pages/forms-page.php:186 pages/forms-page.php:207
+#: pages/forms-page.php:234 pages/forms-page.php:253 pages/forms-page.php:266
+#: pages/forms-page.php:283 pages/forms-page.php:310 pages/forms-page.php:375
+#: pages/forms-page.php:392 pages/forms-page.php:409
+msgid "Back to top"
+msgstr "Zpátky na začátek"
+
+#: pages/forms-page.php:289
+msgid "Fieldset and <br />HTML5 Elements"
+msgstr "HTML5 <br >a formulářové pole"
+
+#: pages/forms-page.php:293
+msgid "Legend"
+msgstr "Legenda"
+
+#: pages/forms-page.php:294 pages/forms-page.php:303
+msgid "Email"
+msgstr "Emailová adresa"
+
+#: pages/forms-page.php:295 pages/forms-page.php:304
+msgid "Search"
+msgstr "Vyhledávání"
+
+#: pages/forms-page.php:296 pages/forms-page.php:305
+msgid "Telephone"
+msgstr "Telefon"
+
+#: pages/forms-page.php:297 pages/forms-page.php:306
+msgid "Text"
+msgstr "Text"
+
+#: pages/forms-page.php:298 pages/forms-page.php:307
+msgid "URL"
+msgstr "URL adresa"
+
+#: pages/forms-page.php:319
+msgid ""
+"If you creating date time inputs for form for editing <em>custom-</em>post "
+"type you can use <b>WordPress</b> function <a href=\"touch_time\" target="
+"\"blank\"><code></code></a> (<b>Warning:</b> This function can be used only "
+"on <code>post.php</code> or <code>post-new.php</code> pages!):"
+msgstr ""
+"Pokud vytváříte vstupní pole data a času pro příspěvek (či vlastní typ "
+"příspěvku) můžete použít <b>WordPress</b> funkci  <a href=\"touch_time\" "
+"target=\"blank\"><code></code></a> (<b>Pozor:</b> Tato funkce může být "
+"použita pouze na stránkách <code>post.php</code> nebo <code>post-new.php</"
+"code> v administraci!):"
+
+#: pages/forms-page.php:324
+msgid "This will create output like this:"
+msgstr "Toto vytvoří podobný výstup:"
+
+#: pages/forms-page.php:362
+msgid "Otherwise there are simple date time inputs available:"
+msgstr ""
+"Nebo můžete použít jednoduché vstupní pole data a času, jak je ukázáno níže:"
+
+#: pages/forms-page.php:363 pages/forms-page.php:369
+msgid "Date:"
+msgstr "Datum:"
+
+#: pages/forms-page.php:364 pages/forms-page.php:370
+msgid "Month:"
+msgstr "Měsíc:"
+
+#: pages/forms-page.php:365 pages/forms-page.php:371
+msgid "Week:"
+msgstr "Týden:"
+
+#: pages/forms-page.php:366 pages/forms-page.php:372
+msgid "Time:"
+msgstr "Čas:"
+
+#: pages/forms-page.php:367 pages/forms-page.php:373
+msgid "Local Date and Time:"
+msgstr "Místní datum a čas:"
+
+#: pages/forms-page.php:384 pages/forms-page.php:388
+msgid "Number:"
+msgstr "Číslo:"
+
+#: pages/forms-page.php:385 pages/forms-page.php:389
+msgid "Range:"
+msgstr "Rozpětí:"
+
+#: pages/forms-page.php:386 pages/forms-page.php:390
+msgid "Color:"
+msgstr "Barva:"
+
+#: pages/forms-page.php:401 pages/forms-page.php:405
+msgid "Submit Input"
+msgstr "Tlačítko pro odeslání"
+
+#: pages/forms-page.php:402 pages/forms-page.php:406
+msgid "Secondary Button"
+msgstr "Méně důležité tlačítko"
+
+#: pages/forms-page.php:403 pages/forms-page.php:407
+msgid "Primary Button"
+msgstr "Důležité tlačítko"
+
+#: pages/helper-classes.php:4
+msgid "Color Helper Classes"
+msgstr "Pomocné CSS třídy"
+
+#: pages/helper-classes.php:7
+msgid "Blocks"
+msgstr "Blokové elementy"
+
+#: pages/helper-classes.php:12 pages/helper-classes.php:39
+msgid "Class"
+msgstr "CSS třída"
+
+#: pages/helper-classes.php:13 pages/helper-classes.php:40
+#: pages/wizards-plugin.php:40
+msgid "Description"
+msgstr "Popis"
+
+#: pages/helper-classes.php:19
+msgid "Elements with this class uses the base color."
+msgstr "Elementy s touto třídou používají základní barvu."
+
+#: pages/helper-classes.php:23
+msgid "Elements with this class uses the highlight color."
+msgstr "Elementy s touto třídou používají zvýrazněnou barvu."
+
+#: pages/helper-classes.php:27
+msgid "Elements with this class uses the notification color."
+msgstr "Elementy s touto třídou používají barvu upozornění."
+
+#: pages/helper-classes.php:46
+msgid "Text with this class uses the base color."
+msgstr "Textový obsah elementů s touto třídou má základní barvu."
+
+#: pages/helper-classes.php:50
+msgid "Text with this class uses the highlight color."
+msgstr "Textový obsah elementů s touto třídou má zvýrazněnou barvu."
+
+#: pages/helper-classes.php:54
+msgid "Text with this class uses the notification color."
+msgstr "Textový obsah elementů s touto třídou má barvu upozornění."
+
+#: pages/helper-classes.php:58
+msgid "Text with this class uses the icon color."
+msgstr "Textový obsah elementů s touto třídou má barvu ikon."
+
+#: pages/jquery-ui.php:5 wp-style-guide.php:92 wp-style-guide.php:93
+msgid "jQuery UI Components"
+msgstr "jQuery UI"
+
+#: pages/jquery-ui.php:8
+msgid "Accordion"
+msgstr "Akordeon"
+
+#: pages/jquery-ui.php:12 pages/jquery-ui.php:47
+msgid "First"
+msgstr "První"
+
+#: pages/jquery-ui.php:16 pages/jquery-ui.php:48
+msgid "Second"
+msgstr "Druhá"
+
+#: pages/jquery-ui.php:20 pages/jquery-ui.php:49
+msgid "Third"
+msgstr "Třetí"
+
+#: pages/jquery-ui.php:28
+msgid "First no icons"
+msgstr "První bez ikon"
+
+#: pages/jquery-ui.php:32
+msgid "Second no icons"
+msgstr "Druhá bez ikon"
+
+#: pages/jquery-ui.php:36
+msgid "Third no icons"
+msgstr "Třetí bez ikon"
+
+#: pages/jquery-ui.php:44
+msgid "Tabs"
+msgstr "Záložky"
+
+#: pages/jquery-ui.php:57
+msgid "Dialog"
+msgstr "Dialog"
+
+#: pages/jquery-ui.php:58
+msgid "Open Dialog"
+msgstr "Otevřít dialog"
+
+#: pages/jquery-ui.php:60
+msgid "Inline Dialog"
+msgstr "Řádkový dialog"
+
+#: pages/jquery-ui.php:65
+msgid "Overlay and Shadow Classes <em>(not currently used in UI widgets)</em>"
+msgstr "CSS třídy pro překrývání a stíny <em>(aktuálně nejsou používány)</em>"
+
+#: pages/jquery-ui.php:81
+msgid "Dialog Title"
+msgstr "Název dialogu"
+
+#: pages/jquery-ui.php:87
+msgid "Framework Icons (content color preview)"
+msgstr "Vestavěné ikony (náhled v barvě obsahu)"
+
+#: pages/jquery-ui.php:286
+msgid "Slider"
+msgstr "Posuvník"
+
+#: pages/jquery-ui.php:304
+msgid "Datepicker"
+msgstr "Výběr data"
+
+#: pages/jquery-ui.php:314
+msgid "Progressbar"
+msgstr "Ukazatel vývoje"
+
+#: pages/jquery-ui.php:318
+msgid "Highlight / Error"
+msgstr "Zvýraznění / Chyba"
+
+#: pages/jquery-ui.php:322
+msgid "<strong>Hey!</strong> Sample ui-state-highlight style.</p>"
+msgstr "<strong>Ahoj!</strong> Ukázka stylu ui-state-highlight.</p>"
+
+#: pages/jquery-ui.php:329
+msgid "<strong>Alert:</strong> Sample ui-state-error style.</p>"
+msgstr "<strong>Pozor:</strong> Ukázka stylu ui-state-error.</p>"
+
+#: pages/jquery-ui.php:333
+msgid "Button"
+msgstr "Tlačítko"
+
+#: pages/jquery-ui.php:336
+msgid "Run last action"
+msgstr "Spustit poslední akci"
+
+#: pages/jquery-ui.php:337
+msgid "Select an action"
+msgstr "Vybrat akci"
+
+#: pages/jquery-ui.php:341
+msgid "go to beginning"
+msgstr "jít na začátek"
+
+#: pages/jquery-ui.php:342
+msgid "rewind"
+msgstr "převinout"
+
+#: pages/jquery-ui.php:343
+msgid "play"
+msgstr "hrát"
+
+#: pages/jquery-ui.php:344
+msgid "stop"
+msgstr "zastavit"
+
+#: pages/jquery-ui.php:345
+msgid "fast forward"
+msgstr "rychle dopředu"
+
+#: pages/jquery-ui.php:346
+msgid "go to end"
+msgstr "jít na konec"
+
+#: pages/jquery-ui.php:348
+msgid "Shuffle"
+msgstr "Náhodný výběr"
+
+#: pages/jquery-ui.php:351
+msgid "No Repeat"
+msgstr "Bez opakování"
+
+#: pages/jquery-ui.php:352
+msgid "Once"
+msgstr "Jednou"
+
+#: pages/jquery-ui.php:353
+msgid "All"
+msgstr "Vše"
+
+#: pages/wizards-plugin.php:5
+msgid "Wizards - Plugin Wizard"
+msgstr "Průvodci - Průvodce vytvořením pluginu"
+
+#: pages/wizards-plugin.php:13
+msgid "Name"
+msgstr "Název"
+
+#: pages/wizards-plugin.php:18
+msgid "Enter name of your plugin"
+msgstr "Vložte název vašeho pluginu"
+
+#: pages/wizards-plugin.php:26
+msgid "Identifier"
+msgstr "Identifikátor"
+
+#: pages/wizards-plugin.php:31
+msgid "Enter identifier of your plugin"
+msgstr "Vložte identifikátor pluginu"
+
+#: pages/wizards-plugin.php:33
+msgid ""
+"<b>Identifier</b> could be derrived from plugin's name and can NOT contains "
+"spaces, tabs and other control or special characters."
+msgstr ""
+"<b>Identifikátor</b> by měl být odvozen od názvu pluginu a nesmí obsahovat "
+"mezery, tabelátory a jiné kontrolní či speciální znaky."
+
+#: pages/wizards-plugin.php:45
+msgid "Short description:"
+msgstr "Krátký popis:"
+
+#: pages/wizards-plugin.php:46
+msgid "Enter short description of your plugin"
+msgstr "Vložte krátký popis vašeho pluginu"
+
+#: pages/wizards-plugin.php:49
+msgid "Full description:"
+msgstr "Plný popis:"
+
+#: pages/wizards-plugin.php:50
+msgid "Enter full description of your plugin"
+msgstr "Vložte plný popis vašeho pluginu"
+
+#: pages/wizards-plugin.php:52
+msgid "Both descriptions are used in <code>readme.txt</code> file."
+msgstr "Oba popisy jsou použity v souboru <code>readme.txt</code>."
+
+#: pages/wizards-plugin.php:59
+msgid "Tags"
+msgstr "Tagy"
+
+#: pages/wizards-plugin.php:63
+msgid "Enter list of tags separated by comma."
+msgstr "Vložte čárkami oddělený seznam tagů."
+
+#: pages/wizards-plugin.php:65
+msgid "Enter comma separated list of tags"
+msgstr "Vložte čárkami oddělený seznam tagů"
+
+#: pages/wizards-plugin.php:67
+msgid "For example: <code>red,black,blue</code>."
+msgstr "Například: <code>red,black,blue</code>."
+
+#: pages/wizards-plugin.php:74
+msgid "Version"
+msgstr "Verze"
+
+#: pages/wizards-plugin.php:78
+msgid ""
+"Enter current version of the plugin, minimal required <b>WordPress</b> "
+"version, maximal version of <b>WordPress</b> on which was plugin tested and "
+"plugin's version which is considered to be stable."
+msgstr ""
+"Vložte aktuální verzi pluginu, minimální vyžadovanou verzi systému "
+"<b>WordPress</b>, maximální verzi systému <b>WordPress</b>, na které byl "
+"plugin testován, a verzi pluginu, která je považována za stabilní."
+
+#: pages/wizards-plugin.php:80
+msgid "Current version:"
+msgstr "Stávající verze:"
+
+#: pages/wizards-plugin.php:84
+msgid "Required at least:"
+msgstr "Minimální vyžadovaná verze:"
+
+#: pages/wizards-plugin.php:88
+msgid "Tested up to:"
+msgstr "Testováno do verze:"
+
+#: pages/wizards-plugin.php:92
+msgid "Stable tag:"
+msgstr "Stabilní verze:"
+
+#: pages/wizards-plugin.php:95
+msgid ""
+"Some valid versions as an example: <b>3.4.0</b>, <b>4.4</b>, <b>1.2.1</b> "
+"etc."
+msgstr ""
+"Několik platných označení verzí pro ukázku: <b>3.4.0</b>, <b>4.4</b>, "
+"<b>1.2.1</b> atd."
+
+#: pages/wizards-plugin.php:102
+msgid "Author"
+msgstr "Autor"
+
+#: pages/wizards-plugin.php:106
+msgid "Enter author's name and valid homepage's URL."
+msgstr "Vložte jméno autora a platnou URL adresu jeho stránek."
+
+#: pages/wizards-plugin.php:108
+msgid "Author:"
+msgstr "Autor:"
+
+#: pages/wizards-plugin.php:109
+msgid "Enter author's name"
+msgstr "Zadejte jméno autora"
+
+#: pages/wizards-plugin.php:112 pages/wizards-plugin.php:178
+msgid "URI:"
+msgstr "URL:"
+
+#: pages/wizards-plugin.php:113
+msgid "Enter URI of author's homepage"
+msgstr "Zadejte adresu autorovy stránky"
+
+#: pages/wizards-plugin.php:121
+msgid "Contributors"
+msgstr "Přispěvovatelé"
+
+#: pages/wizards-plugin.php:125
+msgid "Comma separated list of contributors."
+msgstr "Čárkami oddělený seznam přispěvovatelů."
+
+#: pages/wizards-plugin.php:127
+msgid "Enter comma separated list of contributors"
+msgstr "Vložte čárkami oddělený seznam přispěvovatelů"
+
+#: pages/wizards-plugin.php:129
+msgid "For example: <code>joed,jimb,janed</code>."
+msgstr "Například: <code>joed,jimb,janed</code>."
+
+#: pages/wizards-plugin.php:136
+msgid "License"
+msgstr "Licence"
+
+#: pages/wizards-plugin.php:141
+msgid ""
+"Either select or enter name of license and its URL. You can also select no "
+"license but it is not recommended."
+msgstr ""
+"Buďto vyberte jednu z předpřipravených licencí nebo zadejte název a URL "
+"jiné. Licenci nemusíte uvádět, ale je lepší ji uvést."
+
+#: pages/wizards-plugin.php:144 pages/wizards-plugin.php:146
+msgid "No license"
+msgstr "Žádná licence"
+
+#: pages/wizards-plugin.php:150
+msgid "Selected license"
+msgstr "Vybraná licence"
+
+#: pages/wizards-plugin.php:152
+msgid "Selected:"
+msgstr "Vybraná:"
+
+#: pages/wizards-plugin.php:155
+msgid "select license"
+msgstr "vyber licenci"
+
+#: pages/wizards-plugin.php:156
+msgid "Licenses"
+msgstr "Licence"
+
+#: pages/wizards-plugin.php:168
+msgid "Custom license"
+msgstr "Vlastní licence"
+
+#: pages/wizards-plugin.php:170
+msgid "Custom license:"
+msgstr "Vlastní:"
+
+#: pages/wizards-plugin.php:174
+msgid "Name:"
+msgstr "Název:"
+
+#: pages/wizards-plugin.php:175
+msgid "Enter license's name"
+msgstr "Vložte název licence"
+
+#: pages/wizards-plugin.php:179
+msgid "Enter URI of license"
+msgstr "Vložte URL licence"
+
+#: pages/wizards-plugin.php:181
+msgid ""
+"For example: <code>Mozilla Public License 2.0</code> and <code>https://www."
+"mozilla.org/MPL/2.0/</code>."
+msgstr ""
+"Na příklad: <code>Mozilla Public License 2.0</code> a <code>https://www."
+"mozilla.org/MPL/2.0/</code>."
+
+#: pages/wizards-plugin.php:191
+msgid "Donate Link"
+msgstr "Odkaz pro donátory"
+
+#: pages/wizards-plugin.php:195
+msgid ""
+"Valid URL of link with donation page. Leave blank if you don't have one."
+msgstr ""
+"Vložte platnou URL adresu stránky pro donátory. Pokud žádnou nemáte, "
+"ponechte prázdné."
+
+#: pages/wizards-plugin.php:197
+msgid "Enter donate link"
+msgstr "Vložte odkaz pro donátory"
+
+#: pages/wizards-plugin.php:205
+msgid "Installation"
+msgstr "Instalace"
+
+#: pages/wizards-plugin.php:210
+msgid "Installation instructions:"
+msgstr "Instalační instrukce:"
+
+#: pages/wizards-plugin.php:211
+msgid "Enter plugin installation instructions"
+msgstr "Vložte instalační instrukce"
+
+#: pages/wizards-plugin.php:213
+msgid "Installation instructions are part of <code>readme.txt</code> file."
+msgstr "Instalační instrukce jsou součástí souboru <code>readme.txt</code>."
+
+#: pages/wizards-plugin.php:220
+msgid "FAQ"
+msgstr "FAQ"
+
+#: pages/wizards-plugin.php:225
+msgid "Frequently asked questions:"
+msgstr "Často kladené dotazy:"
+
+#: pages/wizards-plugin.php:226
+msgid "Enter frequently asked questions"
+msgstr "Vložte často kladené dotazy"
+
+#: pages/wizards-plugin.php:228
+msgid "Frequently asked questions are part of <code>readme.txt</code> file."
+msgstr "Často kladené dotazy je sekce souboru <code>readme.txt</code>."
+
+#: pages/wizards-plugin.php:236
+msgid "Change Log"
+msgstr "Seznam změn"
+
+#: pages/wizards-plugin.php:241
+msgid "Enter change log of your plugin"
+msgstr "Zadejte seznam změn"
+
+#: pages/wizards-plugin.php:243
+msgid "Change log is a part of <code>readme.txt</code> file."
+msgstr "Seznam změn je součástí soubororu <code>readme.txt</code>."
+
+#: pages/wizards-plugin.php:250
+msgid "Upgrade notice"
+msgstr "Poznámka k upgradu"
+
+#: pages/wizards-plugin.php:255
+msgid "Enter upgrade notice"
+msgstr "Vložte poznámku k upgradu"
+
+#: pages/wizards-plugin.php:257
+msgid ""
+"Upgrade notice is a part of <code>readme.txt</code> file. When starting new "
+"plugin this field will be probably empty."
+msgstr ""
+"Poznámka k upgradu je součástí souboru <code>readme.txt</code>. Při "
+"vytváření nového pluginu bude toto pole nejspíše prázdné."
+
+#: pages/wizards-plugin.php:264
+msgid "Options"
+msgstr "Volby"
+
+#: pages/wizards-plugin.php:268
+msgid "Other plugin options"
+msgstr "Ostatní volby pro generování pluginu"
+
+#: pages/wizards-plugin.php:272
+msgid "Include license in a standalone file"
+msgstr "Přidat licenci jako samostatný soubor"
+
+#: pages/wizards-plugin.php:278
+msgid "Plugin has dependency to other plugin(s)"
+msgstr "Plugin je závislý na jiných pluginech"
+
+#: pages/wizards-plugin.php:284
+msgid "Plugin contains administration"
+msgstr "Plugin obsahuje administrační část"
+
+#: pages/wizards-plugin.php:291
+msgid ""
+"Plugin has options (will be included new options page into WordPress "
+"administration)"
+msgstr ""
+"Plugin obsahuje uživatelské volby (vygeneruje stránku s volbami v rámci "
+"administrace WordPress)"
+
+#: pages/wizards-plugin.php:297
+msgid "Plugin has own database tables"
+msgstr "Plugin obsahuje vlastní databázové tabulky"
+
+#: pages/wizards-plugin.php:303
+msgid ""
+"Plugin will be localized (create <code>languages</code> folder with "
+"<code>POT</code> file)"
+msgstr ""
+"Plugin bude lokalizován (vytvoří adresář <code>languages</code> s <code>POT</"
+"code> souborem)"
+
+#: pages/wizards-plugin.php:311
+msgid "Generate plugin"
+msgstr "Generuj plugin"
+
+#: pages/wizards-theme.php:5
+msgid "Wizards - Theme Wizard"
+msgstr "Průvodci - Průvodce vytvořením tématu vzhledu"
+
+#: pages/wizards-theme.php:10
+msgid "Generate theme"
+msgstr "Generuj téma vzhledu"
+
+#: pages/wizards.php:10 wp-style-guide.php:80 wp-style-guide.php:81
+#: wp-style-guide.php:253
+msgid "Wizards"
+msgstr "Průvodci"
+
+#: pages/wizards.php:16
+msgid "Plugin Wizard"
+msgstr "Průvodce vytvořením pluginu"
+
+#: pages/wizards.php:20
+msgid "Generate quickly your new WordPress plugin&hellip;"
+msgstr "Rychle vygenerovat váš nový WordPress plugin&hellip;"
+
+#: pages/wizards.php:21 pages/wizards.php:35
+msgid "Enter wizard"
+msgstr "Spustit průvodce"
+
+#: pages/wizards.php:30
+msgid "Theme Wizard"
+msgstr "Průvodce vytvořením tématu vzhledu"
+
+#: pages/wizards.php:34
+msgid "Create new WordPress theme&hellip;"
+msgstr "Vytvořit nové WordPress téma vzhledu&hellip;"
+
+#: wp-style-guide.php:98 wp-style-guide.php:99
+msgid "Helper Classes"
+msgstr "Pomocné CSS třídy"
+
+#: wp-style-guide.php:219 wp-style-guide.php:286
+msgid "WordPress Admin Pattern Library"
+msgstr "WordPress - Knihovna vzorů"
+
+#: wp-style-guide.php:219
+msgid "Pattern Library"
+msgstr "Knihovna vzorů"
+
+#: wp-style-guide.php:254
+msgid ""
+"<p>On this page are shown all available wizards. The main are wizards for "
+"<b>plugins</b> and <b>themes</b>. These two wizards help you to start new "
+"plugin/theme projects quickly and easily. An advantage is the same structure "
+"accross your projects.</p><p>Other wizards generating code snippets for "
+"various parts of development of WordPress plugins or themes.<p>"
+msgstr ""
+"<p>Na této stránce jsou vypsány všechny existující průvodci. Hlavní jsou "
+"průvodci pro vytvoření <b>pluginů</b> a <b>témat vzhledu</b>. Tyto dva "
+"průvodci vám pomohou rychle a snadno zahájit nový projekt pluginu či tématu "
+"vzhledu. Výhodou je stejná struktura u všech vašich projektů.</p><p>Ostatní "
+"průvodci slouží ke generování útržků kódu pro nejrůznější části vývoje "
+"<b>WordPress</b> pluginů či témat vzhledu."
+
+#: wp-style-guide.php:258
+#, php-format
+msgid ""
+"<b>Usefull links</b><p><a href=\"%s\" target=\"blank\">Options</a> where you "
+"can change code templates.</p><p><a href=\"%s\" target=\"blank\">Examples</"
+"a> of generated code with this plugin.</p>"
+msgstr ""
+"<b>Užitečné odkazy</b><p><a href=\"%s\" target=\"blank\">Nastavení</a>, kde "
+"můžete změnit šablony generovaných kódů.</p><p><a href=\"%s\" target=\"blank"
+"\">Příklady</a> kódů vygenerovaných tímto pluginem.</p>"
+
+#: wp-style-guide.php:288
+msgid "Table of Contents"
+msgstr "Přehled obsahu"
+
+#: wp-style-guide.php:296
+msgid "Usefull links"
+msgstr "Užitečné odkazy"
+
+#: wp-style-guide.php:298
+msgid "Developer Resources: Dashicons"
+msgstr "Zdroje pro vývojáře: Třídy s ikonkami"
+
+#: wp-style-guide.php:299
+msgid "WordPress Database Description"
+msgstr "Popis databáze použité v systému WordPress"
+
+#~ msgid ""
+#~ "The <b>One Page Shop Plugin</b> requires <b>WooCommerce</b> plugin "
+#~ "installed and activated."
+#~ msgstr ""
+#~ "Plugin <b>One Page Shop Plugin</b> vyžaduje, aby byl nainstalovaný plugin "
+#~ "<b>WooCoommerce</b>."
+
+#~ msgid "Plugin <b>One Page Shop Plugin</b> was <b>deactivated</b>."
+#~ msgstr "Plugin <b>One Page Shop Plugin</b> byl deaktivován."
+
+#~ msgid "OnePageShop Plugin Template"
+#~ msgstr "Šablona pluginu \"One Page Shop\""

@@ -2,12 +2,11 @@
 
 	<?php screen_icon(); ?>
 
-	<h1><?php esc_html_e( 'Wizards - Theme Wizard' ); ?></h1>
+	<h1><?= __( 'Wizards - Theme Wizard', WP_Style_Guide::PLUGIN_SLUG )?></h1>
 
 	<form id="theme-wizard">
-		<!-- <h3>Main options</h3> -->
-
 		<table class="form-table">
 		</table>
+		<input type="submit" name="plugin-submit" value="<?= __( 'Generate theme', WP_Style_Guide::PLUGIN_SLUG )?>" class="button-primary">
 	</form>
 </div>

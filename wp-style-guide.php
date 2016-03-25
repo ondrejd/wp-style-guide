@@ -14,14 +14,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * @todo Add options page.
  */
 class WP_Style_Guide {
-	const PLUGIN_SLUG = 'wp-patterns';
+	const PLUGIN_SLUG = 'wp-style-guide';
 	const PLUGIN_VERSION = '1.0.1';
-
-	/**
-	 * Main slug.
-	 * @var string
-	 */
-	private $slug;
 
 	/**
 	 * Screens added.
@@ -55,36 +49,8 @@ class WP_Style_Guide {
 	 * Set up hooks.
 	 */
 	public function __construct() {
-		$this->slug = self::PLUGIN_SLUG;
-
-		// define our screens
-		$this->screens = array(
-			'wp-patterns-wizards' => array(
-				'page_title' => __( 'Wizards' ),
-				'menu_title' => __( 'Wizards' ),
-				'callback' => 'wizards', // note that this has to be a class method
-				'hookname' => null,
-			),
-			'wp-patterns-forms' => array(
-				'page_title' => __( 'Forms' ),
-				'menu_title' => __( 'Forms' ),
-				'callback' => 'forms_page', // note that this has to be a class method
-				'hookname' => null,
-			),
-			'wp-patterns-jquery-ui' => array(
-				'page_title' => __( 'jQuery UI Components' ),
-				'menu_title' => __( 'jQuery UI Components' ),
-				'callback' => 'jquery_ui', // note that this has to be a class method
-				'hookname' => null,
-			),
-			'wp-patterns-helper-classes' => array(
-				'page_title' => __( 'Helper Classes' ),
-				'menu_title' => __( 'Helper Classes' ),
-				'callback' => 'helper_classes', // note that this has to be a class method
-				'hookname' => null,
-			),
-		);
-
+		// Note: This must be first because of localization
+		//add_action( 'init', array( $this, 'init_textdomain' ) );
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
@@ -92,12 +58,49 @@ class WP_Style_Guide {
 	}
 
 	/**
+	 * Initialize textdomain.
+	 * @return void
+	 * @uses load_plugin_textdomain()
+	 */
+	public function init_textdomain() {
+	}
+
+	/**
 	 * Initialize plugin.
 	 * @return void
 	 */
 	public function init() {
+		load_plugin_textdomain( self::PLUGIN_SLUG, false, 'wp-style-guide/languages' );
 		// Ensure that plugin's options are initialized
 		$this->get_options();
+		// Define our screens. 
+		// Note: this has to be here because we need to be locales loaded at the first place.
+		$this->screens = array(
+			'wp-patterns-wizards' => array(
+				'page_title' => __( 'Wizards', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'Wizards', self::PLUGIN_SLUG ),
+				'callback' => 'wizards', // note that this has to be a class method
+				'hookname' => null,
+			),
+			'wp-patterns-forms' => array(
+				'page_title' => __( 'Forms', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'Forms', self::PLUGIN_SLUG ),
+				'callback' => 'forms_page', // note that this has to be a class method
+				'hookname' => null,
+			),
+			'wp-patterns-jquery-ui' => array(
+				'page_title' => __( 'jQuery UI Components', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'jQuery UI Components', self::PLUGIN_SLUG ),
+				'callback' => 'jquery_ui', // note that this has to be a class method
+				'hookname' => null,
+			),
+			'wp-patterns-helper-classes' => array(
+				'page_title' => __( 'Helper Classes', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'Helper Classes', self::PLUGIN_SLUG ),
+				'callback' => 'helper_classes', // note that this has to be a class method
+				'hookname' => null,
+			),
+		);
 	}
 
 	/**
@@ -174,14 +177,16 @@ class WP_Style_Guide {
 			wp_enqueue_script( 'jquery-ui-button' );
 
 			wp_enqueue_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.css', __FILE__ ), false );
+
+			wp_register_script( 'wp_patterns_jqueryui_js', plugins_url( 'js/patterns-jqueryui.js', __FILE__ ), array( 'jquery', 'jquery-ui-core' ), false, true );
+			wp_enqueue_script( 'wp_patterns_jqueryui_js' );
 		}
 		elseif ( $screen->base === $this->screens['wp-patterns-wizards']['hookname'] ) {
 			$wizard = filter_input( INPUT_GET, 'wizard' );
 
 			if ( in_array( $wizard, array( 'plugin', 'theme' ) ) ) {
-				wp_register_script( self::PLUGIN_SLUG . '_wizards_' . $wizard . '_js', plugins_url( 'js/wizards-' . $wizard . '.js', __FILE__ ), array( 'jquery', 'jquery-ui-core' ), false, true );
-
-				wp_enqueue_script( self::PLUGIN_SLUG . '_wizards_' . $wizard . '_js' );
+				wp_register_script( "wp_wizards_{$wizard}_js", plugins_url( "js/wizards-{$wizard}.js", __FILE__ ), array( 'jquery', 'jquery-ui-core' ), false, true );
+				wp_enqueue_script( "wp_wizards_{$wizard}_js" );
 			}
 		}
 
@@ -211,7 +216,7 @@ class WP_Style_Guide {
 	 * @uses add_submenu_page()
 	 */
 	public function admin_menu() {
-		$this->hookname = add_menu_page( 'WordPress Admin Pattern Library', 'Pattern Library', 'read', $this->slug, array( $this, 'toc' ) );
+		$this->hookname = add_menu_page( __( 'WordPress Admin Pattern Library', self::PLUGIN_SLUG ), __( 'Pattern Library', self::PLUGIN_SLUG ), 'read', 'wp-patterns', array( $this, 'toc' ) );
 		add_action( 'load-' . $this->hookname, array( $this, 'create_help_screen' ) );
 
 		foreach ( $this->screens as $slug => $args ) {
@@ -245,12 +250,12 @@ class WP_Style_Guide {
 			else {
 				$screen->add_help_tab( array(
 					'id'      => 'my_help_tab',
-					'title'   => __( 'Wizards' ),
-					'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>' ),
+					'title'   => __( 'Wizards', self::PLUGIN_SLUG ),
+					'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>', self::PLUGIN_SLUG ),
 				));
 				$screen->set_help_sidebar(
 					sprintf(
-						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.' ),
+						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.</p>', self::PLUGIN_SLUG ),
 						'#',
 						'#'
 					)
@@ -278,9 +283,9 @@ class WP_Style_Guide {
 
 	<?php screen_icon(); ?>
 
-	<h2><?php _e( 'WordPress Admin Pattern Library' ); ?></h2>
+	<h2><?php _e( 'WordPress Admin Pattern Library', self::PLUGIN_SLUG ); ?></h2>
 
-	<h3><?php _e( 'Table of Contents' ); ?></h3>
+	<h3><?php _e( 'Table of Contents', self::PLUGIN_SLUG ); ?></h3>
 
 	<ul class="ul-disc">
 	<?php foreach( $this->screens as $slug => $args ) : ?>
@@ -288,10 +293,10 @@ class WP_Style_Guide {
 	<?php endforeach; ?>
 	</ul>
 
-	<h3><?php _e( 'Usefull links' ); ?></h3>
+	<h3><?php _e( 'Usefull links', self::PLUGIN_SLUG ); ?></h3>
 	<ul class="ul-disc">
-		<li><a href="https://developer.wordpress.org/resource/dashicons" target="blank"><?php _e( 'Developer Resources: Dashicons' ); ?></a></li>
-		<li><a href="https://codex.wordpress.org/Database_Description" target="blank"><?php _e( 'WordPress Database Description' ); ?></a></li>
+		<li><a href="https://developer.wordpress.org/resource/dashicons" target="blank"><?php _e( 'Developer Resources: Dashicons', self::PLUGIN_SLUG ); ?></a></li>
+		<li><a href="https://codex.wordpress.org/Database_Description" target="blank"><?php _e( 'WordPress Database Description', self::PLUGIN_SLUG ); ?></a></li>
 	</ul>
 
 </div><!-- .wrap -->

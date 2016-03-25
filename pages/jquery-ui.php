@@ -1,149 +1,23 @@
-<script type="text/javascript">
-jQuery(function($){
-
-	// Accordion
-	$(".accordion").accordion({ header: "h3" });
-	$(".accordion").last().accordion("option", "icons", false);
-
-
-	// Tabs
-	$('#tabs').tabs();
-
-
-	// Dialog
-	$('#dialog').dialog({
-		autoOpen: false,
-		width: 600,
-		buttons: {
-			"Ok": function() {
-				$(this).dialog("close");
-			},
-			"Cancel": function() {
-				$(this).dialog("close");
-			}
-		}
-	});
-
-	// Dialog Link
-	$('#dialog_link').click(function(){
-		$('#dialog').dialog('open');
-		return false;
-	});
-
-	// Datepicker
-	$('#datepicker').datepicker({
-		inline: true,
-		showWeek: true
-	});
-
-	$('#multidatepicker').datepicker({
-		numberOfMonths: 3,
-		showButtonPanel: true,
-		inline: true
-	});
-
-	// Slider
-	$('.slider').slider({
-		range: true,
-		values: [17, 67]
-	});
-
-	$("#eq > span").each(function() {
-		var value = parseInt($(this).text());
-		$(this).empty().slider({
-			value: value,
-			range: "min",
-			animate: true,
-			orientation: "vertical"
-		});
-	});
-
-
-	// Progressbar
-	$("#progressbar").progressbar({
-		value: 20
-	});
-
-	//hover states on the static widgets
-	$('#dialog_link, ul#icons li').hover(
-		function() { $(this).addClass('ui-state-hover'); },
-		function() { $(this).removeClass('ui-state-hover'); }
-	);
-
-	$(".buttonset > button").button()
-	.next()
-	.button({
-		text: false,
-		icons: {
-			primary: "ui-icon-triangle-1-s"
-		}
-	})
-	.parent()
-	.buttonset();
-
-
-	$('#beginning').button({
-		text: false,
-		icons: {
-			primary: 'ui-icon-seek-start'
-		}
-	});
-	$('#rewind').button({
-		text: false,
-		icons: {
-			primary: 'ui-icon-seek-prev'
-		}
-	});
-	$('#play').button({
-		text: false,
-		icons: {
-			primary: 'ui-icon-play'
-		}
-	});
-	$('#stop').button({
-		text: false,
-		icons: {
-			primary: 'ui-icon-stop'
-		}
-	});
-	$('#forward').button({
-		text: false,
-		icons: {
-			primary: 'ui-icon-seek-next'
-		}
-	});
-	$('#end').button({
-		text: false,
-		icons: {
-			primary: 'ui-icon-seek-end'
-		}
-	});
-	$("#shuffle").button();
-	$("#repeat").buttonset();
-
-});
-</script>
-
 <div class="wrap">
 
 	<?php screen_icon(); ?>
 
-	<h2><?php esc_html_e( 'jQuery UI Components' ); ?></h2>
+	<h2><?php esc_html_e( 'jQuery UI Components', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
 
 	<!-- Accordion -->
-	<h3 class="demoHeaders">Accordion</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Accordion', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div class="columnbox">
 		<div class="accordion">
 			<div>
-				<h3><a href="#">First</a></h3>
+				<h3><a href="#"><?php esc_html_e( 'First', WP_Style_Guide::PLUGIN_SLUG ); ?></a></h3>
 				<div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
 			</div>
 			<div>
-				<h3><a href="#">Second</a></h3>
+				<h3><a href="#"><?php esc_html_e( 'Second', WP_Style_Guide::PLUGIN_SLUG ); ?></a></h3>
 				<div>Phasellus mattis tincidunt nibh.</div>
 			</div>
 			<div>
-				<h3><a href="#">Third</a></h3>
+				<h3><a href="#"><?php esc_html_e( 'Third', WP_Style_Guide::PLUGIN_SLUG ); ?></a></h3>
 				<div>Nam dui erat, auctor a, dignissim quis.</div>
 			</div>
 		</div>
@@ -151,15 +25,15 @@ jQuery(function($){
 	<div class="columnbox">
 		<div class="accordion">
 			<div>
-				<h3><a href="#">First no icons</a></h3>
+				<h3><a href="#"><?php esc_html_e( 'First no icons', WP_Style_Guide::PLUGIN_SLUG ); ?></a></h3>
 				<div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
 			</div>
 			<div>
-				<h3><a href="#">Second no icons</a></h3>
+				<h3><a href="#"><?php esc_html_e( 'Second no icons', WP_Style_Guide::PLUGIN_SLUG ); ?></a></h3>
 				<div>Phasellus mattis tincidunt nibh.</div>
 			</div>
 			<div>
-				<h3><a href="#">Third no icons</a></h3>
+				<h3><a href="#"><?php esc_html_e( 'Third no icons', WP_Style_Guide::PLUGIN_SLUG ); ?></a></h3>
 				<div>Nam dui erat, auctor a, dignissim quis.</div>
 			</div>
 		</div>
@@ -167,12 +41,12 @@ jQuery(function($){
 
 
 	<!-- Tabs -->
-	<h3 class="demoHeaders">Tabs</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Tabs', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div id="tabs">
 		<ul>
-			<li><a href="#tabs-1">First</a></li>
-			<li><a href="#tabs-2">Second</a></li>
-			<li><a href="#tabs-3">Third</a></li>
+			<li><a href="#tabs-1"><?php esc_html_e( 'First', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
+			<li><a href="#tabs-2"><?php esc_html_e( 'Second', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
+			<li><a href="#tabs-3"><?php esc_html_e( 'Third', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
 		</ul>
 		<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 		<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
@@ -180,15 +54,15 @@ jQuery(function($){
 	</div>
 
 	<!-- Dialog NOTE: Dialog is not generated by UI in this demo so it can be visually styled in themeroller-->
-	<h3 class="demoHeaders">Dialog</h3>
-	<p><a href="#" id="dialog_link" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Open Dialog</a></p>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Dialog', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
+	<p><a href="#" id="dialog_link" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span><?php esc_html_e( 'Open Dialog', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 
-	<div class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable ui-resizable" ><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title">Inline Dialog</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" ><span class="ui-icon ui-icon-closethick" >close</span></a></div><div class="ui-dialog-content ui-widget-content" >
+	<div class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable ui-resizable" ><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title"><?php esc_html_e( 'Inline Dialog', WP_Style_Guide::PLUGIN_SLUG ); ?></span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" ><span class="ui-icon ui-icon-closethick" >close</span></a></div><div class="ui-dialog-content ui-widget-content" >
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div><div class="ui-resizable-handle ui-resizable-n" ></div><div class="ui-resizable-handle ui-resizable-e" ></div><div class="ui-resizable-handle ui-resizable-s" ></div><div class="ui-resizable-handle ui-resizable-w" ></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" ></div><div class="ui-resizable-handle ui-resizable-sw" ></div><div class="ui-resizable-handle ui-resizable-ne" ></div><div class="ui-resizable-handle ui-resizable-nw" ></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Ok</span></button><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Cancel</span></button></div></div>
 
 
-	<h3 class="demoHeaders">Overlay and Shadow Classes <em>(not currently used in UI widgets)</em></h3>
+	<h3 class="demoHeaders"><?php _e( 'Overlay and Shadow Classes <em>(not currently used in UI widgets)</em>', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div style="position: relative; width: 96%; height: 200px; padding:1% 2%; overflow:hidden;" class="fakewindowcontain">
 		<p>Lorem ipsum dolor sit amet,  Nulla nec tortor. Donec id elit quis purus consectetur consequat. </p><p>Nam congue semper tellus. Sed erat dolor, dapibus sit amet, venenatis ornare, ultrices ut, nisi. Aliquam ante. Suspendisse scelerisque dui nec velit. Duis augue augue, gravida euismod, vulputate ac, facilisis id, sem. Morbi in orci. </p><p>Nulla purus lacus, pulvinar vel, malesuada ac, mattis nec, quam. Nam molestie scelerisque quam. Nullam feugiat cursus lacus.orem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero risus, commodo vitae, pharetra mollis, posuere eu, pede. Nulla nec tortor. Donec id elit quis purus consectetur consequat. </p><p>Nam congue semper tellus. Sed erat dolor, dapibus sit amet, venenatis ornare, ultrices ut, nisi. Aliquam ante. Suspendisse scelerisque dui nec velit. Duis augue augue, gravida euismod, vulputate ac, facilisis id, sem. Morbi in orci. Nulla purus lacus, pulvinar vel, malesuada ac, mattis nec, quam. Nam molestie scelerisque quam. </p><p>Nullam feugiat cursus lacus.orem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero risus, commodo vitae, pharetra mollis, posuere eu, pede. Nulla nec tortor. Donec id elit quis purus consectetur consequat. Nam congue semper tellus. Sed erat dolor, dapibus sit amet, venenatis ornare, ultrices ut, nisi. Aliquam ante. </p><p>Suspendisse scelerisque dui nec velit. Duis augue augue, gravida euismod, vulputate ac, facilisis id, sem. Morbi in orci. Nulla purus lacus, pulvinar vel, malesuada ac, mattis nec, quam. Nam molestie scelerisque quam. Nullam feugiat cursus lacus.orem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero risus, commodo vitae, pharetra mollis, posuere eu, pede. Nulla nec tortor. Donec id elit quis purus consectetur consequat. Nam congue semper tellus. Sed erat dolor, dapibus sit amet, venenatis ornare, ultrices ut, nisi. </p>
 
@@ -204,13 +78,13 @@ jQuery(function($){
 
 
 	<!-- ui-dialog -->
-	<div id="dialog" title="Dialog Title">
+	<div id="dialog" title="<?php esc_html_e( 'Dialog Title', WP_Style_Guide::PLUGIN_SLUG ); ?>">
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 
 
 
-	<h3 class="demoHeaders">Framework Icons (content color preview)</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Framework Icons (content color preview)', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<ul id="icons" class="ui-widget ui-helper-clearfix">
 
 	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-n"><span class="ui-icon ui-icon-carat-1-n"></span></li>
@@ -409,7 +283,7 @@ jQuery(function($){
 
 
 	<!-- Slider -->
-	<h3 class="demoHeaders">Slider</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Slider', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div class="columnbox">
 		<div class="slider"></div>
 	</div>
@@ -427,7 +301,7 @@ jQuery(function($){
 
 
 	<!-- Datepicker -->
-	<h3 class="demoHeaders">Datepicker</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Datepicker', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div class="columnbox" style="width: 32%">
 		<div id="datepicker"></div>
 	</div>
@@ -437,46 +311,46 @@ jQuery(function($){
 
 
 	<!-- Progressbar -->
-	<h3 class="demoHeaders">Progressbar</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Progressbar', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div id="progressbar"></div>
 
 	<!-- Highlight / Error -->
-	<h3 class="demoHeaders">Highlight / Error</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Highlight / Error', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<div class="ui-widget">
 		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-			<strong>Hey!</strong> Sample ui-state-highlight style.</p>
+			<?php _e( '<strong>Hey!</strong> Sample ui-state-highlight style.</p>', WP_Style_Guide::PLUGIN_SLUG ); ?>
 		</div>
 	</div>
 	<br/>
 	<div class="ui-widget">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-			<strong>Alert:</strong> Sample ui-state-error style.</p>
+			<?php _e( '<strong>Alert:</strong> Sample ui-state-error style.</p>', WP_Style_Guide::PLUGIN_SLUG ); ?>
 		</div>
 	</div>
 
-	<h3 class="demoHeaders">Button</h3>
+	<h3 class="demoHeaders"><?php esc_html_e( 'Button', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 
 	<div class="buttonset">
-		<button id="rerun">Run last action</button>
-		<button id="select">Select an action</button>
+		<button id="rerun"><?php esc_html_e( 'Run last action', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+		<button id="select"><?php esc_html_e( 'Select an action', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
 	</div>
 
 	<span id="toolbar" class="ui-widget-header ui-corner-all">
-		<button id="beginning">go to beginning</button>
-		<button id="rewind">rewind</button>
-		<button id="play">play</button>
-		<button id="stop">stop</button>
-		<button id="forward">fast forward</button>
-		<button id="end">go to end</button>
+		<button id="beginning"><?php esc_html_e( 'go to beginning', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+		<button id="rewind"><?php esc_html_e( 'rewind', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+		<button id="play"><?php esc_html_e( 'play', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+		<button id="stop"><?php esc_html_e( 'stop', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+		<button id="forward"><?php esc_html_e( 'fast forward', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+		<button id="end"><?php esc_html_e( 'go to end', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
 
-		<input type="checkbox" id="shuffle" /><label for="shuffle">Shuffle</label>
+		<input type="checkbox" id="shuffle" /><label for="shuffle"><?php esc_html_e( 'Shuffle', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 
 		<span id="repeat">
-			<input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
-			<input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
-			<input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
+			<input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0"><?php esc_html_e( 'No Repeat', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+			<input type="radio" id="repeat1" name="repeat" /><label for="repeat1"><?php esc_html_e( 'Once', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+			<input type="radio" id="repeatall" name="repeat" /><label for="repeatall"><?php esc_html_e( 'All', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 		</span>
 	</span>
 

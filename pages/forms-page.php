@@ -2,22 +2,22 @@
 
 	<?php screen_icon(); ?>
 
-	<h2><?php esc_html_e( 'Forms' ); ?></h2>
+	<h2><?php esc_html_e( 'Forms', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
 
-	<h3 class="screen-reader-text"><?php esc_html_e( 'List of Contents' ); ?></h3>
+	<h3 class="screen-reader-text"><?php esc_html_e( 'List of Contents', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<ul class="subsubsub">
-		<li><b>Contents:</b> </li>
-		<li><a href="#form">Form table</a> | </li>
-		<li><a href="#tr-text_input">Text input</a> | </li>
-		<li><a href="#tr-select">Select</a> | </li>
-		<li><a href="#tr-multi_select">Multiple Select</a> | </li>
-		<li><a href="#tr-radio_buttons">Radio Buttons</a> | </li>
-		<li><a href="#tr-checkbox">Checkbox</a> | </li>
-		<li><a href="#tr-checkbox_array">Checkbox Array</a> | </li>
-		<li><a href="#tr-html5">Fieldset and HTML5 Elements</a> | </li>
-		<li><a href="#tr-datetime">Date Time Elements</a> | </li>
-		<li><a href="#tr-others">Other Elements</a> | </li>
-		<li><a href="#tr-buttons">Buttons</a></li>
+		<li><b><?php esc_html_e( 'Contents:', WP_Style_Guide::PLUGIN_SLUG ); ?></b> </li>
+		<li><a href="#form"><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-text_input"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-select"><?php esc_html_e( 'Select element', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-multi_select"><?php esc_html_e( 'Multiple Select', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-radio_buttons"><?php esc_html_e( 'Radio Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-checkbox"><?php esc_html_e( 'Checkbox', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-checkbox_array"><?php esc_html_e( 'Checkbox Array', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-html5"><?php esc_html_e( 'Fieldset and HTML5 Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-datetime"><?php esc_html_e( 'Date Time Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-others"><?php esc_html_e( 'Other Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-buttons"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
 	</ul>
 
 	<form id="form">
@@ -25,49 +25,50 @@
 			<tbody>
 				<tr id="tr-form_table">
 					<th>
-						<label>Form table</label>
+						<label><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
-						<p>Here is minor excerpt with the form table as is used in <b>WordPress</b> options pages.</p>
+						<p><?php _e( 'Here is minor excerpt with the form table as is used in <b>WordPress</b> options pages.', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+						<!-- Example: Form table -->
 						<table class="form-table">
 							<tbody>
 								<tr>
 									<th scope="row">
-										<label for="test-input-02"><?= __('Test', 'textdomain')?></label>
+										<label for="test-input-02">Test</label>
 									</th>
 									<td>
 										<fieldset>
 											<p>
-												<label for="test-input-02"><?= __('Some large and important description for the first input.', 'textdomain')?></label>
+												<label for="test-input-02">Some large and important description for the first input.</label>
 												<input type="text" name="test-input-02" id="test-input-02" class="regular-text">
 											</p>
-											<p class="description"><?= __('Minor or less important description for the first input.', 'textdomain')?></p>
+											<p class="description">Minor or less important description for the first input.</p>
 										</fieldset>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">
-										<label for="input-test-name"><?= __('Shop name', 'textdomain')?></label>
+										<label for="input-test-name">Shop name</label>
 									</th>
 									<td>
 										<fieldset>
 											<legend class="screen-reader-text">
-												<span><?= __('Name of one-page shop', 'textdomain')?></span>
+												<span>Name of one-page shop</span>
 											</legend>
 											<p>
-												<label title="<?= __('Same as whole WordPress site')?>" data-value="inherited">
+												<label title="Same as whole WordPress site" data-value="inherited">
 													<input type="radio" name="input-test-name" value="inherited" checked="checked">
-													<?= __('Same as whole WordPress site', 'textdomain')?>
-													<span class="description"><?= sprintf(__(' (Same as is inserted <a href="%1s">here</a>&hellip;)', 'textdomain'), '#')?></span>
+													Same as whole WordPress site
+													<span class="description"> (Same as is inserted <a href="#">here</a>&hellip;)</span>
 												</label>
 											</p>
 											<p>
-												<label title="<?= __('Custom: ', 'textdomain')?>" data-value="custom">
+												<label title="<?php esc_html_e( 'Custom: ', WP_Style_Guide::PLUGIN_SLUG ); ?>" data-value="custom">
 													<input type="radio" name="input-test-name" value="custom">
-													<?= __('Custom: ', 'textdomain')?>
-													<span class="screen-reader-text"><?= __('insert name of shop', 'textdomain')?></span>
-													<label class="screen-reader-text" for="input-test-name_custom"><?= __('Name of one-page shop', 'textdomain')?></label>
-													<input type="text" name="input-test-name_custom" id="input-test-name_custom" value="" class="regular-text" placeholder="<?= __('Enter name for your new one-page shop&hellip;', 'textdomain')?>" disabled="disabled">
+													Custom: 
+													<span class="screen-reader-text">insert name of shop</span>
+													<label class="screen-reader-text" for="input-test-name_custom">Name of one-page shop</label>
+													<input type="text" name="input-test-name_custom" id="input-test-name_custom" value="" class="regular-text" placeholder="Enter name for your new one-page shop&hellip;" disabled="disabled">
 												</label>
 											</p>
 										</fieldset>
@@ -76,6 +77,7 @@
 								<!-- ... -->
 							</tbody>
 						</table>
+						<!-- // Example: Form table -->
     					<script type="text/javascript">
 jQuery(document).on("ready", function () {
 	jQuery("input[name='input-test-name']").parent().on(
@@ -98,56 +100,53 @@ jQuery(document).on("ready", function () {
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;th scope="row"&gt;
-				&lt;label for="test-input-02"&gt;&lt;?= __('Test', 'textdomain')?&gt;&lt;/label&gt;
+				&lt;label for="test-input-02"&gt;Test&lt;/label&gt;
 			&lt;/th&gt;
 			&lt;td&gt;
 				&lt;fieldset&gt;
 					&lt;p&gt;
 						&lt;label for="test-input-02"&gt;
-							&lt;?= __('Some large and important description for the first input.', 'textdomain')?&gt;
+							Some large and important description for the first input.
 						&lt;/label&gt;
 						&lt;input type="text" name="test-input-02" id="test-input-02" class="regular-text"&gt;
 					&lt;/p&gt;
 					&lt;p class="description"&gt;
-						&lt;?= __('Minor or less important description for the first input.', 'textdomain')?&gt;
+						Minor or less important description for the first input.
 					&lt;/p&gt;
 				&lt;/fieldset&gt;
 			&lt;/td&gt;
 		&lt;/tr&gt;
 		&lt;tr&gt;
 			&lt;th scope="row"&gt;
-				&lt;label for="input-test-name"&gt;&lt;?= __('Shop name', 'textdomain')?&gt;&lt;/label&gt;
+				&lt;label for="input-test-name"&gt;Shop name&lt;/label&gt;
 			&lt;/th&gt;
 			&lt;td&gt;
 				&lt;fieldset&gt;
 					&lt;legend class="screen-reader-text"&gt;
-						&lt;span&gt;&lt;?= __('Name of one-page shop', 'textdomain')?&gt;&lt;/span&gt;
+						&lt;span&gt;Name of one-page shop&lt;/span&gt;
 					&lt;/legend&gt;
 					&lt;p&gt;
-						&lt;label title="&lt;?= __('Same as whole WordPress site')?&gt;" data-value="inherited"&gt;
+						&lt;label title="Same as whole WordPress site')?&gt;" data-value="inherited"&gt;
 							&lt;input type="radio" name="input-test-name" value="inherited" checked="checked"&gt;
-							&lt;?= __('Same as whole WordPress site', 'textdomain')?&gt;
+							Same as whole WordPress site
 							&lt;span class="description"&gt;
-								&lt;?= sprintf(__(
-									' (Same as is inserted &lt;a href="%1s"&gt;here&lt;/a&gt;&hellip;)', 
-									'textdomain'
-								), '#')?&gt;
+								Same as is inserted &lt;a href="#"&gt;here&lt;/a&gt;&hellip;)
 							&lt;/span&gt;
 						&lt;/label&gt;
 					&lt;/p&gt;
 					&lt;p&gt;
-						&lt;label title="&lt;?= __('Custom: ', 'textdomain')?&gt;" data-value="custom"&gt;
+						&lt;label title="Custom: " data-value="custom"&gt;
 							&lt;input type="radio" name="input-test-name" value="custom"&gt;
-							&lt;?= __('Custom: ', 'textdomain')?&gt;
+							Custom: 
 							&lt;span class="screen-reader-text"&gt;
-								&lt;?= __('insert name of shop', 'textdomain')?&gt;
+								insert name of shop
 							&lt;/span&gt;
 							&lt;label class="screen-reader-text" for="input-test-name_custom"&gt;
-								&lt;?= __('Name of one-page shop', 'textdomain')?&gt;
+								Name of one-page shop
 							&lt;/label&gt;
 							&lt;input type="text" name="input-test-name_custom" id="input-test-name_custom" 
 							          value="" class="regular-text" disabled="disabled" 
-							          placeholder="&lt;?= __('Enter name&hellip;', 'textdomain')?&gt;"&gt;
+							          placeholder="Enter name&hellip;"&gt;
 						&lt;/label&gt;
 					&lt;/p&gt;
 				&lt;/fieldset&gt;
@@ -171,26 +170,26 @@ jQuery(document).on('ready', function () {
 });
 &lt;/script&gt;
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-text_input"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-text">Text input</label>
+						<label for="input-text"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<input type="text" name="input-text" placeholder="Text" /><br />
 						<pre><code class="language-markup">
 &lt;input type="text" name="input-text" placeholder="Text" />
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-select"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-text">Select</label>
+						<label for="input-text"><?php esc_html_e( 'Select element', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<select name="select">
@@ -205,13 +204,13 @@ jQuery(document).on('ready', function () {
   &lt;option>Option 3&lt;/option>
 &lt;/select>
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-multi_select"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="multi-select">Multiple Select</label>
+						<label for="multi-select"><?php esc_html_e( 'Multiple Select', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<select name="multi-select" multiple="multiple">
@@ -232,13 +231,13 @@ jQuery(document).on('ready', function () {
   &lt;option>Option 6&lt;/option>
 &lt;/select>
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-radio_buttons"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="radio-buttons">Radio Buttons</label>
+						<label for="radio-buttons"><?php esc_html_e( 'Radio Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<input type="radio" name="radio-buttons" value="option-1"/> Option 1 <br />
@@ -251,26 +250,26 @@ jQuery(document).on('ready', function () {
 &lt;input type="radio" name="radio-buttons" value="option-3" /> Option 3
 &lt;input type="radio" name="radio-buttons" value="option-4" /> Option 4
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-checkbox"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-checkbox">Checkbox</label>
+						<label for="input-checkbox"><?php esc_html_e( 'Checkbox', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<input type="checkbox" name="input-checkbox" /> Option 1<br />
 						<pre><code class="language-markup">
 &lt;input type="checkbox" name="input-checkbox"/> Option 1
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-checkbox_array"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="checkbox-array">Checkbox Array</label>
+						<label for="checkbox-array"><?php esc_html_e( 'Checkbox Array', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<input type='checkbox' name='checkbox-array[]' value='option-1'> Option 1<br />
@@ -281,56 +280,56 @@ jQuery(document).on('ready', function () {
 &lt;input type='checkbox' name='checkbox-array[]' value='option-2'> Option 2
 &lt;input type='checkbox' name='checkbox-array[]' value='option-3'> Option 3
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-html5"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-fieldset">Fieldset and <br />HTML5 Elements</label>
+						<label for="input-fieldset"><?php _e( 'Fieldset and <br />HTML5 Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<legend>Legend</legend>
-							<input type="email" placeholder="Email" /> Email<br />
-							<input type="search" placeholder="Search" /> Search<br />
-							<input type="tel" placeholder="Telephone" /> Telephone<br />
-							<input type="text" placeholder="Text" /> Text<br />
-							<input type="url" placeholder="URL" /> URL<br />
+							<legend><?php esc_html_e( 'Legend', WP_Style_Guide::PLUGIN_SLUG ); ?></legend>
+							<input type="email" placeholder="<?php esc_html_e( 'Email', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Email', WP_Style_Guide::PLUGIN_SLUG ); ?><br />
+							<input type="search" placeholder="<?php esc_html_e( 'Search', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Search', WP_Style_Guide::PLUGIN_SLUG ); ?><br />
+							<input type="tel" placeholder="<?php esc_html_e( 'Telephone', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Telephone', WP_Style_Guide::PLUGIN_SLUG ); ?><br />
+							<input type="text" placeholder="<?php esc_html_e( 'Text', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Text', WP_Style_Guide::PLUGIN_SLUG ); ?><br />
+							<input type="url" placeholder="<?php esc_html_e( 'URL', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'URL', WP_Style_Guide::PLUGIN_SLUG ); ?><br />
 						</fieldset>
 						<pre><code class="language-markup">
 &lt;fieldset>
   &lt;legend>Legend&lt;/legend>
-  &lt;input type="email" placeholder="Email" /> Email
-  &lt;input type="search" placeholder="Search" /> Search
-  &lt;input type="tel" placeholder="Telephone" /> Telephone
-  &lt;input type="text" placeholder="text" /> Text
-  &lt;input type="url" placeholder="URL" /> URL
+  &lt;input type="email" placeholder="<?php esc_html_e( 'Email', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Email', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+  &lt;input type="search" placeholder="<?php esc_html_e( 'Search', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Search', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+  &lt;input type="tel" placeholder="<?php esc_html_e( 'Telephone', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Telephone', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+  &lt;input type="text" placeholder="<?php esc_html_e( 'Text', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'Text', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+  &lt;input type="url" placeholder="<?php esc_html_e( 'URL', WP_Style_Guide::PLUGIN_SLUG ); ?>" /> <?php esc_html_e( 'URL', WP_Style_Guide::PLUGIN_SLUG ); ?> 
 &lt;/fieldset>
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-datetime"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-time">Date Time Elements</label>
+						<label for="input-time"><?php esc_html_e( 'Date Time Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
-						<p>If you creating date time inputs for form for editing <em>custom-</em>post type you can use <strong>WordPress</strong> function <a href="https://developer.wordpress.org/reference/functions/touch_time/" target="blank"><code>touch_time</code></a> (<strong>Warning:</strong> This function can be used only on <code>post.php</code> or <code>post-new.php</code> pages!):</p>
+						<p><?= sprintf( __( 'If you creating date time inputs for form for editing <em>custom-</em>post type you can use <b>WordPress</b> function <a href="touch_time" target="blank"><code></code></a> (<b>Warning:</b> This function can be used only on <code>post.php</code> or <code>post-new.php</code> pages!):', WP_Style_Guide::PLUGIN_SLUG ), 'https://developer.wordpress.org/reference/functions/touch_time/' )?></p>
 						<pre><code class="language-php">&lt;?php @touch_time(false, false, false, true);?&gt;</code></pre>
 						<?php 
 						@touch_time(false, false, false, true);
 						?>
-						<p>This will create output like this:</p>
+						<p><?php esc_html_e( 'This will create output like this:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
 						<pre><code class="language-markup">
 &lt;div class="timestamp-wrap"&gt;
 	&lt;label&gt;
-		&lt;span class="screen-reader-text"&gt;Den&lt;/span&gt;
+		&lt;span class="screen-reader-text"&gt;Date&lt;/span&gt;
 		&lt;input name="jj" value="27" size="2" maxlength="2" autocomplete="off" type="text"&gt;
 	&lt;/label&gt;.
 	&lt;label&gt;
-		&lt;span class="screen-reader-text"&gt;Měsíc&lt;/span&gt;
+		&lt;span class="screen-reader-text"&gt;Month&lt;/span&gt;
 		&lt;select name="mm"&gt;
 			&lt;option value="01" data-text="Jan"&gt;01 - Jan&lt;/option&gt;
 			&lt;option value="02" data-text="Feb" selected="selected"&gt;02 - Feb&lt;/option&gt;
@@ -347,67 +346,67 @@ jQuery(document).on('ready', function () {
 		&lt;/select&gt;
 	&lt;/label&gt; 
 	&lt;label&gt;
-		&lt;span class="screen-reader-text"&gt;Rok&lt;/span&gt;
+		&lt;span class="screen-reader-text"&gt;Year&lt;/span&gt;
 		&lt;input name="aa" value="2016" size="4" maxlength="4" autocomplete="off" type="text"&gt;
 	&lt;/label&gt; @ 
 	&lt;label&gt;
-		&lt;span class="screen-reader-text"&gt;Hodiny&lt;/span&gt;
+		&lt;span class="screen-reader-text"&gt;Hours&lt;/span&gt;
 		&lt;input name="hh" value="15" size="2" maxlength="2" autocomplete="off" type="text"&gt;
 	&lt;/label&gt;:
 	&lt;label&gt;
-		&lt;span class="screen-reader-text"&gt;Minuty&lt;/span&gt;
+		&lt;span class="screen-reader-text"&gt;Mins&lt;/span&gt;
 		&lt;input name="mn" value="23" size="2" maxlength="2" autocomplete="off" type="text"&gt;
 	&lt;/label&gt;
 &lt;/div&gt;
 						</code></pre>
-						<p>Otherwise there are simple date time inputs available:</p>
-						Date: <input name="input-date" type="date" /><br />
-						Month: <input name="input-month" type="month" /> <br />
-						Week: <input name="input-week" type="week" /><br />
-						Time: <input name="input-time" type="time" /><br />
-						Local Date and Time: <input name="input-datetime-local" type="datetime-local" />
+						<p><?php esc_html_e( 'Otherwise there are simple date time inputs available:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+						<?php esc_html_e( 'Date:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-date" type="date" /><br />
+						<?php esc_html_e( 'Month:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-month" type="month" /> <br />
+						<?php esc_html_e( 'Week:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-week" type="week" /><br />
+						<?php esc_html_e( 'Time:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-time" type="time" /><br />
+						<?php esc_html_e( 'Local Date and Time:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-datetime-local" type="datetime-local" />
 						<pre><code class="language-markup">
-Date: &lt;input id="input-date" name="input-date" type="date" />
-Month: &lt;input id="input-month" name="input-month" type="month" />
-Week: &lt;input id="input-week" name="input-week" type="week" />
-Time: &lt;input id=="input-time" name="input-time" type="time" />
-Local Date and Time: &lt;input name="input-datetime-local" type="datetime-local" />
+<?php esc_html_e( 'Date:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input id="input-date" name="input-date" type="date" />
+<?php esc_html_e( 'Month:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input id="input-month" name="input-month" type="month" />
+<?php esc_html_e( 'Week:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input id="input-week" name="input-week" type="week" />
+<?php esc_html_e( 'Time:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input id="input-time" name="input-time" type="time" />
+<?php esc_html_e( 'Local Date and Time:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input name="input-datetime-local" type="datetime-local" />
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-others"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-time">Other Elements</label>
+						<label for="input-time"><?php esc_html_e( 'Other Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
-						Number: <input name="input-number" type="number" min="0" max="20" /><br />
-						Range: <input name="input-range" type="range" /><br />
-						Color: <input name="input-color" type="color" /><br />
+						<?php esc_html_e( 'Number:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-number" type="number" min="0" max="20" /><br />
+						<?php esc_html_e( 'Range:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-range" type="range" /><br />
+						<?php esc_html_e( 'Color:', WP_Style_Guide::PLUGIN_SLUG ); ?> <input name="input-color" type="color" /><br />
 						<pre><code class="language-markup">
-Number: &lt;input name="input-number" type="number" min="0" max="20" />
-Range: &lt;input name="input-range" type="range" />
-Color: &lt;input name="input-color" type="color" />
+<?php esc_html_e( 'Number:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input name="input-number" type="number" min="0" max="20" />
+<?php esc_html_e( 'Range:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input name="input-range" type="range" />
+<?php esc_html_e( 'Color:', WP_Style_Guide::PLUGIN_SLUG ); ?> &lt;input name="input-color" type="color" />
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 				<tr id="tr-buttons"><td colspan="2"><br></td></tr>
 				<tr>
 					<th>
-						<label for="input-time">Buttons</label>
+						<label for="input-time"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td>
-						<input type="submit" value="Submit Input" class="button" /><br /><br />
-						<input type="button" value="Secondary Button" class="button-secondary" /><br /><br />
-						<input type="button" value="Primary Button" class="button-primary" />
+						<input type="submit" value="<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button" /><br /><br />
+						<input type="button" value="<?php esc_html_e( 'Secondary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-secondary" /><br /><br />
+						<input type="button" value="<?php esc_html_e( 'Primary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-primary" />
 						<pre><code class="language-markup">
-&lt;input type="submit" value="Submit Input" class="button" />
-&lt;input type="button" value="Secondary Button" class="button-secondary" />
-&lt;input type="button" value="Primary Button" class="button-primary" />
+&lt;input type="submit" value="<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button" />
+&lt;input type="button" value="<?php esc_html_e( 'Secondary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-secondary" />
+&lt;input type="button" value="<?php esc_html_e( 'Primary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-primary" />
 						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright">Back to top</a></p>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
 				</tr>
 			</tbody>
