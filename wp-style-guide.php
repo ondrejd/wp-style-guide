@@ -155,9 +155,16 @@ class WP_Style_Guide {
 	/**
 	 * Enqueue scripts and styles as needed.
 	 * @return void
+	 * @uses get_current_screen()
+	 * @uses plugins_url()
+	 * @uses wp_enqueue_script()
+	 * @uses wp_enqueue_style()
+	 * @uses wp_register_script()
 	 */
 	public function admin_enqueue_scripts() {
-		if ( get_current_screen()->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
+		$screen = get_current_screen();
+
+		if ( $screen->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
 			wp_enqueue_script( 'jquery-ui-accordion' );
 			wp_enqueue_script( 'jquery-ui-tabs' );
 			wp_enqueue_script( 'jquery-ui-dialog' );
@@ -167,6 +174,15 @@ class WP_Style_Guide {
 			wp_enqueue_script( 'jquery-ui-button' );
 
 			wp_enqueue_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.css', __FILE__ ), false );
+		}
+		elseif ( $screen->base === $this->screens['wp-patterns-wizards']['hookname'] ) {
+			$wizard = filter_input( INPUT_GET, 'wizard' );
+
+			if ( in_array( $wizard, array( 'plugin', 'theme' ) ) ) {
+				wp_register_script( self::PLUGIN_SLUG . '_wizards_' . $wizard . '_js', plugins_url( 'js/wizards-' . $wizard . '.js', __FILE__ ), array( 'jquery', 'jquery-ui-core' ), false, true );
+
+				wp_enqueue_script( self::PLUGIN_SLUG . '_wizards_' . $wizard . '_js' );
+			}
 		}
 
 		wp_enqueue_style( 'wp-style-guide', plugins_url( 'css/wp-style-guide.css', __FILE__ ), false );
