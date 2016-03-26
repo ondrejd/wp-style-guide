@@ -7,7 +7,6 @@
 	<h3 class="screen-reader-text"><?php esc_html_e( 'List of Contents', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<ul class="subsubsub">
 		<li><b><?php esc_html_e( 'Contents:', WP_Style_Guide::PLUGIN_SLUG ); ?></b> </li>
-		<li><a href="#form"><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-text_input"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-select"><?php esc_html_e( 'Select element', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-multi_select"><?php esc_html_e( 'Multiple Select', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
@@ -17,164 +16,14 @@
 		<li><a href="#tr-html5"><?php esc_html_e( 'Fieldset and HTML5 Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-datetime"><?php esc_html_e( 'Date Time Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-others"><?php esc_html_e( 'Other Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
-		<li><a href="#tr-buttons"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
+		<li><a href="#tr-buttons"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#form"><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
 	</ul>
 
 	<form id="form">
 		<table class="form-table">
 			<tbody>
-				<tr id="tr-form_table">
-					<th>
-						<label><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
-					</th>
-					<td>
-						<p><?php _e( 'Here is minor excerpt with the form table as is used in <b>WordPress</b> options pages.', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
-						<!-- Example: Form table -->
-						<table class="form-table">
-							<tbody>
-								<tr>
-									<th scope="row">
-										<label for="test-input-02">Test</label>
-									</th>
-									<td>
-										<fieldset>
-											<p>
-												<label for="test-input-02">Some large and important description for the first input.</label>
-												<input type="text" name="test-input-02" id="test-input-02" class="regular-text">
-											</p>
-											<p class="description">Minor or less important description for the first input.</p>
-										</fieldset>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">
-										<label for="input-test-name">Shop name</label>
-									</th>
-									<td>
-										<fieldset>
-											<legend class="screen-reader-text">
-												<span>Name of one-page shop</span>
-											</legend>
-											<p>
-												<label title="Same as whole WordPress site" data-value="inherited">
-													<input type="radio" name="input-test-name" value="inherited" checked="checked">
-													Same as whole WordPress site
-													<span class="description"> (Same as is inserted <a href="#">here</a>&hellip;)</span>
-												</label>
-											</p>
-											<p>
-												<label title="<?php esc_html_e( 'Custom: ', WP_Style_Guide::PLUGIN_SLUG ); ?>" data-value="custom">
-													<input type="radio" name="input-test-name" value="custom">
-													Custom: 
-													<span class="screen-reader-text">insert name of shop</span>
-													<label class="screen-reader-text" for="input-test-name_custom">Name of one-page shop</label>
-													<input type="text" name="input-test-name_custom" id="input-test-name_custom" value="" class="regular-text" placeholder="Enter name for your new one-page shop&hellip;" disabled="disabled">
-												</label>
-											</p>
-										</fieldset>
-									</td>
-								</tr>
-								<!-- ... -->
-							</tbody>
-						</table>
-						<!-- // Example: Form table -->
-    					<script type="text/javascript">
-jQuery(document).on("ready", function () {
-	jQuery("input[name='input-test-name']").parent().on(
-		"click", 
-		function() {
-			if (jQuery(this).data('value') == "custom") {
-				jQuery("#input-test-name_custom")
-					.prop("disabled", false)
-					.removeProp("disabled").focus();
-			} else {
-				jQuery("#input-test-name_custom")
-					.prop("disabled", true);
-			}
-		}
-	);
-});
-						</script>
-						<pre><code class="language-markup">
-&lt;table class="form-table"&gt;
-	&lt;tbody&gt;
-		&lt;tr&gt;
-			&lt;th scope="row"&gt;
-				&lt;label for="test-input-02"&gt;Test&lt;/label&gt;
-			&lt;/th&gt;
-			&lt;td&gt;
-				&lt;fieldset&gt;
-					&lt;p&gt;
-						&lt;label for="test-input-02"&gt;
-							Some large and important description for the first input.
-						&lt;/label&gt;
-						&lt;input type="text" name="test-input-02" id="test-input-02" class="regular-text"&gt;
-					&lt;/p&gt;
-					&lt;p class="description"&gt;
-						Minor or less important description for the first input.
-					&lt;/p&gt;
-				&lt;/fieldset&gt;
-			&lt;/td&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;th scope="row"&gt;
-				&lt;label for="input-test-name"&gt;Shop name&lt;/label&gt;
-			&lt;/th&gt;
-			&lt;td&gt;
-				&lt;fieldset&gt;
-					&lt;legend class="screen-reader-text"&gt;
-						&lt;span&gt;Name of one-page shop&lt;/span&gt;
-					&lt;/legend&gt;
-					&lt;p&gt;
-						&lt;label title="Same as whole WordPress site')?&gt;" data-value="inherited"&gt;
-							&lt;input type="radio" name="input-test-name" value="inherited" checked="checked"&gt;
-							Same as whole WordPress site
-							&lt;span class="description"&gt;
-								Same as is inserted &lt;a href="#"&gt;here&lt;/a&gt;&hellip;)
-							&lt;/span&gt;
-						&lt;/label&gt;
-					&lt;/p&gt;
-					&lt;p&gt;
-						&lt;label title="Custom: " data-value="custom"&gt;
-							&lt;input type="radio" name="input-test-name" value="custom"&gt;
-							Custom: 
-							&lt;span class="screen-reader-text"&gt;
-								insert name of shop
-							&lt;/span&gt;
-							&lt;label class="screen-reader-text" for="input-test-name_custom"&gt;
-								Name of one-page shop
-							&lt;/label&gt;
-							&lt;input type="text" name="input-test-name_custom" id="input-test-name_custom" 
-							          value="" class="regular-text" disabled="disabled" 
-							          placeholder="Enter name&hellip;"&gt;
-						&lt;/label&gt;
-					&lt;/p&gt;
-				&lt;/fieldset&gt;
-			&lt;/td&gt;
-		&lt;/tr&gt;
-		&lt;!-- ... --&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;script type="text/javascript"&gt;
-jQuery(document).on('ready', function () {
-	jQuery('input[name="input-test-name"]').parent().on(
-		'click', 
-		function() {
-			if (jQuery(this).data('value') == 'custom') {
-				jQuery('#input-test-name_custom').prop('disabled', false).removeProp('disabled').focus();
-			} else {
-				jQuery('#input-test-name_custom').prop('disabled", true);
-			}
-		}
-	);
-});
-&lt;/script&gt;
-						</code></pre>
-						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
-					</td>
-				</tr>
-				<tr id="tr-text_input"><td colspan="2"><br></td></tr>
-				<tr>
+				<tr id="tr-text_input">
 					<th>
 						<label for="input-text"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
@@ -405,6 +254,157 @@ jQuery(document).on('ready', function () {
 &lt;input type="submit" value="<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button" />
 &lt;input type="button" value="<?php esc_html_e( 'Secondary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-secondary" />
 &lt;input type="button" value="<?php esc_html_e( 'Primary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-primary" />
+						</code></pre>
+						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
+					</td>
+				</tr>
+				<tr id="tr-form_table"><td colspan="2"><br></td></tr>
+				<tr>
+					<th>
+						<label><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+					</th>
+					<td>
+						<p><?php _e( 'Here is minor excerpt with the form table as is used in <b>WordPress</b> options pages.', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+						<!-- Example: Form table -->
+						<table class="form-table">
+							<tbody>
+								<tr>
+									<th scope="row">
+										<label for="test-input-02">Test</label>
+									</th>
+									<td>
+										<fieldset>
+											<p>
+												<label for="test-input-02">Some large and important description for the first input.</label>
+												<input type="text" name="test-input-02" id="test-input-02" class="regular-text">
+											</p>
+											<p class="description">Minor or less important description for the first input.</p>
+										</fieldset>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<label for="input-test-name">Shop name</label>
+									</th>
+									<td>
+										<fieldset>
+											<legend class="screen-reader-text">
+												<span>Name of one-page shop</span>
+											</legend>
+											<p>
+												<label title="Same as whole WordPress site" data-value="inherited">
+													<input type="radio" name="input-test-name" value="inherited" checked="checked">
+													Same as whole WordPress site
+													<span class="description"> (Same as is inserted <a href="#">here</a>&hellip;)</span>
+												</label>
+											</p>
+											<p>
+												<label title="<?php esc_html_e( 'Custom: ', WP_Style_Guide::PLUGIN_SLUG ); ?>" data-value="custom">
+													<input type="radio" name="input-test-name" value="custom">
+													Custom: 
+													<span class="screen-reader-text">insert name of shop</span>
+													<label class="screen-reader-text" for="input-test-name_custom">Name of one-page shop</label>
+													<input type="text" name="input-test-name_custom" id="input-test-name_custom" value="" class="regular-text" placeholder="Enter name for your new one-page shop&hellip;" disabled="disabled">
+												</label>
+											</p>
+										</fieldset>
+									</td>
+								</tr>
+								<!-- ... -->
+							</tbody>
+						</table>
+						<!-- // Example: Form table -->
+    					<script type="text/javascript">
+jQuery(document).on("ready", function () {
+	jQuery("input[name='input-test-name']").parent().on(
+		"click", 
+		function() {
+			if (jQuery(this).data('value') == "custom") {
+				jQuery("#input-test-name_custom")
+					.prop("disabled", false)
+					.removeProp("disabled").focus();
+			} else {
+				jQuery("#input-test-name_custom")
+					.prop("disabled", true);
+			}
+		}
+	);
+});
+						</script>
+						<pre><code class="language-markup">
+&lt;table class="form-table"&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;th scope="row"&gt;
+				&lt;label for="test-input-02"&gt;Test&lt;/label&gt;
+			&lt;/th&gt;
+			&lt;td&gt;
+				&lt;fieldset&gt;
+					&lt;p&gt;
+						&lt;label for="test-input-02"&gt;
+							Some large and important description for the first input.
+						&lt;/label&gt;
+						&lt;input type="text" name="test-input-02" id="test-input-02" class="regular-text"&gt;
+					&lt;/p&gt;
+					&lt;p class="description"&gt;
+						Minor or less important description for the first input.
+					&lt;/p&gt;
+				&lt;/fieldset&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;th scope="row"&gt;
+				&lt;label for="input-test-name"&gt;Shop name&lt;/label&gt;
+			&lt;/th&gt;
+			&lt;td&gt;
+				&lt;fieldset&gt;
+					&lt;legend class="screen-reader-text"&gt;
+						&lt;span&gt;Name of one-page shop&lt;/span&gt;
+					&lt;/legend&gt;
+					&lt;p&gt;
+						&lt;label title="Same as whole WordPress site')?&gt;" data-value="inherited"&gt;
+							&lt;input type="radio" name="input-test-name" value="inherited" checked="checked"&gt;
+							Same as whole WordPress site
+							&lt;span class="description"&gt;
+								Same as is inserted &lt;a href="#"&gt;here&lt;/a&gt;&hellip;)
+							&lt;/span&gt;
+						&lt;/label&gt;
+					&lt;/p&gt;
+					&lt;p&gt;
+						&lt;label title="Custom: " data-value="custom"&gt;
+							&lt;input type="radio" name="input-test-name" value="custom"&gt;
+							Custom: 
+							&lt;span class="screen-reader-text"&gt;
+								insert name of shop
+							&lt;/span&gt;
+							&lt;label class="screen-reader-text" for="input-test-name_custom"&gt;
+								Name of one-page shop
+							&lt;/label&gt;
+							&lt;input type="text" name="input-test-name_custom" id="input-test-name_custom" 
+							          value="" class="regular-text" disabled="disabled" 
+							          placeholder="Enter name&hellip;"&gt;
+						&lt;/label&gt;
+					&lt;/p&gt;
+				&lt;/fieldset&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;!-- ... --&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;script type="text/javascript"&gt;
+jQuery(document).on('ready', function () {
+	jQuery('input[name="input-test-name"]').parent().on(
+		'click', 
+		function() {
+			if (jQuery(this).data('value') == 'custom') {
+				jQuery('#input-test-name_custom').prop('disabled', false).removeProp('disabled').focus();
+			} else {
+				jQuery('#input-test-name_custom').prop('disabled", true);
+			}
+		}
+	);
+});
+&lt;/script&gt;
 						</code></pre>
 						<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 					</td>
