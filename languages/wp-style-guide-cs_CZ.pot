@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-style-guide\n"
-"POT-Creation-Date: 2016-03-25 18:53+0100\n"
-"PO-Revision-Date: 2016-03-25 20:19+0100\n"
+"POT-Creation-Date: 2016-03-26 18:25+0100\n"
+"PO-Revision-Date: 2016-03-26 18:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: Ondřej Doněk <ondrejd@gmail.com>\n"
 "Language: cs_CZ\n"
@@ -236,141 +236,133 @@ msgstr "Textový obsah elementů s touto třídou má barvu upozornění."
 msgid "Text with this class uses the icon color."
 msgstr "Textový obsah elementů s touto třídou má barvu ikon."
 
-#: pages/jquery-ui.php:5 wp-style-guide.php:92 wp-style-guide.php:93
+#: pages/jquery-ui.php:9 wp-style-guide.php:92 wp-style-guide.php:93
 msgid "jQuery UI Components"
 msgstr "jQuery UI"
 
-#: pages/jquery-ui.php:8
+#: pages/jquery-ui.php:12
 msgid "Accordion"
 msgstr "Akordeon"
 
-#: pages/jquery-ui.php:12 pages/jquery-ui.php:47
+#: pages/jquery-ui.php:15 pages/jquery-ui.php:69
 msgid "First"
 msgstr "První"
 
-#: pages/jquery-ui.php:16 pages/jquery-ui.php:48
+#: pages/jquery-ui.php:19 pages/jquery-ui.php:70
 msgid "Second"
 msgstr "Druhá"
 
-#: pages/jquery-ui.php:20 pages/jquery-ui.php:49
+#: pages/jquery-ui.php:23 pages/jquery-ui.php:71
 msgid "Third"
 msgstr "Třetí"
 
-#: pages/jquery-ui.php:28
+#: pages/jquery-ui.php:31
 msgid "First no icons"
 msgstr "První bez ikon"
 
-#: pages/jquery-ui.php:32
+#: pages/jquery-ui.php:35
 msgid "Second no icons"
 msgstr "Druhá bez ikon"
 
-#: pages/jquery-ui.php:36
+#: pages/jquery-ui.php:39
 msgid "Third no icons"
 msgstr "Třetí bez ikon"
 
-#: pages/jquery-ui.php:44
-msgid "Tabs"
-msgstr "Záložky"
+#: pages/jquery-ui.php:49
+msgid "Autocomplete"
+msgstr "Autokompletace"
 
-#: pages/jquery-ui.php:57
-msgid "Dialog"
-msgstr "Dialog"
+#: pages/jquery-ui.php:51
+msgid "Select a programming language"
+msgstr "Vyberte programovací jazyk"
 
-#: pages/jquery-ui.php:58
-msgid "Open Dialog"
-msgstr "Otevřít dialog"
-
-#: pages/jquery-ui.php:60
-msgid "Inline Dialog"
-msgstr "Řádkový dialog"
-
-#: pages/jquery-ui.php:65
-msgid "Overlay and Shadow Classes <em>(not currently used in UI widgets)</em>"
-msgstr "CSS třídy pro překrývání a stíny <em>(aktuálně nejsou používány)</em>"
-
-#: pages/jquery-ui.php:81
-msgid "Dialog Title"
-msgstr "Název dialogu"
-
-#: pages/jquery-ui.php:87
-msgid "Framework Icons (content color preview)"
-msgstr "Vestavěné ikony (náhled v barvě obsahu)"
-
-#: pages/jquery-ui.php:286
-msgid "Slider"
-msgstr "Posuvník"
-
-#: pages/jquery-ui.php:304
-msgid "Datepicker"
-msgstr "Výběr data"
-
-#: pages/jquery-ui.php:314
-msgid "Progressbar"
-msgstr "Ukazatel vývoje"
-
-#: pages/jquery-ui.php:318
-msgid "Highlight / Error"
-msgstr "Zvýraznění / Chyba"
-
-#: pages/jquery-ui.php:322
-msgid "<strong>Hey!</strong> Sample ui-state-highlight style.</p>"
-msgstr "<strong>Ahoj!</strong> Ukázka stylu ui-state-highlight.</p>"
-
-#: pages/jquery-ui.php:329
-msgid "<strong>Alert:</strong> Sample ui-state-error style.</p>"
-msgstr "<strong>Pozor:</strong> Ukázka stylu ui-state-error.</p>"
-
-#: pages/jquery-ui.php:333
+#: pages/jquery-ui.php:55
 msgid "Button"
 msgstr "Tlačítko"
 
-#: pages/jquery-ui.php:336
-msgid "Run last action"
-msgstr "Spustit poslední akci"
+#: pages/jquery-ui.php:56
+msgid "A button element"
+msgstr "Nějaké tlačítko"
+
+#: pages/jquery-ui.php:59
+msgid "Choice 1"
+msgstr "Volba 1"
+
+#: pages/jquery-ui.php:60
+msgid "Choice 2"
+msgstr "Volba 2"
+
+#: pages/jquery-ui.php:61
+msgid "Choice 3"
+msgstr "Volba 3"
+
+#: pages/jquery-ui.php:66
+msgid "Tabs"
+msgstr "Záložky"
+
+#: pages/jquery-ui.php:79
+msgid "Dialog"
+msgstr "Dialog"
+
+#: pages/jquery-ui.php:83
+msgid "Open Dialog"
+msgstr "Otevřít dialog"
+
+#: pages/jquery-ui.php:88
+msgid "Dialog Title"
+msgstr "Název dialogu"
+
+#: pages/jquery-ui.php:94
+msgid "Inline Dialog"
+msgstr "Vepsaný dialog"
+
+#: pages/jquery-ui.php:118
+msgid "Overlay and Shadow Classes"
+msgstr "CSS třídy pro překryvné prvky a stíny"
+
+#: pages/jquery-ui.php:133
+msgid "Framework Icons (content color preview)"
+msgstr "Vestavěné ikony (náhled v barvě obsahu)"
+
+#: pages/jquery-ui.php:334
+msgid "Sliders"
+msgstr "Posuvníky"
+
+#: pages/jquery-ui.php:335
+msgid "Horizontal Slider"
+msgstr "Horizontální posuvník"
 
 #: pages/jquery-ui.php:337
-msgid "Select an action"
-msgstr "Vybrat akci"
-
-#: pages/jquery-ui.php:341
-msgid "go to beginning"
-msgstr "jít na začátek"
-
-#: pages/jquery-ui.php:342
-msgid "rewind"
-msgstr "převinout"
-
-#: pages/jquery-ui.php:343
-msgid "play"
-msgstr "hrát"
-
-#: pages/jquery-ui.php:344
-msgid "stop"
-msgstr "zastavit"
-
-#: pages/jquery-ui.php:345
-msgid "fast forward"
-msgstr "rychle dopředu"
-
-#: pages/jquery-ui.php:346
-msgid "go to end"
-msgstr "jít na konec"
-
-#: pages/jquery-ui.php:348
-msgid "Shuffle"
-msgstr "Náhodný výběr"
+msgid "Vertical Sliders (equalizer)"
+msgstr "Vertikální posuvník (ekvalizér)"
 
 #: pages/jquery-ui.php:351
-msgid "No Repeat"
-msgstr "Bez opakování"
+msgid "Datepicker"
+msgstr "Výběr data"
 
 #: pages/jquery-ui.php:352
-msgid "Once"
-msgstr "Jednou"
+msgid "Single datepicker"
+msgstr "Jednoduchý výběr data"
 
-#: pages/jquery-ui.php:353
-msgid "All"
-msgstr "Vše"
+#: pages/jquery-ui.php:354
+msgid "Multi-datepicker"
+msgstr "Mnohonásobný výběr data"
+
+#: pages/jquery-ui.php:359
+msgid "Progressbar"
+msgstr "Ukazatel vývoje"
+
+#: pages/jquery-ui.php:363
+msgid "Highlight / Error"
+msgstr "Zvýraznění / Chyba"
+
+#: pages/jquery-ui.php:367
+msgid "<strong>Hey!</strong> Sample ui-state-highlight style.</p>"
+msgstr "<strong>Ahoj!</strong> Ukázka stylu ui-state-highlight.</p>"
+
+#: pages/jquery-ui.php:374
+msgid "<strong>Alert:</strong> Sample ui-state-error style.</p>"
+msgstr "<strong>Pozor:</strong> Ukázka stylu ui-state-error.</p>"
 
 #: pages/wizards-plugin.php:5
 msgid "Wizards - Plugin Wizard"
@@ -702,7 +694,7 @@ msgid "Generate theme"
 msgstr "Generuj téma vzhledu"
 
 #: pages/wizards.php:10 wp-style-guide.php:80 wp-style-guide.php:81
-#: wp-style-guide.php:253
+#: wp-style-guide.php:258
 msgid "Wizards"
 msgstr "Průvodci"
 
@@ -730,15 +722,15 @@ msgstr "Vytvořit nové WordPress téma vzhledu&hellip;"
 msgid "Helper Classes"
 msgstr "Pomocné CSS třídy"
 
-#: wp-style-guide.php:219 wp-style-guide.php:286
+#: wp-style-guide.php:222 wp-style-guide.php:326
 msgid "WordPress Admin Pattern Library"
 msgstr "WordPress - Knihovna vzorů"
 
-#: wp-style-guide.php:219
+#: wp-style-guide.php:222
 msgid "Pattern Library"
 msgstr "Knihovna vzorů"
 
-#: wp-style-guide.php:254
+#: wp-style-guide.php:259
 msgid ""
 "<p>On this page are shown all available wizards. The main are wizards for "
 "<b>plugins</b> and <b>themes</b>. These two wizards help you to start new "
@@ -753,7 +745,7 @@ msgstr ""
 "průvodci slouží ke generování útržků kódu pro nejrůznější části vývoje "
 "<b>WordPress</b> pluginů či témat vzhledu."
 
-#: wp-style-guide.php:258
+#: wp-style-guide.php:264
 #, php-format
 msgid ""
 "<b>Usefull links</b><p><a href=\"%s\" target=\"blank\">Options</a> where you "
@@ -764,21 +756,200 @@ msgstr ""
 "můžete změnit šablony generovaných kódů.</p><p><a href=\"%s\" target=\"blank"
 "\">Příklady</a> kódů vygenerovaných tímto pluginem.</p>"
 
+#: wp-style-guide.php:276
+msgid "Using jQuery UI"
+msgstr "Používáme jQuery UI"
+
+#: wp-style-guide.php:278
+#, php-format
+msgid ""
+"<p>In <b>WordPress</b> are <a href=\"%s\" target=\"blank\">jQuery UI</a> "
+"stylesheets <b>not included</b> so we need to include it. This can be done "
+"pretty easily either by using some of exising <abbr title=\"Content Delivery "
+"Network\">CDN</abbr> or using your own copy of <b>jQuery UI</b> bundled with "
+"your plugin.</p><p>For more details se next tabs of this help.</p>"
+msgstr ""
+"<p>CSS styly <a href=\"%s\" target=\"blank\">jQuery UI</a> nejsou standartní "
+"součástí distribuce <b>WordPress</b> a proto je musíme načíst sami. Toho "
+"můžeme dosáhnout buď použitím některé z existujících serverů <abbr title="
+"\"Content Delivery Network\">CDN</abbr> nebo nakopírováním vlastní kopie "
+"tématu vzhledu pro <b>jQuery UI</b>.</p><p>Více detailů o obou způsobech se "
+"dozvíte na ostatních záložkách této nápovědy.</p>"
+
+#: wp-style-guide.php:286
+msgid "jQuery UI from CDN"
+msgstr "jQuery UI z CDN"
+
 #: wp-style-guide.php:288
+msgid ""
+"<p>Include needed stylesheets from some <abbr title=\"Content Delivery "
+"Network\">CDN</abbr> (there are plenty of them):</p><pre><code class="
+"\"language-php\">/** @link http://snippets.webaware.com.au/snippets/load-a-"
+"nice-jquery-ui-theme-in-wordpress/ */\n"
+"function load_jquery_ui() {\n"
+"\tglobal $wp_scripts;\n"
+"\t// tell WordPress to load jQuery UI tabs\n"
+"\twp_enqueue_script('jquery-ui-tabs');\n"
+"\t// get registered script object for jquery-ui\n"
+"\t$ui = $wp_scripts->query('jquery-ui-core');\n"
+"\t// tell WordPress to load the Smoothness theme from Google CDN\n"
+"\t$protocol = is_ssl() ? 'https' : 'http';\n"
+"\t$url = \"$protocol://ajax.googleapis.com/ajax/libs/jqueryui/{$ui->ver}/"
+"themes/smoothness/jquery-ui.min.css\";\n"
+"\twp_enqueue_style('jquery-ui-smoothness', $url, false, null);\n"
+"}\n"
+"// If you need to load it in WordPress administration do this:\n"
+"add_action( 'admin_enqueue_scripts', 'load_jquery_ui' );\n"
+"// Otherwise (for front-end) do this:\n"
+"add_action( 'wp_enqueue_scripts', 'load_jquery_ui' );</code></pre>"
+msgstr ""
+"<p>V tomto případě musíme zajistit načtení potřebých souborů se styly z "
+"nějakého <abbr title=\"Content Delivery Network\">CDN</abbr> serveru (pomocí "
+"vyhledávače jich naleznete mnoho):</p><pre><code class=\"language-php\">/** "
+"@link http://snippets.webaware.com.au/snippets/load-a-nice-jquery-ui-theme-"
+"in-wordpress/ */\n"
+"function load_jquery_ui() {\n"
+"\tglobal $wp_scripts;\n"
+"\t// Načteme jQuery UI komponentu záložky\n"
+"\twp_enqueue_script('jquery-ui-tabs');\n"
+"\t// Potřebujeme pro zjištění verze jQuery UI Core\n"
+"\t$ui = $wp_scripts->query('jquery-ui-core');\n"
+"\t// Načteme téma vzhledu `Smoothness` z Google CDN\n"
+"\t$protocol = is_ssl() ? 'https' : 'http';\n"
+"\t$url = \"$protocol://ajax.googleapis.com/ajax/libs/jqueryui/{$ui->ver}/"
+"themes/smoothness/jquery-ui.min.css\";\n"
+"\twp_enqueue_style('jquery-ui-smoothness', $url, false, null);\n"
+"}\n"
+"// Pokud chceme načíst naše skripty a styly v administraci, uděláme toto:\n"
+"add_action( 'admin_enqueue_scripts', 'load_jquery_ui' );\n"
+"// Na veřejných částech webu toto:\n"
+"add_action( 'wp_enqueue_scripts', 'load_jquery_ui' );</code></pre>"
+
+#: wp-style-guide.php:296
+msgid "Own jQuery UI"
+msgstr "Vlastní jQuery UI"
+
+#: wp-style-guide.php:298
+msgid ""
+"<p>Place your own jQuery UI stylesheet (and images) within your plugin (for "
+"example we are using <code>js</code> and <code>css</code> sub-folders) and "
+"load it using script like this:<p><pre><code class=\"language-php\">function "
+"load_jquery_ui() {\n"
+"\t// Our CSS styles for jQuery UI (in `my_plugin/css` dir)\n"
+"\twp_register_style( 'my-jqueryui-css', plugins_url( 'css/jquery-ui.css', "
+"__FILE__ ), false );\n"
+"\twp_enqueue_style( 'my-jqueryui-css' );\n"
+"\t// Our JavaScript with jQuery UI as dependency:\n"
+"\twp_register_script(\n"
+"\t\t'my-jqueryui-js',\n"
+"\t\tplugins_url( 'js/myscript.js', __FILE__ ),\n"
+"\t\tarray(\n"
+"\t\t\t'jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-"
+"accordion', 'jquery-ui-tabs',\n"
+"\t\t\t'jquery-ui-dialog', 'jquery-ui-slider', 'jquery-ui-datepicker', "
+"'jquery-ui-progressbar',\n"
+"\t\t\t'jquery-ui-button'\n"
+"\t\t),\n"
+"\t\tfalse,\n"
+"\t\ttrue\n"
+"\t);\n"
+"\twp_enqueue_script( 'my-jqueryui-js' );\n"
+"}\n"
+"\n"
+"// If you need to load it in WordPress administration do this:\n"
+"add_action( 'admin_enqueue_scripts', 'load_jquery_ui' );\n"
+"// Otherwise (for front-end) do this:\n"
+"add_action( 'wp_enqueue_scripts', 'load_jquery_ui' );</code></pre>"
+msgstr ""
+"<p>Uložte vlastní téma vzhledu pro jQuery UI do složky vašeho pluginu "
+"(nejlépe jednoduše do <code>css</code> či <code>js</code> podsložek) a poté "
+"uvnitř vašeho pluginu jeho načtení zajistíte následujícím způsobem:"
+"<p><pre><code class=\"language-php\">function load_jquery_ui() {\n"
+"\t// Naše CSS styly pro jQuery UI (ve složce `muj_plugin/css`)\n"
+"\twp_register_style( 'my-jqueryui-css', plugins_url( 'css/jquery-ui.css', "
+"__FILE__ ), false );\n"
+"\twp_enqueue_style( 'my-jqueryui-css' );\n"
+"\t// Náš JavaScript soubor s načtenými závislostmi na jQuery UI:\n"
+"\twp_register_script(\n"
+"\t\t'my-jqueryui-js',\n"
+"\t\tplugins_url( 'js/myscript.js', __FILE__ ),\n"
+"\t\tarray(\n"
+"\t\t\t'jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-"
+"accordion', 'jquery-ui-tabs',\n"
+"\t\t\t'jquery-ui-dialog', 'jquery-ui-slider', 'jquery-ui-datepicker', "
+"'jquery-ui-progressbar',\n"
+"\t\t\t'jquery-ui-button'\n"
+"\t\t),\n"
+"\t\tfalse,\n"
+"\t\ttrue\n"
+"\t);\n"
+"\twp_enqueue_script( 'my-jqueryui-js' );\n"
+"}\n"
+"\n"
+"// Pokud chceme načíst naše skripty a styly v administraci, uděláme toto:\n"
+"add_action( 'admin_enqueue_scripts', 'load_jquery_ui' );\n"
+"// Na veřejných částech webu toto:\n"
+"add_action( 'wp_enqueue_scripts', 'load_jquery_ui' );</code></pre>"
+
+#: wp-style-guide.php:328
 msgid "Table of Contents"
 msgstr "Přehled obsahu"
 
-#: wp-style-guide.php:296
+#: wp-style-guide.php:336
 msgid "Usefull links"
 msgstr "Užitečné odkazy"
 
-#: wp-style-guide.php:298
+#: wp-style-guide.php:338
 msgid "Developer Resources: Dashicons"
 msgstr "Zdroje pro vývojáře: Třídy s ikonkami"
 
-#: wp-style-guide.php:299
+#: wp-style-guide.php:339
 msgid "WordPress Database Description"
 msgstr "Popis databáze použité v systému WordPress"
+
+#~ msgid ""
+#~ "Overlay and Shadow Classes <em>(not currently used in UI widgets)</em>"
+#~ msgstr ""
+#~ "CSS třídy pro překrývání a stíny <em>(aktuálně nejsou používány)</em>"
+
+#~ msgid "Slider"
+#~ msgstr "Posuvník"
+
+#~ msgid "Run last action"
+#~ msgstr "Spustit poslední akci"
+
+#~ msgid "Select an action"
+#~ msgstr "Vybrat akci"
+
+#~ msgid "go to beginning"
+#~ msgstr "jít na začátek"
+
+#~ msgid "rewind"
+#~ msgstr "převinout"
+
+#~ msgid "play"
+#~ msgstr "hrát"
+
+#~ msgid "stop"
+#~ msgstr "zastavit"
+
+#~ msgid "fast forward"
+#~ msgstr "rychle dopředu"
+
+#~ msgid "go to end"
+#~ msgstr "jít na konec"
+
+#~ msgid "Shuffle"
+#~ msgstr "Náhodný výběr"
+
+#~ msgid "No Repeat"
+#~ msgstr "Bez opakování"
+
+#~ msgid "Once"
+#~ msgstr "Jednou"
+
+#~ msgid "All"
+#~ msgstr "Vše"
 
 #~ msgid ""
 #~ "The <b>One Page Shop Plugin</b> requires <b>WooCommerce</b> plugin "

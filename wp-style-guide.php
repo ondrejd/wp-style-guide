@@ -168,17 +168,16 @@ class WP_Style_Guide {
 		$screen = get_current_screen();
 
 		if ( $screen->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
-			wp_enqueue_script( 'jquery-ui-accordion' );
-			wp_enqueue_script( 'jquery-ui-tabs' );
-			wp_enqueue_script( 'jquery-ui-dialog' );
-			wp_enqueue_script( 'jquery-ui-slider' );
-			wp_enqueue_script( 'jquery-ui-datepicker' );
-			wp_enqueue_script( 'jquery-ui-progressbar' );
-			wp_enqueue_script( 'jquery-ui-button' );
+			// Our CSS styles for jQuery UI
+			wp_register_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.min.css', __FILE__ ), false );
+			wp_register_style( 'wp-jquery-ui-theme', plugins_url( 'css/jquery-ui.theme.min.css', __FILE__ ), false );
+			wp_register_style( 'wp-jquery-ui-fixes', plugins_url( 'css/jquery-ui.fixes.css', __FILE__ ), false );
+			wp_enqueue_style( 'wp-jquery-ui' );
+			wp_enqueue_style( 'wp-jquery-ui-theme' );
+			wp_enqueue_style( 'wp-jquery-ui-fixes' );
 
-			wp_enqueue_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.css', __FILE__ ), false );
-
-			wp_register_script( 'wp_patterns_jqueryui_js', plugins_url( 'js/patterns-jqueryui.js', __FILE__ ), array( 'jquery', 'jquery-ui-core' ), false, true );
+			// Script for "jQuery UI Components" page
+			wp_register_script( 'wp_patterns_jqueryui_js', plugins_url( 'js/patterns-jqueryui.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-dialog', 'jquery-ui-slider', 'jquery-ui-datepicker', 'jquery-ui-progressbar', 'jquery-ui-button' , 'jquery-ui-autocomplete' ), false, true );
 			wp_enqueue_script( 'wp_patterns_jqueryui_js' );
 		}
 		elseif ( $screen->base === $this->screens['wp-patterns-wizards']['hookname'] ) {
@@ -191,13 +190,17 @@ class WP_Style_Guide {
 		}
 
 		wp_enqueue_style( 'wp-style-guide', plugins_url( 'css/wp-style-guide.css', __FILE__ ), false );
-		
 		wp_enqueue_style( 'dashicons-guide', plugins_url( 'css/dashicons.css', __FILE__ ), false );
+		wp_enqueue_style( 'prism-css', plugins_url( 'css/prism.css', __FILE__ ), false );
 
 		wp_enqueue_script( 'prism-js', plugins_url( 'js/prism.js', __FILE__ ), false );
-		wp_enqueue_style( 'prism-css', plugins_url( 'css/prism.css', __FILE__ ), false );
 	}
 
+	/**
+	 * Adds some styles directly to the header of a Wordpress administration page.
+	 * @return void
+	 * @todo Remove! Move into external CSS file and load in function {@see admin_enqueue_scripts()}.
+	 */
 	public function admin_head() {
 ?>
 <style>
@@ -238,6 +241,7 @@ class WP_Style_Guide {
 			return;
 		}
 
+		// Wizards
 		if ( $screen->id == $this->screens['wp-patterns-wizards']['hookname'] ) {
 			$wizard = filter_input( INPUT_GET, 'wizard' );
 
@@ -248,11 +252,13 @@ class WP_Style_Guide {
 				// ...
 			}
 			else {
-				$screen->add_help_tab( array(
-					'id'      => 'my_help_tab',
-					'title'   => __( 'Wizards', self::PLUGIN_SLUG ),
-					'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>', self::PLUGIN_SLUG ),
-				));
+				$screen->add_help_tab(
+					array(
+						'id'      => 'wpsg_wizards_help_tab',
+						'title'   => __( 'Wizards', self::PLUGIN_SLUG ),
+						'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>', self::PLUGIN_SLUG ),
+					)
+				);
 				$screen->set_help_sidebar(
 					sprintf(
 						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.</p>', self::PLUGIN_SLUG ),
@@ -261,13 +267,47 @@ class WP_Style_Guide {
 					)
 				);
 			}
-			
-			/*$screen->add_option(
-				'show_descriptions', 
+		}
+		// jQuery UI Components
+		elseif ( $screen->id == $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
+			$screen->add_help_tab(
 				array(
-					'label' => __( 'Show descriptions' ), 
-					'default' => 1, 
-					'option' => 'edit_show_descriptions'
+					'id'      => 'wpsg_jqueryui_help_tab2',
+					'title'   => __( 'Using jQuery UI', self::PLUGIN_SLUG ),
+					'content' => sprintf(
+						__( "<p>In <b>WordPress</b> are <a href=\"%s\" target=\"blank\">jQuery UI</a> stylesheets <b>not included</b> so we need to include it. This can be done pretty easily either by using some of exising <abbr title=\"Content Delivery Network\">CDN</abbr> or using your own copy of <b>jQuery UI</b> bundled with your plugin.</p><p>For more details se next tabs of this help.</p>", self::PLUGIN_SLUG ),
+						'http://jqueryui.com/'
+					)
+				)
+			);
+			$screen->add_help_tab(
+				array(
+					'id'      => 'wpsg_jqueryui_help_tab3',
+					'title'   => __( 'jQuery UI from CDN', self::PLUGIN_SLUG ),
+					'content' => sprintf(
+						__( "<p>Include needed stylesheets from some <abbr title=\"Content Delivery Network\">CDN</abbr> (there are plenty of them):</p><pre><code class=\"language-php\">/** @link http://snippets.webaware.com.au/snippets/load-a-nice-jquery-ui-theme-in-wordpress/ */\nfunction load_jquery_ui() {\n\tglobal \$wp_scripts;\n\t// tell WordPress to load jQuery UI tabs\n\twp_enqueue_script('jquery-ui-tabs');\n\t// get registered script object for jquery-ui\n\t\$ui = \$wp_scripts->query('jquery-ui-core');\n\t// tell WordPress to load the Smoothness theme from Google CDN\n\t\$protocol = is_ssl() ? 'https' : 'http';\n\t\$url = \"\$protocol://ajax.googleapis.com/ajax/libs/jqueryui/{\$ui->ver}/themes/smoothness/jquery-ui.min.css\";\n\twp_enqueue_style('jquery-ui-smoothness', \$url, false, null);\n}\n// If you need to load it in WordPress administration do this:\nadd_action( 'admin_enqueue_scripts', 'load_jquery_ui' );\n// Otherwise (for front-end) do this:\nadd_action( 'wp_enqueue_scripts', 'load_jquery_ui' );</code></pre>", self::PLUGIN_SLUG ),
+						'http://jqueryui.com/'
+					)
+				)
+			);
+			$screen->add_help_tab(
+				array(
+					'id'      => 'wpsg_jqueryui_help_tab4',
+					'title'   => __( 'Own jQuery UI', self::PLUGIN_SLUG ),
+					'content' => sprintf(
+						__( "<p>Place your own jQuery UI stylesheet (and images) within your plugin (for example we are using <code>js</code> and <code>css</code> sub-folders) and load it using script like this:<p><pre><code class=\"language-php\">function load_jquery_ui() {\n\t// Our CSS styles for jQuery UI (in `my_plugin/css` dir)\n\twp_register_style( 'my-jqueryui-css', plugins_url( 'css/jquery-ui.css', __FILE__ ), false );\n\twp_enqueue_style( 'my-jqueryui-css' );\n\t// Our JavaScript with jQuery UI as dependency:\n\twp_register_script(\n\t\t'my-jqueryui-js',\n\t\tplugins_url( 'js/myscript.js', __FILE__ ),\n\t\tarray(\n\t\t\t'jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-accordion', 'jquery-ui-tabs',\n\t\t\t'jquery-ui-dialog', 'jquery-ui-slider', 'jquery-ui-datepicker', 'jquery-ui-progressbar',\n\t\t\t'jquery-ui-button'\n\t\t),\n\t\tfalse,\n\t\ttrue\n\t);\n\twp_enqueue_script( 'my-jqueryui-js' );\n}\n\n// If you need to load it in WordPress administration do this:\nadd_action( 'admin_enqueue_scripts', 'load_jquery_ui' );\n// Otherwise (for front-end) do this:\nadd_action( 'wp_enqueue_scripts', 'load_jquery_ui' );</code></pre>", self::PLUGIN_SLUG ),
+						'http://jqueryui.com/'
+					)
+				)
+			);
+			// TODO Add option for showing source code examples by default!
+			/*$screen->add_option(
+				'show_source_code',
+				array(
+					'label' => __( 'Show source codes', self::PLUGIN_SLUG ),
+					'description' => __( 'Show source codes of the examples.', self::PLUGIN_SLUG ),
+					'default' => false,
+					'option' => 'wpsg_jqueryui_show_source_code'
 				)
 			);*/
 		}

@@ -1,0 +1,98 @@
+/*
+* Updates for jQuery UI v1.11.4 and `wp-style-guide` plugin.
+*/
+
+/**
+ * DIALOG
+ */
+
+.ui-dialog {
+	overflow: hidden;
+	position: relative;
+	top: auto;
+	left: auto;
+	padding: .2em;
+	outline: 0;
+}
+.ui-dialog .ui-dialog-titlebar {
+	padding: .4em 1em;
+	position: relative;
+}
+.ui-dialog .ui-dialog-title {
+	float: left;
+	margin: .1em 0;
+	white-space: nowrap;
+	width: 90%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	position: absolute;
+	right: .3em;
+	top: 50%;
+	width: 21px;
+	margin: -10px 0 0 0;
+	padding: 1px;
+	height: 20px;
+}
+.ui-dialog .ui-dialog-content {
+	position: relative;
+	border: 0;
+	padding: .5em 1em;
+	background: none;
+	overflow: auto;
+}
+.ui-dialog .ui-dialog-buttonpane {
+	text-align: left;
+	border-width: 1px 0 0 0;
+	background-image: none;
+	margin-top: .5em;
+	padding: .3em 1em .5em .4em;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: right;
+}
+.ui-dialog .ui-dialog-buttonpane button {
+	margin: .5em .4em .5em 0;
+	cursor: pointer;
+}
+.ui-dialog .ui-resizable-se {
+	width: 12px;
+	height: 12px;
+	right: -5px;
+	bottom: -5px;
+	background-position: 16px 16px;
+}
+.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+
+/**
+ * DIALOG WIDGET
+ */
+.ui-widget-content {
+	padding: 0px;
+	border: 0px;
+}
+.ui-dialog .ui-dialog-buttonpane {
+	border-top: 1px solid #eee;
+}
+
+/**
+ * DIALOG WIDGET TITLES
+ */
+.ui-dialog .ui-dialog-title {
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 600;
+}
+
+/**
+ * VERTICAL SLIDER HANDLE FIX
+ */
+.ui-slider-vertical .ui-slider-handle {
+	height: 1.3em !important;
+	left: -1.5em;
+	margin-bottom: -0.7em !important;
+	width: 1.3em;
+}
