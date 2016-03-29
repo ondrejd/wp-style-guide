@@ -2,34 +2,34 @@
  * JavaScripts for "Patterns Library -> jQuery UI Components" page.
  */
 
-jQuery(document).on("ready", function() {
+jQuery(document).on('ready', function() {
 	// Accordion
 	var accordionHeight1;
-	jQuery("#accordion-1").accordion({
+	jQuery('#accordion-1').accordion({
 		// Note: Fix for height.
 		create: function(event, ui) {
 			accordionHeight1 = event.target.clientHeight;
-			jQuery(event.target).parent().css("height", accordionHeight1 + "px");
+			jQuery(event.target).parent().css('height', accordionHeight1 + 'px');
 		},
-		header: "h3"
+		header: 'h3'
 	});
-	jQuery("#accordion-2").accordion({
+	jQuery('#accordion-2').accordion({
 		// Note: Fix for height.
 		create: function(event, ui) {
 			if (event.target.clientHeight > accordionHeight1) {
-				jQuery(event.target).parent().css("height", event.target.clientHeight + "px");
+				jQuery(event.target).parent().css('height', event.target.clientHeight + 'px');
 			}
 		}
-	}).accordion("option", "icons", false);
+	}).accordion('option', 'icons', false);
 
 	// Autocomplete
-	jQuery("#autocomplete").val(null).autocomplete({
-		source: [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby", "objective-c", "python", "rust", "go", "vala" ]
+	jQuery('#autocomplete').val(null).autocomplete({
+		source: [ 'c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'objective-c', 'python', 'rust', 'go', 'vala' ]
 	});
 
 	// Button
-	jQuery("#button").button();
-	jQuery("#radioset").buttonset();
+	jQuery('#button').button();
+	jQuery('#radioset').buttonset();
 
 	// Tabs
 	jQuery('#tabs').tabs();
