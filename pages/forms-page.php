@@ -53,6 +53,7 @@ endif;
 	<h3 class="screen-reader-text"><?php esc_html_e( 'List of Contents', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<ul class="subsubsub">
 		<li><b><?php esc_html_e( 'Contents:', WP_Style_Guide::PLUGIN_SLUG ); ?></b> </li>
+		<li><a href="#tr-helper_functions"><?php esc_html_e( 'Helper functions', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-text_input"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-select"><?php esc_html_e( 'Select element', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-multi_select"><?php esc_html_e( 'Multiple Select', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
@@ -69,7 +70,23 @@ endif;
 	<form id="form" style="clear: both; padding-top: 20px;">
 		<table class="form-table">
 			<tbody>
-				<tr id="tr-text_input">
+				<tr id="tr-helper_functions">
+					<th>
+						<label for="input-text"><?php esc_html_e( 'Helper functions', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+					</th>
+					<td class="wp-pattern-example">
+						<p><?php _e( '<b>WordPress</b> contains three helper functions for rendering <code>disabled</code>, <code>checked</code> or <code>selected</code> attributes: '); ?></p>
+						<pre><code class="language-php">checked( $checked, $current = TRUE, $echo = TRUE );
+ selected( $selected, $current = TRUE, $echo = TRUE );
+ disabled( $disabled, $current = TRUE, $echo = TRUE );</code></pre>
+						<p><?php _e( ' So instead of writing something like this:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+						<pre><code class="language-php">&lt;input type="checkbox" &lt;?php echo ( /* condition */ ) ? ' checked="checked"' : ''; ?&gt;&gt;</code></pre>
+						<p><?php _e( ' You can do just this:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+						<pre><code class="language-php">&lt;input type="checkbox" &lt;?php checked( /* condition */ ); ?&gt;&gt;</code></pre>
+					</td>
+				</tr>
+				<tr id="tr-text_input"><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>
+				<tr>
 					<th>
 						<label for="input-text"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
@@ -304,16 +321,19 @@ endif;
 						<label for="input-time"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
-						<input type="submit" value="<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button" /><br /><br />
-						<input type="button" value="<?php esc_html_e( 'Secondary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-secondary" /><br /><br />
-						<input type="button" value="<?php esc_html_e( 'Primary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-primary" />
-						<?php render_code_example_begin( 'buttons' ); ?>
+						<?php /* TODO Find URL to WordPress function reference */?>
+						<p><?php _e( '<b>WordPress</b> contains helper function for rendering submit buttons <code><a href="#" target="blank">submit_button</a>( $text = null, $type = \'primary\', $name = \'submit\', $wrap = true, $other_attributes = null )</code>:'); ?></p>
+						<pre><code class="language-php">submit_button( '<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG );?>', 'primary', 'my-submit' );</code></pre>
+						<?php submit_button( esc_html( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ), 'primary', 'my-submit' );?>
+						<p><?php _e( 'But you can also use plain HTML:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
 						<pre><code class="language-markup">
 &lt;input type="submit" value="<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button" />
 &lt;input type="button" value="<?php esc_html_e( 'Secondary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-secondary" />
 &lt;input type="button" value="<?php esc_html_e( 'Primary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-primary" />
 						</code></pre>
-						<?php render_code_example_end( 'buttons' ); ?>
+						<input type="submit" value="<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button" /><br /><br />
+						<input type="button" value="<?php esc_html_e( 'Secondary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-secondary" /><br /><br />
+						<input type="button" value="<?php esc_html_e( 'Primary Button', WP_Style_Guide::PLUGIN_SLUG ); ?>" class="button-primary" />
 					</td>
 				</tr>
 				<tr id="tr-form_table"><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>

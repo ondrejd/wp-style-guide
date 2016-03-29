@@ -1,7 +1,30 @@
 <div class="wrap">
 	<?php screen_icon(); ?>
 
-	<h2><?php esc_html_e( 'Color Helper Classes', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
+	<h2><?php esc_html_e( 'Style Helper Classes', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
+
+	<div class="wp-pattern-example">
+		<h3><?php esc_html_e( 'Alignment', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
+
+		<table class="wp-pattern-table">
+		<thead>
+			<tr>
+				<th class="example-code"><?php esc_html_e( 'Class', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
+				<th class="example-descrip"><?php esc_html_e( 'Description', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><code>.alignleft</code></td>
+				<td><span class="alignleft"><?php esc_html_e( 'Elements with left alignment.', WP_Style_Guide::PLUGIN_SLUG ); ?></span></td>
+			</tr>
+			<tr>
+				<td><code>.alignright</code></td>
+				<td><span class="alignright"><?php esc_html_e( 'Elements with rign alignment.', WP_Style_Guide::PLUGIN_SLUG ); ?></span></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
 
 	<div class="wp-pattern-example">
 		<h3><?php esc_html_e( 'Blocks', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
@@ -36,8 +59,8 @@
 		<table class="wp-pattern-table">
 		<thead>
 			<tr>
-				<th class="wp-pattern-example-code"><?php esc_html_e( 'Class', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
-				<th class="wp-pattern-example-descrip"><?php esc_html_e( 'Description', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
+				<th class="example-code"><?php esc_html_e( 'Class', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
+				<th class="example-descrip"><?php esc_html_e( 'Description', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
 			</tr>
 		</thead>
 		<tbody>

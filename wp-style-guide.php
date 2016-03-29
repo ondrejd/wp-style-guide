@@ -91,14 +91,26 @@ class WP_Style_Guide {
 				'callback' => 'forms_page', // note that this has to be a class method
 				'hookname' => null,
 			),
+			'wp-patterns-tables' => array(
+				'page_title' => __( 'Tables', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'Tables', self::PLUGIN_SLUG ),
+				'callback' => 'tables_page', // note that this has to be a class method
+				'hookname' => null,
+			),
+			'wp-patterns-adminui' => array(
+				'page_title' => __( 'Other Admin Widgets', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'Other Widgets', self::PLUGIN_SLUG ),
+				'callback' => 'adminui_page', // note that this has to be a class method
+				'hookname' => null,
+			),
 			'wp-patterns-jquery-ui' => array(
 				'page_title' => __( 'jQuery UI Components', self::PLUGIN_SLUG ),
-				'menu_title' => __( 'jQuery UI Components', self::PLUGIN_SLUG ),
+				'menu_title' => __( 'jQuery UI', self::PLUGIN_SLUG ),
 				'callback' => 'jquery_ui', // note that this has to be a class method
 				'hookname' => null,
 			),
 			'wp-patterns-helper-classes' => array(
-				'page_title' => __( 'Helper Classes', self::PLUGIN_SLUG ),
+				'page_title' => __( 'Style Helper Classes', self::PLUGIN_SLUG ),
 				'menu_title' => __( 'Helper Classes', self::PLUGIN_SLUG ),
 				'callback' => 'helper_classes', // note that this has to be a class method
 				'hookname' => null,
@@ -215,6 +227,9 @@ class WP_Style_Guide {
 	.mp6 #adminmenu .<?php echo $this->hookname; ?> .wp-menu-image:before {
 		content: '\f309';
 	}
+
+	/* Page "Helper classes" */
+	table.wp-pattern-table th.example-code { width: 30%; }
 </style>
 <?php
 	}
@@ -382,37 +397,17 @@ class WP_Style_Guide {
 	}
 
 	/**
-	 * Output for our top level screen
+	 * Output for our top level screen.
 	 * @return void
 	 */
 	public function toc() {
-?>
-<div class="wrap">
+		$screens = $this->screens;
 
-	<?php screen_icon(); ?>
-
-	<h2><?php _e( 'WordPress Admin Pattern Library', self::PLUGIN_SLUG ); ?></h2>
-
-	<h3><?php _e( 'Table of Contents', self::PLUGIN_SLUG ); ?></h3>
-
-	<ul class="ul-disc">
-	<?php foreach( $this->screens as $slug => $args ) : ?>
-		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $slug ) ); ?>"><?php echo esc_html( $args['page_title'] ); ?></a></li>
-	<?php endforeach; ?>
-	</ul>
-
-	<h3><?php _e( 'Usefull links', self::PLUGIN_SLUG ); ?></h3>
-	<ul class="ul-disc">
-		<li><a href="https://developer.wordpress.org/resource/dashicons" target="blank"><?php _e( 'Developer Resources: Dashicons', self::PLUGIN_SLUG ); ?></a></li>
-		<li><a href="https://codex.wordpress.org/Database_Description" target="blank"><?php _e( 'WordPress Database Description', self::PLUGIN_SLUG ); ?></a></li>
-	</ul>
-
-</div><!-- .wrap -->
-<?php
+		include_once( 'pages/toc.php' );
 	}
 
 	/**
-	 * Output jQuery UI components admin page using jQuery UI's theme visual test
+	 * Output page "jQuery UI Components".
 	 * @return void
 	 */
 	public function jquery_ui() {
@@ -420,19 +415,43 @@ class WP_Style_Guide {
 	}
 
 	/**
-	 * Output form component admin page
+	 * Output page "Forms".
 	 * @return void
 	 */
 	public function forms_page() {
 		include_once( 'pages/forms-page.php' );
 	}
 
+	/**
+	 * Output page "Style Helper Classes".
+	 * @return void
+	 */
 	public function helper_classes() {
 		include_once( 'pages/helper-classes.php' );
 	}
 
+	/**
+	 * Output page "Wizards".
+	 * @return void
+	 */
 	public function wizards() {
 		include_once( 'pages/wizards.php' );
+	}
+
+	/**
+	 * Output page "Wizards".
+	 * @return void
+	 */
+	public function tables_page() {
+		include_once( 'pages/tables.php' );
+	}
+
+	/**
+	 * Output page "Admin Widgets".
+	 * @return void
+	 */
+	public function adminui_page() {
+		include_once( 'pages/adminui.php' );
 	}
 }
 

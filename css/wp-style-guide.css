@@ -84,3 +84,32 @@ ul#icons span.ui-icon {
 .ui-widget-overlay {
 	position: absolute;
 } /* fixed doesn't actually work? */
+
+/**
+ * Page "Other widgets", admin colors table
+ */
+.admin-colors-table .name-col {
+	width: 15%;
+}
+.admin-colors-table .subname-col {
+	width: 80px;
+	font-size: 80%;
+	vertical-align: middle;
+}
+.admin-colors-table th small {
+	font-weight: normal;
+}
+.admin-colors-table .color_example {
+	display: inline-block;
+	display: inline-block;
+	height: 24px;
+	width: 24%;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.01);
+}
+.admin-colors-table .color_example-icon {
+	width: 32%;
+}
+.color_example:hover {
+	/*border: 1px solid #f30 !important;*/
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
