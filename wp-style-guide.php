@@ -30,10 +30,11 @@ class WP_Style_Guide {
 	private $hookname;
 
 	/**
-	* Default options of the plugin.
-	* @var array
-	*/
+	 * Default options of the plugin.
+	 * @var array
+	 */
 	private $default_options = array(
+		// Default values for the wizards
 		'default_install_text' => "1. Upload plugin folder to the `/wp-content/plugins/` directory\n2. Activate the plugin through the 'Plugins' menu in WordPress\n",
 		'default_faq_text' => "= Question #1 =\n\nAnswer #1 ...\n",
 		'default_changelog_text' => "= 0.0.1 =\n* initial version\n",
@@ -42,32 +43,34 @@ class WP_Style_Guide {
 		'default_has_administration' => true,
 		'default_has_options' => true,
 		'default_has_own_dbtables' => false,
-		'default_has_localization' => true
+		'default_has_localization' => true,
+		// Show source code examples by default
+		'display_source_code_examples' => true
 	);
 
 	/**
 	 * Set up hooks.
+	 * @return void
+	 * @uses add_action()
+	 * @uses is_admin()
 	 */
 	public function __construct() {
 		// Note: This must be first because of localization
 		//add_action( 'init', array( $this, 'init_textdomain' ) );
 		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'admin_head', array( $this, 'admin_head' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-	}
 
-	/**
-	 * Initialize textdomain.
-	 * @return void
-	 * @uses load_plugin_textdomain()
-	 */
-	public function init_textdomain() {
+		if ( is_admin() ) {
+			add_action( 'admin_init', array( $this, 'save_screen_options' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+			add_action( 'admin_head', array( $this, 'admin_head' ) );
+			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		}
 	}
 
 	/**
 	 * Initialize plugin.
 	 * @return void
+	 * @uses load_plugin_textdomain()
 	 */
 	public function init() {
 		load_plugin_textdomain( self::PLUGIN_SLUG, false, 'wp-style-guide/languages' );
@@ -114,7 +117,7 @@ class WP_Style_Guide {
 		$options = get_option( self::PLUGIN_SLUG . '-options' );
 		$need_update = false;
 
-		if ( $options === false ) {
+		if ( !is_array( $options) ) {
 			$need_update = true;
 			$options = array();
 		}
@@ -167,19 +170,24 @@ class WP_Style_Guide {
 	public function admin_enqueue_scripts() {
 		$screen = get_current_screen();
 
-		if ( $screen->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
-			// Our CSS styles for jQuery UI
+		// Page "Forms"
+		if ( $screen->base === $this->screens['wp-patterns-forms']['hookname']) {
+			wp_register_script( 'wp_patterns_forms', plugins_url( 'js/patterns-forms.js', __FILE__ ), array( 'jquery' ), false, true );
+			wp_enqueue_script( 'wp_patterns_forms' );
+		}
+		// Page "jQuery UI Components"
+		elseif ( $screen->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
 			wp_register_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.min.css', __FILE__ ), false );
-			wp_register_style( 'wp-jquery-ui-theme', plugins_url( 'css/jquery-ui.theme.min.css', __FILE__ ), false );
-			wp_register_style( 'wp-jquery-ui-fixes', plugins_url( 'css/jquery-ui.fixes.css', __FILE__ ), false );
 			wp_enqueue_style( 'wp-jquery-ui' );
+			wp_register_style( 'wp-jquery-ui-theme', plugins_url( 'css/jquery-ui.theme.min.css', __FILE__ ), false );
 			wp_enqueue_style( 'wp-jquery-ui-theme' );
+			wp_register_style( 'wp-jquery-ui-fixes', plugins_url( 'css/jquery-ui.fixes.css', __FILE__ ), false );
 			wp_enqueue_style( 'wp-jquery-ui-fixes' );
 
-			// Script for "jQuery UI Components" page
 			wp_register_script( 'wp_patterns_jqueryui_js', plugins_url( 'js/patterns-jqueryui.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-dialog', 'jquery-ui-slider', 'jquery-ui-datepicker', 'jquery-ui-progressbar', 'jquery-ui-button' , 'jquery-ui-autocomplete' ), false, true );
 			wp_enqueue_script( 'wp_patterns_jqueryui_js' );
 		}
+		// Wizards
 		elseif ( $screen->base === $this->screens['wp-patterns-wizards']['hookname'] ) {
 			$wizard = filter_input( INPUT_GET, 'wizard' );
 
@@ -232,7 +240,6 @@ class WP_Style_Guide {
 	 * Add help.
 	 * @return void
 	 * @uses get_current_screen()
-	 * @todo Finish this!
 	 */
 	public function create_help_screen() {
 		$screen = get_current_screen();
@@ -241,34 +248,12 @@ class WP_Style_Guide {
 			return;
 		}
 
-		// Wizards
-		if ( $screen->id == $this->screens['wp-patterns-wizards']['hookname'] ) {
-			$wizard = filter_input( INPUT_GET, 'wizard' );
-
-			if ( $wizard == 'plugin' ) {
-				// ...
-			}
-			elseif ( $wizard == 'theme' ) {
-				// ...
-			}
-			else {
-				$screen->add_help_tab(
-					array(
-						'id'      => 'wpsg_wizards_help_tab',
-						'title'   => __( 'Wizards', self::PLUGIN_SLUG ),
-						'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>', self::PLUGIN_SLUG ),
-					)
-				);
-				$screen->set_help_sidebar(
-					sprintf(
-						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.</p>', self::PLUGIN_SLUG ),
-						'#',
-						'#'
-					)
-				);
-			}
+		// Page "Forms"
+		if ( $screen->id == $this->screens['wp-patterns-forms']['hookname']) {
+			add_filter( 'screen_layout_columns', array( $this, 'display_forms_screen_options' ) );
+			$screen->add_option( 'display_source_code_examples', '' );
 		}
-		// jQuery UI Components
+		// Page "jQuery UI Components"
 		elseif ( $screen->id == $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
 			$screen->add_help_tab(
 				array(
@@ -300,16 +285,99 @@ class WP_Style_Guide {
 					)
 				)
 			);
-			// TODO Add option for showing source code examples by default!
-			/*$screen->add_option(
-				'show_source_code',
-				array(
-					'label' => __( 'Show source codes', self::PLUGIN_SLUG ),
-					'description' => __( 'Show source codes of the examples.', self::PLUGIN_SLUG ),
-					'default' => false,
-					'option' => 'wpsg_jqueryui_show_source_code'
-				)
-			);*/
+		}
+		// Wizards
+		elseif ( $screen->id == $this->screens['wp-patterns-wizards']['hookname'] ) {
+			$wizard = filter_input( INPUT_GET, 'wizard' );
+
+			if ( $wizard == 'plugin' ) {
+				// TODO Finish this!
+			}
+			elseif ( $wizard == 'theme' ) {
+				// TODO Finish this!
+			}
+			else {
+				$screen->add_help_tab(
+					array(
+						'id'      => 'wpsg_wizards_help_tab',
+						'title'   => __( 'Wizards', self::PLUGIN_SLUG ),
+						'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>', self::PLUGIN_SLUG ),
+					)
+				);
+				$screen->set_help_sidebar(
+					sprintf(
+						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.</p>', self::PLUGIN_SLUG ),
+						'#',
+						'#'
+					)
+				);
+			}
+		}
+	}
+
+	/**
+	 * Render form with screen options (page "Forms").
+	 * @return void
+	 * @uses esc_html_e()
+	 * @uses get_current_screen()
+	 * @uses wp_nonce_field()
+	 */
+	public function display_forms_screen_options() {
+		$screen = get_current_screen();
+
+		if ( $screen->id == $this->screens['wp-patterns-forms']['hookname']) {
+			$display_examples = ( ( bool ) self::get_option( 'display_source_code_examples' ) === true ) ? true : false;
+?>
+<div id="screen-options-wrap" class="hidden" aria-label="<?php esc_html_e( 'Screen Options Tab', self::PLUGIN_SLUG ); ?>">
+	<form name="forms_screen_options-form" method="post">
+		<?php echo wp_nonce_field( -1, self::PLUGIN_SLUG . '-nonce', true, false); ?>
+		<input type="hidden" name="screen_name" value="<?php echo $screen->id; ?>" />
+		<fieldset>
+			<legend><?php esc_html_e( 'Source code examples', self::PLUGIN_SLUG ); ?></legend>
+			<label for="<?php echo self::PLUGIN_SLUG; ?>-display_source_code_examples" title="<?php esc_html_e( 'Show source code examples by default.', self::PLUGIN_SLUG ); ?>">
+				<input type="checkbox" name="display_source_code_examples" id="<?php echo self::PLUGIN_SLUG; ?>-display_source_code_examples" <?php echo checked( $display_examples ); ?>/>
+				<?php esc_html_e( 'Check if you want source code examples be visible by default.', self::PLUGIN_SLUG ); ?>
+			</label>
+		</fieldset>
+		<p class="submit">
+			<input type="submit" name="<?= self::PLUGIN_SLUG ?>-submit_forms_screen_options" value="<?php esc_html_e( 'Apply', self::PLUGIN_SLUG ); ?>" class="button button-primary" />
+		</p>
+	</form>
+</div>
+<?php
+		}
+	}
+
+	/**
+	 * Save screen options.
+	 * @return void
+	 * @uses get_option()
+	 * @uses update_option()
+	 * @uses wp_verify_nonce()
+	 */
+	function save_screen_options() {
+		if (
+			filter_input(INPUT_POST, self::PLUGIN_SLUG . '-submit_forms_screen_options') &&
+			(bool) wp_verify_nonce(filter_input(INPUT_POST, self::PLUGIN_SLUG . '-nonce')) === true
+		) {
+			$display_examples = (string) filter_input( INPUT_POST, 'display_source_code_examples' );
+			$display_examples = ( strtolower( $display_examples ) == 'on' ) ? true : false;
+			$options = $this->get_options();
+			$need_update = false;
+
+			if ( !array_key_exists('display_source_code_examples', $options ) ) {
+				$need_update = true;
+			}
+
+			if ( !$need_update && $options['display_source_code_examples'] != $display_examples ) {
+				$need_update = true;
+			}
+
+			if ( $need_update === true ) {
+				$options['display_source_code_examples'] = $display_examples;
+
+				update_option( self::PLUGIN_SLUG . '-options', $options );
+			}
 		}
 	}
 
