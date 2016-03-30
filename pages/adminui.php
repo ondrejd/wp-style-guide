@@ -129,7 +129,6 @@ add_action( 'admin_menu', 'add_user_menu_bubble' );
 		} else {
 			jQuery(this).next().css('visibility', 'collapse');
 		}
-
 	});
 });</code></pre>
 		<p class="submit submit-example">
