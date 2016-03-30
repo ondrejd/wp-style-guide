@@ -187,6 +187,15 @@ class WP_Style_Guide {
 			wp_register_script( 'wp_patterns_forms', plugins_url( 'js/patterns-forms.js', __FILE__ ), array( 'jquery' ), false, true );
 			wp_enqueue_script( 'wp_patterns_forms' );
 		}
+		// Page "Tables"
+		elseif ( $screen->base === $this->screens['wp-patterns-tables']['hookname']) {
+			// ...
+		}
+		// Page "Other Widgets"
+		elseif ( $screen->base === $this->screens['wp-patterns-adminui']['hookname']) {
+			wp_register_script( 'wp_patterns_adminui', plugins_url( 'js/patterns-adminui.js', __FILE__ ), array( 'jquery' ), false, true );
+			wp_enqueue_script( 'wp_patterns_adminui' );
+		}
 		// Page "jQuery UI Components"
 		elseif ( $screen->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
 			wp_register_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.min.css', __FILE__ ), false );

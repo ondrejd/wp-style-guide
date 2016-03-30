@@ -9,7 +9,8 @@
 		<li><b><?php esc_html_e( 'Contents:', WP_Style_Guide::PLUGIN_SLUG ); ?></b> </li>
 		<li><a href="#br-admin_notices"><?php esc_html_e( 'Admin Notices', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#br-bubble_icon"><?php esc_html_e( 'Bubble Icon', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
-		<li><a href="#br-admin_colors"><?php esc_html_e( 'Admin Colors', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
+		<li><a href="#br-admin_colors"><?php esc_html_e( 'Admin Colors', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#br-spinner"><?php esc_html_e( 'Spinners', WP_Style_Guide::PLUGIN_SLUG );?></a></li>
 	</ul>
 
 	<!-- Admin notices -->
@@ -60,7 +61,7 @@ add_action( 'admin_menu', 'add_user_menu_bubble' );
 	<h2><?php esc_html_e( 'Admin Colors', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
 	<div class="wp-pattern-example">
 		<p><?php _e( 'Here are listed color schemas provided by <b>WordPress</b> administration:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
-		<table class="form-table admin-colors-table">
+		<table class="widefat admin-colors-table">
 			<thead>
 				<tr>
 					<th class="name-col"><?php esc_html_e( 'Schema name', WP_Style_Guide::PLUGIN_SLUG ); ?></th>
@@ -101,5 +102,41 @@ add_action( 'admin_menu', 'add_user_menu_bubble' );
 		</table>
 	</div>
 	<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
+
+	<!-- Spinners -->
+	<br id="br-spinners" />
+	<h2><?php esc_html_e( 'Spinners', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
+	<div class="wp-pattern-example">
+		<p><?php printf( __( 'This element is new since <b>WordPress</b> version <b>4.2</b> (<a href="%s" target="blank">more details</a>). Is oftenly used in inline forms while AJAX submitting is performed. See example below:', WP_Style_Guide::PLUGIN_SLUG ), 'https://make.wordpress.org/core/2015/04/23/spinners-and-dismissible-admin-notices-in-4-2/' ); ?></p>
+		<p><?php esc_html_e( 'Here is an excerpt from required HTML code:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+		<pre><code class="language-markup">&lt;p class="submit submit-example"&gt;
+	&lt;button class="button-primary save alignright" type="button"&gt;<?php esc_html_e( 'Click me!', WP_Style_Guide::PLUGIN_SLUG ); ?>&lt;/button&gt;
+	&lt;span class="spinner is-active" style="visibility: collapse;"&gt;&lt;/span&gt;
+	&lt;div class="clear" /&gt;
+&lt;/p&gt;</code></pre>
+		<p><?php esc_html_e( 'And here is JavaScript code which toggles visibility of the spinner:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+		<pre><code class="language-javascript">jQuery(document).on('load', function() {
+	jQuery('.submit-example button').on('click', function() {
+		// <?php _e( 'Here you should have just:', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+		// jQuery(this).next().css('visibility', 'visible');
+		// <?php _e( '... and some code that follows. When is execution of this code', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+		// <?php _e( 'finished don\'t forgot to hide spinner again:', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+		// jQuery(this).next().css('visibility', 'collapse');
+
+		// <?php _e( 'In our demo we just toggling visibility of the spinner:', WP_Style_Guide::PLUGIN_SLUG ); ?> 
+		if (jQuery(this).next().css('visibility') == 'collapse') {
+			jQuery(this).next().css('visibility', 'visible');
+		} else {
+			jQuery(this).next().css('visibility', 'collapse');
+		}
+
+	});
+});</code></pre>
+		<p class="submit submit-example">
+			<button class="button-primary save alignright" type="button"><?php esc_html_e( 'Click me!', WP_Style_Guide::PLUGIN_SLUG ); ?></button>
+			<span class="spinner is-active" style="visibility: collapse;"></span>
+			<div class="clear" />
+		</p>
+	</div>
 
 </div><!-- .wrap -->
