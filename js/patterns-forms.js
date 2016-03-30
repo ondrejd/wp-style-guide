@@ -4,8 +4,6 @@
 
 // TODO Translate strings!
 jQuery( document ).on( 'ready', function() {
-	console.log( 'patterns-forms.js' );
-
 	jQuery( '.code-example-link' ).on( 'click', function() {
 		var example_id = jQuery( this ).data( 'example_id' );
 		var visibility = jQuery( this ).data( 'visibility' );
