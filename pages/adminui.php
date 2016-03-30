@@ -10,7 +10,7 @@
 		<li><a href="#br-admin_notices"><?php esc_html_e( 'Admin Notices', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#br-bubble_icon"><?php esc_html_e( 'Bubble Icon', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#br-admin_colors"><?php esc_html_e( 'Admin Colors', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
-		<li><a href="#br-spinner"><?php esc_html_e( 'Spinners', WP_Style_Guide::PLUGIN_SLUG );?></a></li>
+		<li><a href="#br-spinner"><?php esc_html_e( 'Spinner', WP_Style_Guide::PLUGIN_SLUG );?></a></li>
 	</ul>
 
 	<!-- Admin notices -->
@@ -104,8 +104,8 @@ add_action( 'admin_menu', 'add_user_menu_bubble' );
 	<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 
 	<!-- Spinners -->
-	<br id="br-spinners" />
-	<h2><?php esc_html_e( 'Spinners', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
+	<br id="br-spinner" />
+	<h2><?php esc_html_e( 'Spinner', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
 	<div class="wp-pattern-example">
 		<p><?php printf( __( 'This element is new since <b>WordPress</b> version <b>4.2</b> (<a href="%s" target="blank">more details</a>). Is oftenly used in inline forms while AJAX submitting is performed. See example below:', WP_Style_Guide::PLUGIN_SLUG ), 'https://make.wordpress.org/core/2015/04/23/spinners-and-dismissible-admin-notices-in-4-2/' ); ?></p>
 		<p><?php esc_html_e( 'Here is an excerpt from required HTML code:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
