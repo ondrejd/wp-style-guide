@@ -22,11 +22,13 @@
 		<pre><code class="language-markup">&lt;div class="notice notice-error"&gt;&lt;p&gt;<?php esc_attr_e( 'Error notice', WP_Style_Guide::PLUGIN_SLUG ); ?>&lt;/p&gt;&lt;/div&gt;
  &lt;div class="notice notice-warning"&gt;&lt;p&gt;<?php esc_attr_e( 'Warning notice', WP_Style_Guide::PLUGIN_SLUG ); ?>&lt;/p&gt;&lt;/div&gt;
  &lt;div class="notice notice-success"&gt;&lt;p&gt;<?php esc_attr_e( 'Success notice', WP_Style_Guide::PLUGIN_SLUG ); ?>&lt;/p&gt;&lt;/div&gt;
- &lt;div class="notice notice-info"&gt;&lt;p&gt;<?php esc_attr_e( 'Informational notice', WP_Style_Guide::PLUGIN_SLUG ); ?>&lt;/p&gt;&lt;/div&gt;</code></pre>
+ &lt;div class="notice notice-info is-dismissible"&gt;&lt;p&gt;<?php esc_attr_e( 'Informational notice', WP_Style_Guide::PLUGIN_SLUG ); ?>&lt;/p&gt;&lt;/div&gt;</code></pre>
 
-		<p><?php esc_html_e( 'And result looks just fine:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+		<p><?php esc_html_e( 'And the resulting notices looks like this:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
 
 		<img src="<?php echo plugins_url( '../images/admin_notices.png', __FILE__ ); ?>" alt="<?php esc_attr_e( 'Example notices', WP_Style_Guide::PLUGIN_SLUG ); ?>"/>
+
+		<p><?php _e( 'As you can see the last notice is also dismissible - this is because of using class <code>.is-dismissible</code>. If you want to store state of dismissible notice you can use small library <a href="https://github.com/CalderaWP/dismissible_notice/tree/master/src">CalderaWP/dismissible_notice</a>.' ); ?></p>
 	</div>
 	<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 
@@ -34,7 +36,7 @@
 	<br id="br-bubble_icon" class="clear" />
 	<h2><?php esc_html_e( 'Bubble Icon', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
 	<div class="wp-pattern-example">
-		<p><?php sprintf( __( 'Sometimes you want to show count of items for an admin menu item (doesn\'t matter if it is your menuitem or <i>WP</i> original). It\'s pretty simple you just need to add hook for action <code>%s</code> and update any menu item you want: ', WP_Style_Guide::PLUGIN_SLUG ), 'add_user_menu_bubble' ); ?></p>
+		<p><?php printf( __( 'Sometimes you want to show count of items for an admin menu item (doesn\'t matter if it is your menuitem or <i>WP</i> original). It\'s pretty simple you just need to add hook for action <code>%s</code> and update any menu item you want: ', WP_Style_Guide::PLUGIN_SLUG ), 'add_user_menu_bubble' ); ?></p>
 		<pre><code class="language-php">/**
 &nbsp; * @global array $menu
 &nbsp; * @return void;
