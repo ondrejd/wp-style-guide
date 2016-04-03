@@ -28,7 +28,7 @@
 
 		<img src="<?php echo plugins_url( '../images/admin_notices.png', __FILE__ ); ?>" alt="<?php esc_attr_e( 'Example notices', WP_Style_Guide::PLUGIN_SLUG ); ?>"/>
 
-		<p><?php _e( 'As you can see the last notice is also dismissible - this is because of using class <code>.is-dismissible</code>. If you want to store state of dismissible notice you can use small library <a href="https://github.com/CalderaWP/dismissible_notice/tree/master/src">CalderaWP/dismissible_notice</a>.' ); ?></p>
+		<p><?php printf( __( 'As you can see the last notice is also dismissible - this is because of using class <code>.is-dismissible</code>. If you want to store state of dismissible notice you can use small library <a href="">CalderaWP/dismissible_notice</a>.', WP_Style_Guide::PLUGIN_SLUG ), 'https://github.com/CalderaWP/dismissible_notice/tree/master/src' ); ?></p>
 	</div>
 	<p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p>
 
@@ -36,7 +36,7 @@
 	<br id="br-bubble_icon" class="clear" />
 	<h2><?php esc_html_e( 'Bubble Icon', WP_Style_Guide::PLUGIN_SLUG ); ?></h2>
 	<div class="wp-pattern-example">
-		<p><?php printf( __( 'Sometimes you want to show count of items for an admin menu item (doesn\'t matter if it is your menuitem or <i>WP</i> original). It\'s pretty simple you just need to add hook for action <code>%s</code> and update any menu item you want: ', WP_Style_Guide::PLUGIN_SLUG ), 'add_user_menu_bubble' ); ?></p>
+		<p><?php printf( __( 'Sometimes you want to show count of items for an admin menu item (doesn\'t matter if it is your menuitem or <i>WP</i> original). It\'s pretty simple you just need to add hook for action <code><a href="%s" target="blank">admin_menu</a></code> and update any menu item you want: ', WP_Style_Guide::PLUGIN_SLUG ), 'https://codex.wordpress.org/Plugin_API/Action_Reference/admin_menu' ); ?></p>
 		<pre><code class="language-php">/**
 &nbsp; * @global array $menu
 &nbsp; * @return void;
