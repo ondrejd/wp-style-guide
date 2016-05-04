@@ -321,9 +321,9 @@ endif;
 						<label for="input-time"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
-						<?php /* TODO Find URL to WordPress function reference */?>
-						<p><?php _e( '<b>WordPress</b> contains helper function for rendering submit buttons <code><a href="#" target="blank">submit_button</a>( $text = null, $type = \'primary\', $name = \'submit\', $wrap = true, $other_attributes = null )</code>:'); ?></p>
-						<pre><code class="language-php">submit_button( '<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG );?>', 'primary', 'my-submit' );</code></pre>
+						<p><?php printf( __( '<b>WordPress</b> contains helper function for rendering submit buttons <code><a href="%s" target="blank">submit_button</a>( $text = null, $type = \'primary\', $name = \'submit\', $wrap = true, $other_attributes = null )</code>:', WP_Style_Guide::PLUGIN_SLUG ) , 'https://developer.wordpress.org/reference/functions/submit_button/' ); ?></p>
+						<p class="description"><?php _e( 'Note: This function can be used only in administration (is located in file <code>wp-admin/includes/template.php</code>).', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
+						<pre><code class="language-php">&lt;?php submit_button( '<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG );?>', 'primary', 'my-submit' ); ?&gt;</code></pre>
 						<?php submit_button( esc_html( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ), 'primary', 'my-submit' );?>
 						<p><?php _e( 'But you can also use plain HTML:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
 						<pre><code class="language-markup">
