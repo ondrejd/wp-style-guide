@@ -53,9 +53,9 @@ endif;
 	<h3 class="screen-reader-text"><?php esc_html_e( 'List of Contents', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 	<ul class="subsubsub">
 		<li><b><?php esc_html_e( 'Contents:', WP_Style_Guide::PLUGIN_SLUG ); ?></b> </li>
-		<li><a href="#tr-helper_functions"><?php esc_html_e( 'Helper functions', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
-		<li><a href="#tr-text_input"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
-		<li><a href="#tr-select"><?php esc_html_e( 'Select element', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-helper_functions"><?php esc_html_e( 'Helper Functions', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-text_input"><?php esc_html_e( 'Text Input', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-select"><?php esc_html_e( 'Select Element', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-multi_select"><?php esc_html_e( 'Multiple Select', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-radio_buttons"><?php esc_html_e( 'Radio Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-checkbox"><?php esc_html_e( 'Checkbox', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
@@ -64,7 +64,8 @@ endif;
 		<li><a href="#tr-datetime"><?php esc_html_e( 'Date Time Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-others"><?php esc_html_e( 'Other Elements', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
 		<li><a href="#tr-buttons"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
-		<li><a href="#tr-form_table"><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></a></li>
+		<li><a href="#tr-form_table"><?php esc_html_e( 'Form Table', WP_Style_Guide::PLUGIN_SLUG ); ?></a> | </li>
+		<li><a href="#tr-nonce"><?php esc_html_e( 'NONCE Field', WP_Style_Guide::PLUGIN_SLUG); ?></a></li>
 	</ul>
 
 	<form id="form" style="clear: both; padding-top: 20px;">
@@ -72,23 +73,23 @@ endif;
 			<tbody>
 				<tr id="tr-helper_functions">
 					<th>
-						<label for="input-text"><?php esc_html_e( 'Helper functions', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+						<label for="input-text"><?php esc_html_e( 'Helper Functions', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
 						<p><?php _e( '<b>WordPress</b> contains three helper functions for rendering <code>disabled</code>, <code>checked</code> or <code>selected</code> attributes: '); ?></p>
-						<pre><code class="language-php">checked( $checked, $current = TRUE, $echo = TRUE );
+						<pre><code class="language-php">&lt;?php checked( $checked, $current = TRUE, $echo = TRUE ); ?&gt;
  selected( $selected, $current = TRUE, $echo = TRUE );
  disabled( $disabled, $current = TRUE, $echo = TRUE );</code></pre>
 						<p><?php _e( ' So instead of writing something like this:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
-						<pre><code class="language-php">&lt;input type="checkbox" &lt;?php echo ( /* condition */ ) ? ' checked="checked"' : ''; ?&gt;&gt;</code></pre>
+						<pre><code class="language-markup">&lt;input type="checkbox" &lt;?php echo ( /* condition */ ) ? ' checked="checked"' : ''; ?&gt;&gt;</code></pre>
 						<p><?php _e( ' You can do just this:', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
-						<pre><code class="language-php">&lt;input type="checkbox" &lt;?php checked( /* condition */ ); ?&gt;&gt;</code></pre>
+						<pre><code class="language-markup">&lt;input type="checkbox" &lt;?php checked( /* condition */ ); ?&gt;&gt;</code></pre>
 					</td>
 				</tr>
 				<tr id="tr-text_input"><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>
 				<tr>
 					<th>
-						<label for="input-text"><?php esc_html_e( 'Text input', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+						<label for="input-text"><?php esc_html_e( 'Text Input', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
 						<input type="text" name="input-text" placeholder="<?php esc_html_e( 'Text', WP_Style_Guide::PLUGIN_SLUG ); ?>" />
@@ -102,7 +103,7 @@ endif;
 				<tr id="tr-select"><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>
 				<tr>
 					<th>
-						<label for="input-text"><?php esc_html_e( 'Select element', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+						<label for="input-text"><?php esc_html_e( 'Select Element', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
 						<select name="select">
@@ -236,7 +237,7 @@ endif;
 					</th>
 					<td class="wp-pattern-example">
 						<p><?= sprintf( __( 'If you creating date time inputs for form for editing <em>custom-</em>post type you can use <b>WordPress</b> function <a href="touch_time" target="blank"><code></code></a> (<b>Warning:</b> This function can be used only on <code>post.php</code> or <code>post-new.php</code> pages!):', WP_Style_Guide::PLUGIN_SLUG ), 'https://developer.wordpress.org/reference/functions/touch_time/' )?></p>
-						<pre><code class="language-php">&lt;?php @touch_time(false, false, false, true);?&gt;</code></pre>
+						<pre><code class="language-php">&lt;?php @touch_time( false, false, false, true ); ?&gt;</code></pre>
 						<?php 
 						@touch_time(false, false, false, true);
 						?>
@@ -321,7 +322,7 @@ endif;
 						<label for="input-time"><?php esc_html_e( 'Buttons', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
-						<p><?php printf( __( '<b>WordPress</b> contains helper function for rendering submit buttons <code><a href="%s" target="blank">submit_button</a>( $text = null, $type = \'primary\', $name = \'submit\', $wrap = true, $other_attributes = null )</code>:', WP_Style_Guide::PLUGIN_SLUG ) , 'https://developer.wordpress.org/reference/functions/submit_button/' ); ?></p>
+						<p><?php printf( __( '<b>WordPress</b> contains helper function for rendering submit buttons <a href="%s" target="blank"><code>submit_button</code></a>:', WP_Style_Guide::PLUGIN_SLUG ) , 'https://developer.wordpress.org/reference/functions/submit_button/' ); ?></p>
 						<p class="description"><?php _e( 'Note: This function can be used only in administration (is located in file <code>wp-admin/includes/template.php</code>).', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
 						<pre><code class="language-php">&lt;?php submit_button( '<?php esc_html_e( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG );?>', 'primary', 'my-submit' ); ?&gt;</code></pre>
 						<?php submit_button( esc_html( 'Submit Input', WP_Style_Guide::PLUGIN_SLUG ), 'primary', 'my-submit' );?>
@@ -339,7 +340,7 @@ endif;
 				<tr id="tr-form_table"><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>
 				<tr>
 					<th>
-						<label><?php esc_html_e( 'Form table', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+						<label><?php esc_html_e( 'Form Table', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
 					</th>
 					<td class="wp-pattern-example">
 						<p><?php _e( 'Here is minor excerpt with the form table as is used in <b>WordPress</b> options pages.', WP_Style_Guide::PLUGIN_SLUG ); ?></p>
@@ -484,6 +485,17 @@ jQuery(document).on('ready', function () {
 &lt;/script&gt;
 						</code></pre>
 						<?php render_code_example_end( 'form_table' ); ?>
+					</td>
+				</tr>
+				<tr id="tr-nonce"><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>
+				<tr>
+					<th>
+						<label><?php esc_html_e( 'NONCE Field', WP_Style_Guide::PLUGIN_SLUG ); ?></label>
+					</th>
+					<td class="wp-pattern-example">
+						<p><?php printf( __( 'When you need add security field into your forms you can use <a href="%s" target="blank"><code>wp_nonce_field</code></a> function.', WP_Style_Guide::PLUGIN_SLUG), 'https://developer.wordpress.org/reference/functions/wp_nonce_field/' ); ?></p>
+						<pre><code class="language-php">&lt;?php wp_nonce_field(); ?&gt;</code></pre>
+						<p class="description"><?php printf( __( '<b>Note:</b> Nonces are described here in article <a href="%s" target="blank">WordPress Nonces</a> (WordPress Codex).', WP_Style_Guide::PLUGIN_SLUG), 'https://codex.wordpress.org/WordPress_Nonces' ); ?></p>
 					</td>
 				</tr>
 				<tr><td colspan="2"><p class="description"><a href="#wpbody" class="alignright"><?php esc_html_e( 'Back to top', WP_Style_Guide::PLUGIN_SLUG ); ?></a></p></td></tr>
