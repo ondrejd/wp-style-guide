@@ -21,29 +21,13 @@ class WP_Style_Guide {
 	 * Screens added.
 	 * @var array
 	 */
-	private $screens;
-
-	/**
-	 * Hook name of the top level page.
-	 * @var string
-	 */
-	private $hookname;
+	public static $screens;
 
 	/**
 	 * Default options of the plugin.
 	 * @var array
 	 */
-	private $default_options = array(
-		// Default values for the wizards
-		'default_install_text' => "1. Upload plugin folder to the `/wp-content/plugins/` directory\n2. Activate the plugin through the 'Plugins' menu in WordPress\n",
-		'default_faq_text' => "= Question #1 =\n\nAnswer #1 ...\n",
-		'default_changelog_text' => "= 0.0.1 =\n* initial version\n",
-		'default_include_license_file' => true,
-		'default_has_dependency' => false,
-		'default_has_administration' => true,
-		'default_has_options' => true,
-		'default_has_own_dbtables' => false,
-		'default_has_localization' => true,
+	private static $default_options = array(
 		// Show source code examples by default
 		'display_source_code_examples' => true
 	);
@@ -68,37 +52,64 @@ class WP_Style_Guide {
 	}
 
 	/**
+	 * Load the required dependencies for this plugin.
+	 *
+	 * Include the following files that make up the plugin:
+	 *
+	 * - {@see Screen_Tables}. Defines {@see WP_Screen} for page "Admin Tables".
+	 * - {@see Screen_Toc}. Defines {@see WP_Screen} for main plugin's page.
+	 *
+	 * @since 0.1
+	 * @access private
+	 */
+	private function load_dependencies() {
+		$plugin_dir = plugin_dir_path( __FILE__ );
+		$main_files = array(
+			$plugin_dir . 'includes/class-screen_admin_ui.php',
+			$plugin_dir . 'includes/class-screen_forms_page.php',
+			$plugin_dir . 'includes/class-screen_helper_classes.php',
+			$plugin_dir . 'includes/class-screen_jquery_ui.php',
+			$plugin_dir . 'includes/class-screen_tables.php',
+			$plugin_dir . 'includes/class-screen_toc.php',
+		);
+
+		foreach ( $main_files as $file ) {
+			if ( file_exists( $file ) && is_readable( $file ) ) {
+				require_once $file;
+			}
+		}
+	}
+
+	/**
 	 * Initialize plugin.
 	 * @return void
 	 * @uses load_plugin_textdomain()
 	 */
 	public function init() {
 		load_plugin_textdomain( self::PLUGIN_SLUG, false, 'wp-style-guide/languages' );
+		// Load dependencies
+		$this->load_dependencies();
 		// Ensure that plugin's options are initialized
-		$this->get_options();
+		self::get_options();
 		// Define our screens. 
 		// Note: this has to be here because we need to be locales loaded at the first place.
-		$this->screens = array(
-			'wp-patterns-wizards' => array(
-				'page_title' => __( 'Wizards', self::PLUGIN_SLUG ),
-				'menu_title' => __( 'Wizards', self::PLUGIN_SLUG ),
-				'callback' => 'wizards', // note that this has to be a class method
-				'hookname' => null,
-			),
-			'wp-patterns-forms' => array(
+		self::$screens = array(
+			Screen_Forms_Page::SLUG => array(
 				'page_title' => __( 'Forms', self::PLUGIN_SLUG ),
 				'menu_title' => __( 'Forms', self::PLUGIN_SLUG ),
+                // XXX 'callback' => array( 'Screen_Forms_Page', 'render' ),
 				'callback' => 'forms_page', // note that this has to be a class method
 				'hookname' => null,
 			),
-			'wp-patterns-tables' => array(
+			Screen_Tables::SLUG => array(
 				'page_title' => __( 'Tables', self::PLUGIN_SLUG ),
 				'menu_title' => __( 'Tables', self::PLUGIN_SLUG ),
-				'callback' => 'tables_page', // note that this has to be a class method
+				'callback' => array( 'Screen_Tables', 'render' ),
 				'hookname' => null,
 			),
 			'wp-patterns-adminui' => array(
 				'page_title' => __( 'Other Admin Widgets', self::PLUGIN_SLUG ),
+                // XXX 'callback' => array( '', 'render' ),
 				'menu_title' => __( 'Other Widgets', self::PLUGIN_SLUG ),
 				'callback' => 'adminui_page', // note that this has to be a class method
 				'hookname' => null,
@@ -106,12 +117,14 @@ class WP_Style_Guide {
 			'wp-patterns-jquery-ui' => array(
 				'page_title' => __( 'jQuery UI Components', self::PLUGIN_SLUG ),
 				'menu_title' => __( 'jQuery UI', self::PLUGIN_SLUG ),
-				'callback' => 'jquery_ui', // note that this has to be a class method
+				// XXX 'callback' => array( '', 'render' ),
+                'callback' => 'jquery_ui', // note that this has to be a class method
 				'hookname' => null,
 			),
 			'wp-patterns-helper-classes' => array(
 				'page_title' => __( 'Style Helper Classes', self::PLUGIN_SLUG ),
 				'menu_title' => __( 'Helper Classes', self::PLUGIN_SLUG ),
+                // XXX 'callback' => array( '', 'render' ),
 				'callback' => 'helper_classes', // note that this has to be a class method
 				'hookname' => null,
 			),
@@ -125,7 +138,7 @@ class WP_Style_Guide {
 	 * @uses get_option()
 	 * @uses update_option()
 	 */
-	public function get_options() {
+	public static function get_options() {
 		$options = get_option( self::PLUGIN_SLUG . '-options' );
 		$need_update = false;
 
@@ -134,7 +147,7 @@ class WP_Style_Guide {
 			$options = array();
 		}
 
-		foreach ( $this->default_options as $key => $value ) {
+		foreach ( self::$default_options as $key => $value ) {
 			if ( !array_key_exists( $key, $options ) ) {
 				$options[$key] = $value;
 				$need_update = true;
@@ -154,17 +167,24 @@ class WP_Style_Guide {
 	} // end get_options()
 
 	/**
-	 * Returns value of option with given key.
+	 * Returns value of option with given key. If key doesn't exist
+	 * returns empty string or NULL if `$null_if_not_exist` is set on TRUE.
 	 * @param string $key
+	 * @param boolean $null_if_not_exist Optional. Default TRUE.
 	 * @return mixed Returns empty string if option with given key was not found.
+	 * @since 1.0.1
 	 * @static
 	 * @uses get_option()
 	 */
-	public static function get_option($key) {
+	public static function get_option( $key, $null_if_not_exist = false ) {
 		$options = get_option( self::PLUGIN_SLUG . '-options' );
 
 		if ( array_key_exists( $key, $options ) ) {
 			return $options[$key];
+		}
+
+		if ( $null_if_not_exist === true ) {
+			return NULL;
 		}
 
 		return '';
@@ -183,21 +203,17 @@ class WP_Style_Guide {
 		$screen = get_current_screen();
 
 		// Page "Forms"
-		if ( $screen->base === $this->screens['wp-patterns-forms']['hookname']) {
+		if ( $screen->id == self::$screens['wp-patterns-forms']['hookname']) {
 			wp_register_script( 'wp_patterns_forms', plugins_url( 'js/patterns-forms.js', __FILE__ ), array( 'jquery' ), false, true );
 			wp_enqueue_script( 'wp_patterns_forms' );
 		}
-		// Page "Tables"
-		elseif ( $screen->base === $this->screens['wp-patterns-tables']['hookname']) {
-			// ...
-		}
 		// Page "Other Widgets"
-		elseif ( $screen->base === $this->screens['wp-patterns-adminui']['hookname']) {
+		elseif ( $screen->id == self::$screens['wp-patterns-adminui']['hookname']) {
 			wp_register_script( 'wp_patterns_adminui', plugins_url( 'js/patterns-adminui.js', __FILE__ ), array( 'jquery' ), false, true );
 			wp_enqueue_script( 'wp_patterns_adminui' );
 		}
 		// Page "jQuery UI Components"
-		elseif ( $screen->base === $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
+		elseif ( $screen->id == self::$screens['wp-patterns-jquery-ui']['hookname'] ) {
 			wp_register_style( 'wp-jquery-ui', plugins_url( 'css/jquery-ui.min.css', __FILE__ ), false );
 			wp_enqueue_style( 'wp-jquery-ui' );
 			wp_register_style( 'wp-jquery-ui-theme', plugins_url( 'css/jquery-ui.theme.min.css', __FILE__ ), false );
@@ -208,14 +224,9 @@ class WP_Style_Guide {
 			wp_register_script( 'wp_patterns_jqueryui_js', plugins_url( 'js/patterns-jqueryui.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-dialog', 'jquery-ui-slider', 'jquery-ui-datepicker', 'jquery-ui-progressbar', 'jquery-ui-button' , 'jquery-ui-autocomplete' ), false, true );
 			wp_enqueue_script( 'wp_patterns_jqueryui_js' );
 		}
-		// Wizards
-		elseif ( $screen->base === $this->screens['wp-patterns-wizards']['hookname'] ) {
-			$wizard = filter_input( INPUT_GET, 'wizard' );
-
-			if ( in_array( $wizard, array( 'plugin', 'theme' ) ) ) {
-				wp_register_script( "wp_wizards_{$wizard}_js", plugins_url( "js/wizards-{$wizard}.js", __FILE__ ), array( 'jquery', 'jquery-ui-core' ), false, true );
-				wp_enqueue_script( "wp_wizards_{$wizard}_js" );
-			}
+		// Page "Tables"
+		elseif ( $screen->id == self::$screens[Screen_Tables::SLUG]['hookname']) {
+			Screen_Tables::enqueue_scripts_and_styles();
 		}
 
 		wp_enqueue_style( 'wp-style-guide', plugins_url( 'css/wp-style-guide.css', __FILE__ ), false );
@@ -227,13 +238,13 @@ class WP_Style_Guide {
 
 	/**
 	 * Adds some styles directly to the header of a Wordpress administration page.
-	 * @return void
-	 * @todo Remove! Move into external CSS file and load in function {@see admin_enqueue_scripts()}.
+	 * Property `$hookname` is already set because `admin_menu()` is called before `admin_head()`.
+	 * since 1.0
 	 */
 	public function admin_head() {
 ?>
 <style>
-	.mp6 #adminmenu .<?php echo $this->hookname; ?> .wp-menu-image:before {
+	.mp6 #adminmenu .<?php echo Screen_Toc::get_instance()->get_hookname(); ?> .wp-menu-image:before {
 		content: '\f309';
 	}
 
@@ -246,17 +257,23 @@ class WP_Style_Guide {
 	/**
 	 * Add admin screens
 	 * @return void
+	 * @since 1.0
 	 * @uses add_action()
 	 * @uses add_menu_page()
 	 * @uses add_submenu_page()
 	 */
 	public function admin_menu() {
-		$this->hookname = add_menu_page( __( 'WordPress Admin Pattern Library', self::PLUGIN_SLUG ), __( 'Pattern Library', self::PLUGIN_SLUG ), 'read', 'wp-patterns', array( $this, 'toc' ) );
-		add_action( 'load-' . $this->hookname, array( $this, 'create_help_screen' ) );
+		// Register main menu item
+		Screen_Toc::get_instance()->admin_menu();
 
-		foreach ( $this->screens as $slug => $args ) {
-			$this->screens[$slug]['hookname'] = add_submenu_page( 'wp-patterns', $args['page_title'], $args['menu_title'], 'read', $slug, array( $this, $args['callback'] ) );
-			add_action( 'load-' . $this->screens[$slug]['hookname'], array( $this, 'create_help_screen' ) );
+		// Submenu items
+		foreach ( self::$screens as $slug => $args ) {
+			$callback = is_array( $args['callback'] ) ? $args['callback'] : array( $this, $args['callback'] );
+			$page_title = $args['page_title'];
+			$menu_title = $args['menu_title'];
+
+			self::$screens[$slug]['hookname'] = add_submenu_page( 'wp-patterns', $page_title, $menu_title, 'read', $slug, $callback );
+			add_action( 'load-' . self::$screens[$slug]['hookname'], array( $this, 'create_help_screen' ) );
 		}
 	}
 
@@ -268,17 +285,28 @@ class WP_Style_Guide {
 	public function create_help_screen() {
 		$screen = get_current_screen();
 
-		if ( $screen->id == $this->hookname ) {
-			return;
+		/*switch ( $screen->id ) {
+			case Screen_Toc::get_instance()->get_hookname():
+				Screen_Toc::get_instance()->create_help_screen( $screen );
+				break;
+
+			case self::$screens[Screen_Tables::SLUG]['hookname']:
+				Screen_Tables::get_instance()->create_help_screen();
+		}*/
+
+		foreach( array( 'Screen_Toc', 'Screen_Tables' ) as $my_screen ) {
+			$my_screen::get_instance()->create_help_screen( $screen );
+			//$my_screen::register_screen_options( $screen );
+			//$my_screen::screen_help();
 		}
 
 		// Page "Forms"
-		if ( $screen->id == $this->screens['wp-patterns-forms']['hookname']) {
+		if ( $screen->id == self::$screens['wp-patterns-forms']['hookname']) {
 			add_filter( 'screen_layout_columns', array( $this, 'display_forms_screen_options' ) );
 			$screen->add_option( 'display_source_code_examples', '' );
 		}
 		// Page "jQuery UI Components"
-		elseif ( $screen->id == $this->screens['wp-patterns-jquery-ui']['hookname'] ) {
+		elseif ( $screen->id == self::$screens['wp-patterns-jquery-ui']['hookname'] ) {
 			$screen->add_help_tab(
 				array(
 					'id'      => 'wpsg_jqueryui_help_tab2',
@@ -310,33 +338,11 @@ class WP_Style_Guide {
 				)
 			);
 		}
-		// Wizards
-		elseif ( $screen->id == $this->screens['wp-patterns-wizards']['hookname'] ) {
-			$wizard = filter_input( INPUT_GET, 'wizard' );
-
-			if ( $wizard == 'plugin' ) {
-				// TODO Finish this!
-			}
-			elseif ( $wizard == 'theme' ) {
-				// TODO Finish this!
-			}
-			else {
-				$screen->add_help_tab(
-					array(
-						'id'      => 'wpsg_wizards_help_tab',
-						'title'   => __( 'Wizards', self::PLUGIN_SLUG ),
-						'content' => __( '<p>On this page are shown all available wizards. The main are wizards for <b>plugins</b> and <b>themes</b>. These two wizards help you to start new plugin/theme projects quickly and easily. An advantage is the same structure accross your projects.</p><p>Other wizards generating code snippets for various parts of development of WordPress plugins or themes.<p>', self::PLUGIN_SLUG ),
-					)
-				);
-				$screen->set_help_sidebar(
-					sprintf(
-						__( '<b>Usefull links</b><p><a href="%s" target="blank">Options</a> where you can change code templates.</p><p><a href="%s" target="blank">Examples</a> of generated code with this plugin.</p>', self::PLUGIN_SLUG ),
-						'#',
-						'#'
-					)
-				);
-			}
-		}
+		// Tables
+		//elseif ( $screen->id == self::$screens[Screen_Tables::SLUG]['hookname'] ) {
+		//	Screen_Tables::screen_help( $screen );
+		//	Screen_Tables::register_screen_options( $screen );
+		//}
 	}
 
 	/**
@@ -349,7 +355,8 @@ class WP_Style_Guide {
 	public function display_forms_screen_options() {
 		$screen = get_current_screen();
 
-		if ( $screen->id == $this->screens['wp-patterns-forms']['hookname']) {
+		// Page "Forms"
+		if ( $screen->id == self::$screens['wp-patterns-forms']['hookname']) {
 			$display_examples = ( ( bool ) self::get_option( 'display_source_code_examples' ) === true ) ? true : false;
 ?>
 <div id="screen-options-wrap" class="hidden" aria-label="<?php esc_html_e( 'Screen Options Tab', self::PLUGIN_SLUG ); ?>">
@@ -370,6 +377,10 @@ class WP_Style_Guide {
 </div>
 <?php
 		}
+		// Page "Tables"
+		elseif ( $screen->id == self::$screens[Screen_Tables::SLUG]['hookname'] ) {
+			Screen_Tables::screen_options( $screen );
+		}
 	}
 
 	/**
@@ -380,16 +391,17 @@ class WP_Style_Guide {
 	 * @uses wp_verify_nonce()
 	 */
 	function save_screen_options() {
+		// Page "Forms"
 		if (
-			filter_input(INPUT_POST, self::PLUGIN_SLUG . '-submit_forms_screen_options') &&
-			(bool) wp_verify_nonce(filter_input(INPUT_POST, self::PLUGIN_SLUG . '-nonce')) === true
+			filter_input( INPUT_POST, self::PLUGIN_SLUG . '-submit_forms_screen_options' ) &&
+			( bool ) wp_verify_nonce( filter_input( INPUT_POST, self::PLUGIN_SLUG . '-nonce' ) ) === true
 		) {
-			$display_examples = (string) filter_input( INPUT_POST, 'display_source_code_examples' );
+			$display_examples = ( string ) filter_input( INPUT_POST, 'display_source_code_examples' );
 			$display_examples = ( strtolower( $display_examples ) == 'on' ) ? true : false;
-			$options = $this->get_options();
+			$options = self::get_options();
 			$need_update = false;
 
-			if ( !array_key_exists('display_source_code_examples', $options ) ) {
+			if ( !array_key_exists( 'display_source_code_examples', $options ) ) {
 				$need_update = true;
 			}
 
@@ -403,16 +415,30 @@ class WP_Style_Guide {
 				update_option( self::PLUGIN_SLUG . '-options', $options );
 			}
 		}
-	}
+		// Page "Tables"
+		if ( 
+			filter_input( INPUT_POST, self::PLUGIN_SLUG . '-submit_tables_screen_options' ) &&
+			( bool ) wp_verify_nonce( filter_input( INPUT_POST, self::PLUGIN_SLUG . '-nonce' ) ) === true
+		) {
+			$display_description = ( string ) filter_input( INPUT_POST, 'display_detail_description' );
+			$display_description = ( strtolower( $display_description ) == 'on' ) ? true : false;
+			$options = self::get_options();
+			$need_update = false;
 
-	/**
-	 * Output for our top level screen.
-	 * @return void
-	 */
-	public function toc() {
-		$screens = $this->screens;
+			if ( !array_key_exists( 'display_detail_description', $options ) ) {
+				$need_update = true;
+			}
 
-		include_once( 'pages/toc.php' );
+			if ( !$need_update && $options['display_detail_description'] != $display_description ) {
+				$need_update = true;
+			}
+
+			if ( $need_update === true ) {
+				$options['display_detail_description'] = $display_description;
+
+				update_option( self::PLUGIN_SLUG . '-options', $options );
+			}
+		}
 	}
 
 	/**
@@ -437,22 +463,6 @@ class WP_Style_Guide {
 	 */
 	public function helper_classes() {
 		include_once( 'pages/helper-classes.php' );
-	}
-
-	/**
-	 * Output page "Wizards".
-	 * @return void
-	 */
-	public function wizards() {
-		include_once( 'pages/wizards.php' );
-	}
-
-	/**
-	 * Output page "Wizards".
-	 * @return void
-	 */
-	public function tables_page() {
-		include_once( 'pages/tables.php' );
 	}
 
 	/**
