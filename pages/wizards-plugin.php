@@ -4,7 +4,7 @@
 
 	<h1><?= __( 'Wizards - Plugin Wizard', WP_Style_Guide::PLUGIN_SLUG ) ?></h1>
 
-	<form id="plugin-wizard">
+	<form id="wizard-plugin">
 		<table class="form-table">
 			<tbody>
 				<!-- Name -->
@@ -306,8 +306,33 @@
 						</fieldset>
 					</td>
 				</tr>
+				<!-- Template -->
+				<tr>
+					<th scope="row">
+						<label for="plugin-template"><?= __( 'Template', WP_Style_Guide::PLUGIN_SLUG ) ?></label>
+					</th>
+					<td>
+						<p style="color: #f30;"><code>XXX</code> &ndash; Finish this!</p>
+						<fieldset>
+							<legend><?= __( 'Select template for generating plugin source codes' ) ?></legend>
+							<div>
+								<label title="<?= __( 'Default template', WP_Style_Guide::PLUGIN_SLUG ) ?>" class="default">
+									<input type="radio" name="plugin-template" value="none" checked="checked">
+									<?= __( 'Default template', WP_Style_Guide::PLUGIN_SLUG ) ?>
+								</label>
+							</div>
+							<div>
+								<label title="<?= __( 'WordPress Plugin Boilerplate by Devin Devinson', WP_Style_Guide::PLUGIN_SLUG ) ?>" class="default">
+									<input type="radio" name="plugin-template" value="none" checked="checked">
+									<?= sprintf( __( '<a href="%s" target="blank">WordPress Plugin Boilerplate</a> by <a href="%s" target="blank">Devin Devinson</a>', WP_Style_Guide::PLUGIN_SLUG ), '', '' ) ?>
+								</label>
+							</div>
+
+						</fieldset>
+					</td>
+				</tr>
 			</tbody>
 		</table>
-		<input type="submit" name="plugin-submit" value="<?= __( 'Generate plugin', WP_Style_Guide::PLUGIN_SLUG ) ?>" class="button-primary">
+		<input type="submit" name="submit-plugin" value="<?= __( 'Generate code', WP_Style_Guide::PLUGIN_SLUG ) ?>" class="button-primary">
 	</form>
 </div>

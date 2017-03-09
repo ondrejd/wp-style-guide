@@ -123,3 +123,11 @@ ul#icons span.ui-icon {
 	padding-right: 63px;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
+
+/**
+ * Page "Tables"
+ */
+p.checkbox-description {
+	padding: 0 0 0 23px;
+	margin: 0 0 0 0;
+}

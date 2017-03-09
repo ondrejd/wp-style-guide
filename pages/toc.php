@@ -7,7 +7,7 @@
 	<h3><?php _e( 'Table of Contents', WP_Style_Guide::PLUGIN_SLUG ); ?></h3>
 
 	<ul class="ul-disc">
-	<?php foreach( $screens as $slug => $args ) : ?>
+	<?php foreach( WP_Style_Guide::$screens as $slug => $args ) : ?>
 		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $slug ) ); ?>"><?php esc_html_e( $args['page_title'] ); ?></a></li>
 	<?php endforeach; ?>
 	</ul>
